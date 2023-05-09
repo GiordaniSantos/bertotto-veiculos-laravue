@@ -13,8 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('marcas', function (Blueprint $table) {
+        Schema::create('banners', function (Blueprint $table) {
             $table->id();
+            $table->string('titulo', 256);
+            $table->string('link', 256)->nullable();
+            $table->smallInteger('ordem')->nullable();
+            $table->boolean('ativo')->default(0);
+            $table->boolean('nova_guia')->default(0);
             $table->timestamps();
         });
     }
@@ -26,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('marcas');
+        Schema::dropIfExists('banners');
     }
 };
