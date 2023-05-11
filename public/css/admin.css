@@ -1,0 +1,71 @@
+.border-indigo-400 {
+    border-color: #9d7a42 !important;
+}
+
+body {
+	font-family:Roboto;
+	font-size:15px;
+}
+
+a {
+    color: 	#000000 !important;
+    text-decoration: none;
+  }
+
+  a:hover{
+    color: 	#9d7a42 !important;
+    text-decoration: none;
+}
+
+#lista-images{
+  display: flex;
+}
+
+.margin40T{
+  margin-top: 40px;
+}
+
+.label-danger {
+  background-color: #d9534f;
+}
+
+.label-success {
+  background-color: #5cb85c;
+}
+
+.font-d{
+  font-size: 65px !important;
+  margin-left: 35px;
+}
+
+.padding20{
+  padding: 20px;
+}
+
+.bg-warning{
+  background-color: #fcf8e3 !important;
+}
+
+.btn{
+    font-family: Roboto;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 12px;
+    letter-spacing: .5px;
+    padding: 10px 25px;
+    height: 33px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,.85) !important;
+}
+
+.swal2-styled.swal2-confirm {
+    background-color: #044d2b !important;
+}
+
+.btn:hover {
+	color:#FFF !important;
+}
+
+.button-submit{
+    background-color: #198754 !important;
+}

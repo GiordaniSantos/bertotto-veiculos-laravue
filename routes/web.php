@@ -20,3 +20,14 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::prefix('/admin')->middleware('auth')->group(function(){
+    //Contatos
+    Route::get('/contatos', function(){
+        return view('admin.contato.index');
+    })->name('admin.contato');
+
+    Route::get('/contato/create', function(){
+        return view('admin.contato.create');
+    })->name('admin.contato.create');
+});

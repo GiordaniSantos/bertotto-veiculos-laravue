@@ -17,8 +17,22 @@ const app = createApp({});
 
 import ExampleComponent from './components/ExampleComponent.vue';
 import Login from './components/Login.vue';
+import Home from './components/Home.vue';
+import Contato from './components/contato/Contato.vue';
+import InputContainer from './components/InputContainer.vue';
+import Table from './components/Table.vue';
+import Card from './components/Card.vue';
+import CreateContato from './components/contato/CreateContato.vue';
+import FormContato from './components/contato/FormContato.vue';
 app.component('example-component', ExampleComponent);
 app.component('login-component', Login);
+app.component('home-component', Home);
+app.component('contato-component', Contato);
+app.component('input-container-component', InputContainer);
+app.component('table-component', Table);
+app.component('card-component', Card);
+app.component('create-contato-component', CreateContato);
+app.component('form-contato-component', FormContato);
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
