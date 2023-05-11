@@ -46,19 +46,12 @@ class ConfiguracaoController extends Controller
      */
     public function show(Configuracao $configuracao)
     {
-        //
+        if($configuracao === null){
+            return response()->json(['erro' => 'Recurso pesquisado não existe.'], 404);
+        }
+        return response()->json($configuracao, 200);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Configuracao  $configuracao
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Configuracao $configuracao)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.
@@ -69,7 +62,9 @@ class ConfiguracaoController extends Controller
      */
     public function update(Request $request, Configuracao $configuracao)
     {
-        //
+        //vai preencher o objeto de acordo com a variavel fillable no model
+        $configuracao->update($request->all());
+        return response()->json($configuracao, 200);
     }
 
     /**
