@@ -18,12 +18,26 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::apiResource('arquivo', \App\Http\Controllers\ArquivoController::class);
+//possibilitando o versionamento da api tornando viável a utilização pela versão
+Route::prefix('v1')->middleware('jwt.auth')->group(function() {
+    Route::apiResource('arquivo', \App\Http\Controllers\ArquivoController::class);
 
-Route::apiResource('contato', \App\Http\Controllers\ContatoController::class);
+    Route::apiResource('contato', \App\Http\Controllers\ContatoController::class);
+    
+    Route::apiResource('banner', \App\Http\Controllers\BannerController::class);
+    
+    Route::apiResource('configuracao', \App\Http\Controllers\ConfiguracaoController::class);
+    
+    Route::apiResource('veiculo', \App\Http\Controllers\VeiculoController::class);
+    
+    Route::post('me', [\App\Http\Controllers\AuthController::class, 'me']);
+    
+    Route::post('refresh', [\App\Http\Controllers\AuthController::class, 'refresh']);
 
-Route::apiResource('banner', \App\Http\Controllers\BannerController::class);
+    Route::post('logout', [\App\Http\Controllers\AuthController::class, 'logout']);
+});
 
-Route::apiResource('configuracao', \App\Http\Controllers\ConfiguracaoController::class);
+Route::post('login', [\App\Http\Controllers\AuthController::class, 'login']);
 
-Route::apiResource('veiculo', \App\Http\Controllers\VeiculoController::class);
+
+
