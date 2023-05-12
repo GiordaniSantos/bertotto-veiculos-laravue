@@ -102,8 +102,6 @@
         },  
         methods: {
             salvar(){
-                console.log('teste')
-
                 let formData = new FormData();
                 formData.append('nome', this.nome);
                 formData.append('email', this.email);
@@ -124,9 +122,11 @@
                 axios.post(this.urlBase, formData, config)
                     .then(response => {
                         console.log(response)
+                        this.$swal("Sucesso", "Registro cadastrado com sucesso!", "success");
                     })  
                     .catch(errors => {
                         console.log(errors)
+                        this.$swal("Oops...", "Algum erro aconteceu! " +errors.response.data.message, "error");
                     })
             }
         }
