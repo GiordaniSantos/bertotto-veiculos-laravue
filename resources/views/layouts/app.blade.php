@@ -35,7 +35,7 @@
                                 <a href="{{route('home')}}" class="nav-link">Início</a>
                             </li>
                             <li class="nav-item">
-                                <a href="#" class="nav-link">Banners</a>
+                                <a href="{{ route('admin.banner') }}" class="nav-link">Banners</a>
                             </li>
                             <li class="nav-item">
                                 <a href="#" class="nav-link">Veículos</a>

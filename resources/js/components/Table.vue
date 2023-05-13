@@ -14,7 +14,7 @@
                     <span v-if="titulos[chaveValor].tipo == 'boolean'">{{ '...' + valor }}</span>
                 </td>
                 <td>
-                    <button v-if="visualizar" class="btn btn-outline-primary btn-sm" @click="setStore(obj)" ><a :href="urlVisualizar" @click="setStore(obj)">Visualizar</a></button>
+                    <button v-if="visualizar" class="btn btn-outline-primary btn-sm" @click="setStore(obj)" >Visualizar</button>
                     <button v-if="editar" class="btn btn-outline-primary btn-sm">Atualizar</button>
                     <button v-if="excluir" class="btn btn-outline-danger btn-sm">Excluir</button>
                 </td>

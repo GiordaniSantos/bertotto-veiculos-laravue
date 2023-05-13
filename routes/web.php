@@ -34,4 +34,11 @@ Route::prefix('/admin')->middleware('auth')->group(function(){
     Route::get('/contato/show', function(){
         return view('admin.contato.show');
     })->name('admin.contato.show');
+
+    Route::get('/banners', function(){
+        return view('admin.banner.index');
+    })->name('admin.banner');
+    Route::get('/banner/create', function(){
+        return view('admin.banner.create');
+    })->name('admin.banner.create');
 });

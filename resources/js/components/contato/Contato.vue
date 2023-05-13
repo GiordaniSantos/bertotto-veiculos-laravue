@@ -28,7 +28,7 @@
                 <!-- Card de listagem -->
                 <card-component titulo="Contatos">
                     <template v-slot:conteudo>
-                        <table-component :visualizar="true" url-visualizar="/admin/contato/show" :editar="true" :excluir="true" :dados="contatos.data" :titulos="{
+                        <table-component :visualizar="{ visivel: true, dataToggle: 'modal', dataTarget: '#'}" :editar="true" :excluir="true" :dados="contatos.data" :titulos="{
                             nome: {titulo: 'Nome', tipo: 'text'},
                             telefone: {titulo: 'Telefone', tipo: 'text'},
                             created_at: {titulo: 'Data de Abertura', tipo: 'data'},

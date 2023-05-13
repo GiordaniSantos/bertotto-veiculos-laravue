@@ -12,6 +12,9 @@ import 'sweetalert2/dist/sweetalert2.min.css';
 
 /* importando e configurando o vuex*/
 import Vuex from 'vuex';
+import router from './routes' // <---
+
+
 import { createStore } from 'vuex';
 
 const store = createStore({ 
@@ -27,6 +30,8 @@ const store = createStore({
 
 const app = createApp({});
 app.use(store)
+app.use(router);
+
 
 import ExampleComponent from './components/ExampleComponent.vue';
 import Login from './components/Login.vue';
@@ -38,6 +43,8 @@ import Card from './components/Card.vue';
 import CreateContato from './components/contato/CreateContato.vue';
 import ShowContato from './components/contato/ShowContato.vue';
 import Paginate from './components/Paginate.vue';
+import ListBanner from './components/banner/ListBanner.vue';
+import AddBanner from './components/banner/AddBanner.vue';
 app.component('example-component', ExampleComponent);
 app.component('login-component', Login);
 app.component('home-component', Home);
@@ -48,6 +55,8 @@ app.component('card-component', Card);
 app.component('create-contato-component', CreateContato);
 app.component('paginate-component', Paginate);
 app.component('show-contato-component', ShowContato);
+app.component('list-banner-component', ListBanner);
+app.component('add-banner-component', AddBanner);
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue

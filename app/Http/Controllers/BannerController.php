@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Storage;
 use App\Models\Banner;
 use App\Models\Arquivo;
 use Illuminate\Http\Request;
+use App\Repositories\BannerRepository;
 
 class BannerController extends Controller
 {
@@ -17,11 +18,19 @@ class BannerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $banners = Banner::with('arquivo')->get();
+        $bannerRepository = new BannerRepository($this->banner);
 
-        return response()->json($banners, 200);
+        $bannerRepository->selectAtributosRelacionados('arquivo');
+
+        if($request->has('termo')){
+            $bannerRepository->filtro($request->termo);
+            
+        }
+
+
+        return response()->json($bannerRepository->getResultadoPaginado(20), 200);
     }
 
     /**
