@@ -10,6 +10,15 @@ import { createApp } from 'vue';
 import VueSweetalert2 from 'vue-sweetalert2';
 import 'sweetalert2/dist/sweetalert2.min.css';
 
+/* importando e configurando o vuex*/
+import Vuex from 'vuex';
+import { createStore } from 'vuex';
+
+const store = createStore({ 
+    state: { 
+        item: {} 
+    }    
+})
 /**
  * Next, we will create a fresh Vue application instance. You may then begin
  * registering components with the application instance so they are ready
@@ -17,6 +26,7 @@ import 'sweetalert2/dist/sweetalert2.min.css';
  */
 
 const app = createApp({});
+app.use(store)
 
 import ExampleComponent from './components/ExampleComponent.vue';
 import Login from './components/Login.vue';
@@ -26,7 +36,8 @@ import InputContainer from './components/InputContainer.vue';
 import Table from './components/Table.vue';
 import Card from './components/Card.vue';
 import CreateContato from './components/contato/CreateContato.vue';
-import FormContato from './components/contato/FormContato.vue';
+import ShowContato from './components/contato/ShowContato.vue';
+import Paginate from './components/Paginate.vue';
 app.component('example-component', ExampleComponent);
 app.component('login-component', Login);
 app.component('home-component', Home);
@@ -35,7 +46,8 @@ app.component('input-container-component', InputContainer);
 app.component('table-component', Table);
 app.component('card-component', Card);
 app.component('create-contato-component', CreateContato);
-app.component('form-contato-component', FormContato);
+app.component('paginate-component', Paginate);
+app.component('show-contato-component', ShowContato);
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -53,6 +65,8 @@ app.component('form-contato-component', FormContato);
  * an "id" attribute of "app". This element is included with the "auth"
  * scaffolding. Otherwise, you will need to add an element yourself.
  */
+
+app.use(Vuex);
 
 app.use(VueSweetalert2);
 

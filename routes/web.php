@@ -30,4 +30,8 @@ Route::prefix('/admin')->middleware('auth')->group(function(){
     Route::get('/contato/create', function(){
         return view('admin.contato.create');
     })->name('admin.contato.create');
+
+    Route::get('/contato/show', function(){
+        return view('admin.contato.show');
+    })->name('admin.contato.show');
 });
