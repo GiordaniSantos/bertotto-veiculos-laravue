@@ -23,7 +23,7 @@
                 <!-- Card de listagem -->
                 <card-component titulo="Banners">
                     <template v-slot:conteudo>
-                        <table class="table">
+                        <table class="table table-hover">
                             <thead>
                                 <tr>
                                     <th>Titulo</th>
@@ -40,7 +40,7 @@
                                     <td>
                                         <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#showModal" @click="findBanner(banner.id)">Visualizar</button>
                                         <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#updateModal" @click="findBanner(banner.id)">Editar</button>
-                                        <button type="button" class="btn btn-danger">Delete</button>
+                                        <button type="button" class="btn btn-danger" @click="deletar(banner.id)">Delete</button>
                                     </td>
                                 </tr>
                             </tbody>
@@ -79,7 +79,7 @@
                         <div class="modal-body">
                             ID: {{bannerBuscado.id}} <br>
                             Titulo: {{bannerBuscado.titulo}} <br>
-                            Link: {{ bannerBuscado.link }} <br>
+                            Link: {{ bannerBuscado.link == null ? bannerBuscado.link : '' }} <br>
                             Ativo: {{ bannerBuscado.ativo ? 'Sim' : 'Não' }} <br>
                             Nova guia: {{ bannerBuscado.nova_guia ? 'Sim' : 'Não' }} <br>
                             Data de Criação: {{ bannerBuscado.created_at }} <br>
@@ -116,6 +116,17 @@
                                             <input type="text" class="form-control" v-model="bannerBuscado.link">
                                         </div>
                                     </div>
+                                    <div class="row">
+                                        <div class="col-12 form-group">
+                                            <input-container-component titulo="Imagem" id="novoImagem" id-help="novoImagemHelp">
+                                                <br>
+                                                <input type="file" class="form-control-file" id="novoImagem" aria-describedby="novoImagemHelp" placeholder="Selecione uma imagem" @change="carregarImagem($event)">
+                                            </input-container-component>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <a :href="urlBaseImg" target="_blank"><img :src="urlBaseImg" alt="Banner" style="width: 100%;"></a>
+                                    <br>
                                     <div class="row">
                                         <div class="col-2">
                                             <input type="checkbox" id="ativo" v-model="bannerBuscado.ativo">
@@ -154,6 +165,7 @@ export default{
                 urlPaginacao: '',
                 urlFiltro: '',
                 imagemBannerBuscado: {},
+                arquivoImagem: [],
                 nome: '',
                 ativo: '',
                 banners: { data: [] },
@@ -254,7 +266,8 @@ export default{
                 let url = this.urlBase + '/' +this.bannerBuscado.id;
                 let formData = new FormData();
                 formData.append('titulo', this.bannerBuscado.titulo);
-                formData.append('link', this.bannerBuscado.link);
+                formData.append('link', this.bannerBuscado.link ? this.bannerBuscado.link : '');
+                formData.append('arquivo', this.arquivoImagem[0])
                 formData.append('ativo', this.bannerBuscado.ativo ? 1 : 0);
                 formData.append('nova_guia', this.bannerBuscado.nova_guia ? 1 : 0);
                 formData.append('ordem', this.bannerBuscado.ordem);
@@ -270,8 +283,10 @@ export default{
 
                 axios.post(url, formData, config)
                     .then(response => {
-                        console.log(response)
                         this.$swal("Sucesso", "Registro atualizado com sucesso!", "success");
+                        this.urlBaseImg = this.urlBaseImg+ "/storage/uploads/banner/"+response.data.arquivo.id+"/"+response.data.arquivo.arquivo;
+                        this.findBanner(response.data.id);
+                        document.getElementById("novoImagem").value = '';
                     })  
                     .catch(errors => {
                         console.log(errors)
@@ -279,7 +294,51 @@ export default{
                     })
                 
                 this.carregarLista();
-            }
+            },
+            deletar(id) {
+
+                let config = {
+                    headers: {
+                        'Content-Type': 'multipart/form-data',
+                        'Accept': 'application/json',
+                        'Authorization': this.token
+                    }
+                }
+                
+                let formData = new FormData();
+                formData.append('_method', 'delete');
+
+                let url = this.urlBase + '/' + id;
+                
+                this.$swal({
+                    title: 'Tem certeza que deseja excluir este registro?',
+                    showConfirmButton: true,
+                    showCancelButton: true,
+                    confirmButtonText: "OK",
+                    cancelButtonText: "Cancelar",
+                    icon: 'warning'
+                }
+                ).then((result) => {
+                    /* Read more about isConfirmed, isDenied below */
+                    if (result.isConfirmed) {
+                        axios.post(url, formData, config)
+                            .then(response => {                        
+                                this.$swal("Sucesso", "Registro removido com sucesso!", "success");
+                                this.carregarLista()
+                            })
+                            .catch(errors => {
+                                this.$swal("Oops...", "Algum erro aconteceu! " +errors.response.data.message, "error");
+                            })
+        
+                    } else
+                        this.$swal('Cancelado', '', 'error')
+        
+                })
+          
+            },
+            carregarImagem(e) {
+                this.arquivoImagem = e.target.files
+            },
         },
         mounted() {
             this.carregarLista();
