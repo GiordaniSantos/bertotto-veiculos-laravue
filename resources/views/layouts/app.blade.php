@@ -12,7 +12,8 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
@@ -44,7 +45,7 @@
                                 <a href="{{ route('admin.contato') }}" class="nav-link">Contatos</a>
                             </li>
                             <li class="nav-item">
-                                <a href="#" class="nav-link">Configuração</a>
+                                <a href="{{ route('admin.configuracao.edit') }}" class="nav-link">Configuração</a>
                             </li>
                         @endauth
                     </ul>

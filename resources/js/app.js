@@ -14,6 +14,16 @@ import 'sweetalert2/dist/sweetalert2.min.css';
 import Vuex from 'vuex';
 import router from './routes' // <---
 
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+import { fas } from '@fortawesome/free-solid-svg-icons'
+library.add(fas);
+import { fab } from '@fortawesome/free-brands-svg-icons';
+library.add(fab);
+import { far } from '@fortawesome/free-regular-svg-icons';
+library.add(far);
+import { dom } from "@fortawesome/fontawesome-svg-core";
+dom.watch();
 
 import { createStore } from 'vuex';
 
@@ -22,6 +32,7 @@ const store = createStore({
         item: {} 
     }    
 })
+
 /**
  * Next, we will create a fresh Vue application instance. You may then begin
  * registering components with the application instance so they are ready
@@ -31,7 +42,7 @@ const store = createStore({
 const app = createApp({});
 app.use(store)
 app.use(router);
-
+app.component("font-awesome-icon", FontAwesomeIcon);
 
 import ExampleComponent from './components/ExampleComponent.vue';
 import Login from './components/Login.vue';
@@ -45,6 +56,7 @@ import ShowContato from './components/contato/ShowContato.vue';
 import Paginate from './components/Paginate.vue';
 import ListBanner from './components/banner/ListBanner.vue';
 import AddBanner from './components/banner/AddBanner.vue';
+import EditConfiguracao from './components/configuracao/EditConfiguracao.vue';
 app.component('example-component', ExampleComponent);
 app.component('login-component', Login);
 app.component('home-component', Home);
@@ -57,6 +69,7 @@ app.component('paginate-component', Paginate);
 app.component('show-contato-component', ShowContato);
 app.component('list-banner-component', ListBanner);
 app.component('add-banner-component', AddBanner);
+app.component('edit-configuracao-component', EditConfiguracao);
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue

@@ -1,22 +1,23 @@
 <template>
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-8">
+            <div class="col-md-10">
 
                 <!-- Card de listagem -->
-                <card-component titulo="Criar Contato">
+                <card-component titulo="Criar Banner">
                     <template v-slot:conteudo>
                         <div class="row">
                             <div class="col-12 form-group">
-                                <input-container-component titulo="Titulo" id="novoTitulo" idHelp="novoTituloHelp" texto-ajuda="Informe o Titulo do banner">
+                                <input-container-component titulo="Titulo" id="novoTitulo" idHelp="novoTituloHelp">
                                     <input type="text" class="form-control" id="novoTitulo" aria-describedby="novoTituloHelp" placeholder="Titulo do banner" v-model="titulo">
                                 </input-container-component>
                       
                             </div>
                         </div>
+                        <br>
                         <div class="row">
                             <div class="col-12 form-group">
-                                <input-container-component titulo="Link" id="novoLink" idHelp="novoLinkHelp" texto-ajuda="Informe o Link do banner">
+                                <input-container-component titulo="Link" id="novoLink" idHelp="novoLinkHelp">
                                     <input type="text" class="form-control" id="novoLink" aria-describedby="novoLinkHelp" placeholder="Link do banner" v-model="link">
                                 </input-container-component>
                           
@@ -25,7 +26,7 @@
                         <br>
                         <div class="row">
                             <div class="col-12 form-group">
-                                <input-container-component titulo="Imagem" id="novoImagem" id-help="novoImagemHelp">
+                                <input-container-component id="novoImagem" id-help="novoImagemHelp">
                                     <br>
                                     <input type="file" class="form-control-file" id="novoImagem" aria-describedby="novoImagemHelp" placeholder="Selecione uma imagem" @change="carregarImagem($event)">
                                 </input-container-component>
@@ -38,17 +39,17 @@
                         </div>
                         <br>
                         <div class="row">
-                            <div class="col-2">
+                            <div class="col-3">
                                 <input-container-component titulo="Ativo" id="ativo" idHelp="ativoHelp" >
                                     <input type="checkbox" id="ativo" name="ativo" aria-describedby="ativoHelp" v-model="ativo">
                                 </input-container-component>
                             </div>
-                            <div class="col-2">
+                            <div class="col-3">
                                 <input-container-component titulo="Nova Guia" id="novaGuia" idHelp="novaGuiaHelp" >
                                     <input type="checkbox" id="novaGuia" name="novaGuia" aria-describedby="novaGuiaHelp" v-model="nova_guia">
                                 </input-container-component>
                             </div>
-                            <div class="col-2">
+                            <div class="col-3">
                                 <input-container-component titulo="Ordem" id="ordem" idHelp="ordemHelp" >
                                     <input type="number" id="ordem" name="ordem" aria-describedby="ordemHelp" v-model="ordem">
                                 </input-container-component>

@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-8">
+            <div class="col-md-10">
 
                 <!-- Card de Busca -->
                 <card-component titulo="Buscar banners">
@@ -35,12 +35,13 @@
                             <tbody v-if="banners.data.length > 0">
                                 <tr v-for="(banner,key) in banners.data" :key="key">
                                     <td>{{ banner.titulo }}</td>
-                                    <td>{{ banner.ordem }}</td>
+                                    <td>{{ banner.ordem }} </td>
                                     <td>{{ banner.ativo ? 'Sim' : 'Não' }}</td>
                                     <td>
-                                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#showModal" @click="findBanner(banner.id)">Visualizar</button>
-                                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#updateModal" @click="findBanner(banner.id)">Editar</button>
-                                        <button type="button" class="btn btn-danger" @click="deletar(banner.id)">Delete</button>
+                                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#showModal" @click="findBanner(banner.id)"><i class="fa-solid fa-eye"></i></button>
+                                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#updateModal" @click="findBanner(banner.id)"><i class="fa-solid fa-pen"></i></button>
+                                        <button type="button" class="btn btn-danger" @click="deletar(banner.id)"><i class="fa-solid fa-trash"></i></button>
+                                        
                                     </td>
                                 </tr>
                             </tbody>
@@ -82,8 +83,8 @@
                             Link: {{ bannerBuscado.link == null ? bannerBuscado.link : '' }} <br>
                             Ativo: {{ bannerBuscado.ativo ? 'Sim' : 'Não' }} <br>
                             Nova guia: {{ bannerBuscado.nova_guia ? 'Sim' : 'Não' }} <br>
-                            Data de Criação: {{ bannerBuscado.created_at }} <br>
-                            Data de Modificação: {{ bannerBuscado.updated_at }} <br><br>
+                            Data de Criação: {{ formataDataTempo(bannerBuscado.created_at) }} <br>
+                            Data de Modificação: {{ formataDataTempo(bannerBuscado.updated_at) }} <br><br>
                             <a :href="urlBaseImg" target="_blank"><img :src="urlBaseImg" alt="Banner" style="width: 100%;"></a>
                         </div>
                         <div class="modal-footer">
@@ -111,32 +112,34 @@
                                         </div>
                                     </div>
                                     <div class="col-12">
-                                        <div class="form-group">
+                                        <div class="form-group" style="margin-top: 10px;">
                                             <label>Link</label>
                                             <input type="text" class="form-control" v-model="bannerBuscado.link">
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-12 form-group">
-                                            <input-container-component titulo="Imagem" id="novoImagem" id-help="novoImagemHelp">
+                                        <div class="col-12 form-group" style="margin-top: 10px;">
+                                            <input-container-component id="novoImagem" id-help="novoImagemHelp">
                                                 <br>
                                                 <input type="file" class="form-control-file" id="novoImagem" aria-describedby="novoImagemHelp" placeholder="Selecione uma imagem" @change="carregarImagem($event)">
                                             </input-container-component>
                                         </div>
                                     </div>
                                     <br>
-                                    <a :href="urlBaseImg" target="_blank"><img :src="urlBaseImg" alt="Banner" style="width: 100%;"></a>
+                                    <a :href="urlBaseImg" target="_blank" style="margin-top: 15px;"><img :src="urlBaseImg" alt="Banner" style="width: 100%;"></a>
                                     <br>
-                                    <div class="row">
-                                        <div class="col-2">
+                                    <div class="row" style="margin-top: 15px;">
+                                        <div class="col-4">
                                             <input type="checkbox" id="ativo" v-model="bannerBuscado.ativo">
                                             <label for="ativo">Ativo</label>
                                         </div>
-                                        <div class="col-2">
+                                        <div class="col-4">
                                             <input type="checkbox" id="nova_guia" v-model="bannerBuscado.nova_guia">
                                             <label for="nova_guia">Nova Guia</label>
                                         </div>
-                                        <div class="col-2">
+                                    </div>
+                                    <div class="row" style="margin-top: 8px;">
+                                        <div class="col-4">
                                             <label>Ordem</label>
                                             <input type="number" class="form-control" v-model="bannerBuscado.ordem">
                                         </div>
@@ -184,9 +187,29 @@ export default{
                 token = 'Bearer ' + token;
 
                 return token;
-            }
+            },
+
         },  
         methods: {
+            formataDataTempo(d){
+                if(!d) return ''
+
+                d = d.split('T');
+
+                let data = d[0];
+                let tempo = d[1];
+
+                data = data.split('-');
+
+                //formatando a data
+                data = data[2] + "/" + data[1] + "/" + data[0];
+
+                //formatando o tempo
+                tempo = tempo.split('.');
+                tempo = tempo[0];
+
+                return data + ' às ' + tempo;
+            },
             pesquisar(){
                 let filtro = '';
                 for(let chave in this.busca){
