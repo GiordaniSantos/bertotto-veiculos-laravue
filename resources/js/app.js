@@ -57,6 +57,8 @@ import Paginate from './components/Paginate.vue';
 import ListBanner from './components/banner/ListBanner.vue';
 import AddBanner from './components/banner/AddBanner.vue';
 import EditConfiguracao from './components/configuracao/EditConfiguracao.vue';
+import Veiculos from './components/veiculo/Veiculos.vue';
+import AddVeiculo from './components/veiculo/AddVeiculo.vue';
 app.component('example-component', ExampleComponent);
 app.component('login-component', Login);
 app.component('home-component', Home);
@@ -70,6 +72,8 @@ app.component('show-contato-component', ShowContato);
 app.component('list-banner-component', ListBanner);
 app.component('add-banner-component', AddBanner);
 app.component('edit-configuracao-component', EditConfiguracao);
+app.component('list-veiculo-component', Veiculos);
+app.component('add-veiculo-component', AddVeiculo);
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue

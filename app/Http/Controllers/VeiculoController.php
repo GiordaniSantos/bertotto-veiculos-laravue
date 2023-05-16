@@ -30,7 +30,7 @@ class VeiculoController extends Controller
         }
 
 
-        return response()->json($veiculoRepository->getResultado(), 200);
+        return response()->json($veiculoRepository->getResultadoPaginado(10), 200);
     }
 
 

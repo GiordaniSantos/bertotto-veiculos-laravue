@@ -4,12 +4,12 @@
             <div class="col-md-10">
 
                 <!-- Card de Busca -->
-                <card-component titulo="Buscar banners">
+                <card-component titulo="Buscar veiculos">
                     <template v-slot:conteudo>
                         <div class="row">
                             <div class="col-12 form-group">
-                                <input-container-component titulo="Nome do Banner" id="inputnome" idHelp="nomeHelp" texto-ajuda="Opcional. Informe o titulo do Banner">
-                                    <input type="text" class="form-control" id="inputNome" aria-describedby="nomeHelp" placeholder="Nome do Banner" v-model="busca.titulo">
+                                <input-container-component titulo="Nome do Veículo" id="inputnome" idHelp="nomeHelp" texto-ajuda="Opcional. Informe o nome do veículo">
+                                    <input type="text" class="form-control" id="inputNome" aria-describedby="nomeHelp" placeholder="Nome do Veículo" v-model="busca.nome">
                                 </input-container-component>
                             </div>
                         </div>
@@ -21,26 +21,28 @@
                 <!-- fim card de busca -->
 
                 <!-- Card de listagem -->
-                <card-component titulo="Banners">
+                <card-component titulo="Veículos">
                     <template v-slot:conteudo>
                         <table class="table table-hover">
                             <thead>
                                 <tr>
-                                    <th>Titulo</th>
-                                    <th>Ordem</th>
+                                    <th>Nome</th>
                                     <th>Ativo</th>
+                                    <th>Destaque</th>
+                                    <th>Recomendado</th>
                                     <th></th>
                                 </tr>
                             </thead>
-                            <tbody v-if="banners.data.length > 0">
-                                <tr v-for="(banner,key) in banners.data" :key="key">
-                                    <td>{{ banner.titulo }}</td>
-                                    <td>{{ banner.ordem }} </td>
-                                    <td>{{ banner.ativo ? 'Sim' : 'Não' }}</td>
+                            <tbody v-if="veiculos.data.length > 0">
+                                <tr v-for="(veiculo,key) in veiculos.data" :key="key">
+                                    <td>{{ veiculo.nome }}</td>
+                                    <td>{{ veiculo.ativo ? 'Sim' : 'Não' }} </td>
+                                    <td>{{ veiculo.destaque ? 'Sim' : 'Não' }}</td>
+                                    <td>{{ veiculo.recomendado ? 'Sim' : 'Não' }}</td>
                                     <td>
-                                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#showModal" @click="findBanner(banner.id)"><i class="fa-solid fa-eye"></i></button>
-                                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#updateModal" @click="findBanner(banner.id)"><i class="fa-solid fa-pen"></i></button>
-                                        <button type="button" class="btn btn-danger" @click="deletar(banner.id)"><i class="fa-solid fa-trash"></i></button>
+                                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#showModal" @click="findBanner(veiculo.id)"><i class="fa-solid fa-eye"></i></button>
+                                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#updateModal" @click="findBanner(veiculo.id)"><i class="fa-solid fa-pen"></i></button>
+                                        <button type="button" class="btn btn-danger" @click="deletar(veiculo.id)"><i class="fa-solid fa-trash"></i></button>
                                         
                                     </td>
                                 </tr>
@@ -56,13 +58,13 @@
                         <div class="row">
                             <div class="col-10">
                                 <paginate-component>
-                                    <li v-for="link, key in banners.links" :key="key" :class="link.active ? 'page-item active' : 'page-item'" @click="paginacao(link)">
+                                    <li v-for="link, key in veiculos.links" :key="key" :class="link.active ? 'page-item active' : 'page-item'" @click="paginacao(link)">
                                         <a class="page-link" v-html="link.label"></a>
                                     </li>
                                 </paginate-component>
                             </div>
                             <div class="col-2">
-                                <a href="/admin/banner/create" class="btn btn-primary btn-sm" style="float: right;">Adicionar</a>
+                                <a href="/admin/veiculo/create" class="btn btn-primary btn-sm" style="float: right;">Adicionar</a>
                             </div>
                         </div>
                     </template>
@@ -85,26 +87,7 @@
                             Nova guia: {{ bannerBuscado.nova_guia ? 'Sim' : 'Não' }} <br>
                             Data de Criação: {{ formataDataTempo(bannerBuscado.created_at) }} <br>
                             Data de Modificação: {{ formataDataTempo(bannerBuscado.updated_at) }} <br><br>
-                            <div v-if="!isEmpty(imagemBannerBuscado)" class="row">
-                                <div class="col-12">
-                                    <table class="table table-striped table-bordered">
-                                        <thead>
-                                            <tr>
-                                                <th>Arquivo</th>
-                                                <th>Nome</th>
-                                                <th></th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td><a :href="urlBaseImg" target="_blank"><img :src="urlBaseImg" alt="Banner" style="width: 100%;"></a></td>
-                                                <th>{{ imagemBannerBuscado.nome_original  }}</th>
-                                                <th><button type="button" class="btn btn-danger" @click="deletarArquivo(imagemBannerBuscado.id)"><i class="fa-solid fa-trash"></i></button></th>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
+                            <a :href="urlBaseImg" target="_blank"><img :src="urlBaseImg" alt="Banner" style="width: 100%;"></a>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
@@ -145,6 +128,8 @@
                                         </div>
                                     </div>
                                     <br>
+                                    <a :href="urlBaseImg" target="_blank" style="margin-top: 15px;"><img :src="urlBaseImg" alt="Banner" style="width: 100%;"></a>
+                                    <br>
                                     <div class="row" style="margin-top: 15px;">
                                         <div class="col-4">
                                             <input type="checkbox" id="ativo" v-model="bannerBuscado.ativo">
@@ -159,27 +144,6 @@
                                         <div class="col-4">
                                             <label>Ordem</label>
                                             <input type="number" class="form-control" v-model="bannerBuscado.ordem">
-                                        </div>
-                                    </div>
-                                    <br><br>
-                                    <div v-if="!isEmpty(imagemBannerBuscado)" class="row">
-                                        <div class="col-12">
-                                            <table class="table table-striped table-bordered" style="margin-top: 30px;">
-                                                <thead>
-                                                    <tr>
-                                                        <th>Arquivo</th>
-                                                        <th>Nome</th>
-                                                        <th></th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr>
-                                                        <td><a :href="urlBaseImg" target="_blank"><img :src="urlBaseImg" alt="Banner" style="width: 100%;"></a></td>
-                                                        <th>{{ imagemBannerBuscado.nome_original  }}</th>
-                                                        <th><button type="button" class="btn btn-danger" @click="deletarArquivo(imagemBannerBuscado.id)"><i class="fa-solid fa-trash"></i></button></th>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
                                         </div>
                                     </div>
                                 </div>                        
@@ -201,7 +165,7 @@
 export default{
         data(){
             return {
-                urlBase: 'http://localhost:8000/api/v1/banner',
+                urlBase: 'http://localhost:8000/api/v1/veiculo',
                 urlBaseImg: 'http://localhost:8000',
                 urlPaginacao: '',
                 urlFiltro: '',
@@ -209,7 +173,7 @@ export default{
                 arquivoImagem: [],
                 nome: '',
                 ativo: '',
-                banners: { data: [] },
+                veiculos: { data: [] },
                 bannerBuscado: { },
                 busca: { titulo:'' }
             }
@@ -229,14 +193,6 @@ export default{
 
         },  
         methods: {
-            isEmpty(obj) {
-                for(var prop in obj) {
-                    if(obj.hasOwnProperty(prop))
-                        return false;
-                }
-
-                return true;
-            },
             formataDataTempo(d){
                 if(!d) return ''
 
@@ -297,9 +253,9 @@ export default{
 
                 axios.get(url, config)
                     .then(response => {
-                        this.banners  = response.data;
+                        this.veiculos  = response.data;
                         this.$swal.close();
-                        console.log(this.banners);
+                        console.log(this.veiculos);
                     })
                     .catch(errors => {
                         this.$swal("Oops...", "Algum erro aconteceu! " +errors.response.data.message, "error");
@@ -355,17 +311,14 @@ export default{
 
                 axios.post(url, formData, config)
                     .then(response => {
-                        if(response.data.arquivo){
-                            this.imagemBannerBuscado = response.data.arquivo;
-                            this.urlBaseImg = this.urlBaseImg+ "/storage/uploads/banner/"+response.data.arquivo.id+"/"+response.data.arquivo.arquivo;
-                        }
+                        this.$swal("Sucesso", "Registro atualizado com sucesso!", "success");
+                        this.urlBaseImg = this.urlBaseImg+ "/storage/uploads/banner/"+response.data.arquivo.id+"/"+response.data.arquivo.arquivo;
                         this.findBanner(response.data.id);
                         document.getElementById("novoImagem").value = '';
-                        this.$swal("Sucesso", "Registro atualizado com sucesso!", "success");
                     })  
                     .catch(errors => {
                         console.log(errors)
-                        this.$swal("Oops...", "Algum erro aconteceu! " +errors.response.data.message +"/" +errors.message, "error");
+                        this.$swal("Oops...", "Algum erro aconteceu! " +errors.response.data.message, "error");
                     })
                 
                 this.carregarLista();
@@ -411,49 +364,6 @@ export default{
                 })
           
             },
-            deletarArquivo(id) {
-
-                let config = {
-                    headers: {
-                        'Content-Type': 'multipart/form-data',
-                        'Accept': 'application/json',
-                        'Authorization': this.token
-                    }
-                }
-
-                let formData = new FormData();
-                formData.append('_method', 'delete');
-
-                let url = 'http://localhost:8000/api/v1/arquivo/excluir/' + id + "/banner";
-                console.log(url);
-                this.$swal({
-                    title: 'Tem certeza que deseja excluir este arquivo?',
-                    showConfirmButton: true,
-                    showCancelButton: true,
-                    confirmButtonText: "OK",
-                    cancelButtonText: "Cancelar",
-                    icon: 'warning'
-                }
-                ).then((result) => {
-                    /* Read more about isConfirmed, isDenied below */
-                    if (result.isConfirmed) {
-                        axios.post(url, formData, config)
-                            .then(response => {                        
-                                this.$swal("Sucesso", "Arquivo removido com sucesso!", "success");
-                                document.getElementById("novoImagem").value = '';
-                                this.imagemBannerBuscado = {};
-                            })
-                            .catch(errors => {
-                                console.log(errors);
-                                this.$swal("Oops...", "Algum erro aconteceu! " +errors.response.data.message, "error");
-                            })
-
-                    } else
-                        this.$swal('Cancelado', '', 'error')
-
-                })
-
-                },
             carregarImagem(e) {
                 this.arquivoImagem = e.target.files
             },

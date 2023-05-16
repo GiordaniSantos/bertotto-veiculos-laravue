@@ -173,6 +173,8 @@
                 }
             }
 
+            this.$swal.showLoading();
+
             axios.get(this.urlBase, config)
                 .then(response => {
                     this.nome = response.data.nome;
@@ -186,7 +188,7 @@
                     this.whatsapp = response.data.whatsapp;
                     this.youtube = response.data.youtube;
                     this.spotify = response.data.spotify;
-
+                    this.$swal.close();
                 })
                 .catch(errors => {
                     this.$swal("Oops...", "Algum erro aconteceu! " +errors.response.data.message, "error");

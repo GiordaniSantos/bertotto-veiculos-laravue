@@ -30,7 +30,7 @@ class BannerController extends Controller
         }
 
 
-        return response()->json($bannerRepository->getResultadoPaginado(20), 200);
+        return response()->json($bannerRepository->getResultadoPaginado(10), 200);
     }
 
     /**

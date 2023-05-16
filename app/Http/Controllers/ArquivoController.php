@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Arquivo;
 use App\Http\Requests\StoreArquivoRequest;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\UpdateArquivoRequest;
 
 class ArquivoController extends Controller
@@ -82,5 +83,18 @@ class ArquivoController extends Controller
     public function destroy(Arquivo $arquivo)
     {
         //
+    }
+
+    public function excluir($id, String $tabela){
+        $arquivo = Arquivo::find($id);
+        if(Storage::exists("/uploads/{$tabela}/{$arquivo->id}/{$arquivo->arquivo}")){
+            if(unlink(public_path('/storage/uploads/'.$tabela.'/'.$arquivo->id.'/'.$arquivo->arquivo))){
+                rmdir(public_path('/storage/uploads/'.$tabela.'/'.$arquivo->id));
+            }
+        }else{
+            return response()->json(['erro' => 'Arquivo não existe.'], 404);
+        }
+        $arquivo->delete();
+        return response()->json(['msg' => 'Arquivo deletado com sucesso!'], 200);
     }
 }

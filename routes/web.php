@@ -46,4 +46,12 @@ Route::prefix('/admin')->middleware('auth')->group(function(){
     Route::get('/configuracao/edit', function(){
         return view('admin.configuracao.edit');
     })->name('admin.configuracao.edit');
+
+    Route::get('/veiculos', function(){
+        return view('admin.veiculo.index');
+    })->name('admin.veiculo');
+
+    Route::get('/veiculo/create', function(){
+        return view('admin.veiculo.create');
+    })->name('admin.veiculo.create');
 });
