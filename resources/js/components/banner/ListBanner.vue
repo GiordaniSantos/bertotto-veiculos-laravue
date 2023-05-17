@@ -147,11 +147,11 @@
                                     <br>
                                     <div class="row" style="margin-top: 15px;">
                                         <div class="col-4">
-                                            <input type="checkbox" id="ativo" v-model="bannerBuscado.ativo">
+                                            <input type="checkbox" id="ativo" v-model="ativo">
                                             <label for="ativo">Ativo</label>
                                         </div>
                                         <div class="col-4">
-                                            <input type="checkbox" id="nova_guia" v-model="bannerBuscado.nova_guia">
+                                            <input type="checkbox" id="nova_guia" v-model="nova_guia">
                                             <label for="nova_guia">Nova Guia</label>
                                         </div>
                                     </div>
@@ -208,7 +208,8 @@ export default{
                 imagemBannerBuscado: {},
                 arquivoImagem: [],
                 nome: '',
-                ativo: '',
+                ativo: false,
+                nova_guia: false,
                 banners: { data: [] },
                 bannerBuscado: { },
                 busca: { titulo:'' }
@@ -329,6 +330,8 @@ export default{
                             this.imagemBannerBuscado = response.data.arquivo;
                             this.urlBaseImg = this.urlBaseImg+ "/storage/uploads/banner/"+response.data.arquivo.id+"/"+response.data.arquivo.arquivo;
                         }
+                        this.ativo = this.contatoBuscado.ativo == 1 ? true : false;
+                        this.nova_guia = this.contatoBuscado.nova_guia == 1 ? true : false;
                     })
                     .catch(errors => {
                         this.$swal("Oops...", "Algum erro aconteceu! " +errors.response.data.message, "error");
@@ -339,9 +342,11 @@ export default{
                 let formData = new FormData();
                 formData.append('titulo', this.bannerBuscado.titulo);
                 formData.append('link', this.bannerBuscado.link ? this.bannerBuscado.link : '');
-                formData.append('arquivo', this.arquivoImagem[0])
-                formData.append('ativo', this.bannerBuscado.ativo ? 1 : 0);
-                formData.append('nova_guia', this.bannerBuscado.nova_guia ? 1 : 0);
+                if(this.arquivoImagem[0]){
+                    formData.append('arquivo', this.arquivoImagem[0])
+                }
+                formData.append('ativo', this.bannerBuscado.ativo == true ? 1 : 0);
+                formData.append('nova_guia', this.bannerBuscado.nova_guia == true ? 1 : 0);
                 formData.append('ordem', this.bannerBuscado.ordem);
                 formData.append('_method', 'patch');
 
@@ -359,16 +364,16 @@ export default{
                             this.imagemBannerBuscado = response.data.arquivo;
                             this.urlBaseImg = this.urlBaseImg+ "/storage/uploads/banner/"+response.data.arquivo.id+"/"+response.data.arquivo.arquivo;
                         }
-                        this.findBanner(response.data.id);
                         document.getElementById("novoImagem").value = '';
                         this.$swal("Sucesso", "Registro atualizado com sucesso!", "success");
+                        this.findBanner(response.data.id);
                     })  
                     .catch(errors => {
                         console.log(errors)
                         this.$swal("Oops...", "Algum erro aconteceu! " +errors.response.data.message +"/" +errors.message, "error");
                     })
                 
-                this.carregarLista();
+              
             },
             deletar(id) {
 

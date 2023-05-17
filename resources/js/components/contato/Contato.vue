@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-8">
+            <div class="col-md-10">
 
                 <!-- Card de Busca -->
                 <card-component titulo="Buscar Contatos">
@@ -28,12 +28,36 @@
                 <!-- Card de listagem -->
                 <card-component titulo="Contatos">
                     <template v-slot:conteudo>
-                        <table-component :visualizar="{ visivel: true, dataToggle: 'modal', dataTarget: '#'}" :editar="true" :excluir="true" :dados="contatos.data" :titulos="{
-                            nome: {titulo: 'Nome', tipo: 'text'},
-                            telefone: {titulo: 'Telefone', tipo: 'text'},
-                            created_at: {titulo: 'Data de Abertura', tipo: 'data'},
-                            status: {titulo: 'Status', tipo: 'text'}
-                        }"></table-component>
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Nome</th>
+                                    <th>Telefone</th>
+                                    <th>Data de Abertura</th>
+                                    <th>Status</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody v-if="contatos.data.length > 0">
+                                <tr v-for="(contato,key) in contatos.data" :key="key">
+                                    <td>{{ contato.nome }}</td>
+                                    <td>{{ contato.telefone }} </td>
+                                    <td>{{ formataDataTempo(contato.created_at) }} </td>
+                                    <td>{{ contato.status == 1 ? 'Aberto' : 'Respondido' }}</td>
+                                    <td>
+                                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#showModal" @click="findContato(contato.id)"><i class="fa-solid fa-eye"></i></button>
+                                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#updateModal" @click="findContato(contato.id)"><i class="fa-solid fa-pen"></i></button>
+                                        <button type="button" class="btn btn-danger" @click="deletar(contato.id)"><i class="fa-solid fa-trash"></i></button>
+                                        
+                                    </td>
+                                </tr>
+                            </tbody>
+                            <tbody v-else>
+                                <tr>
+                                    <td colspan="4" align="center">Não há registros.</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </template>
                     <template v-slot:rodape>
                         <div class="row">
@@ -51,6 +75,108 @@
                     </template>
                 </card-component>
                 <!-- fim da listagem -->
+
+                <!-- Modal Show -->
+                <div class="modal fade" id="showModal" tabindex="-1" aria-labelledby="showModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="showModalLabel" v-if="contatoBuscado.nome">Visualizar: {{ contatoBuscado.nome }}</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            ID: {{contatoBuscado.id}} <br>
+                            Nome: {{contatoBuscado.nome}} <br>
+                            Status: {{ contatoBuscado.status == 1 ? 'Aberto' : 'Respondido' }} <br>
+                            Email: {{ contatoBuscado.email }} <br>
+                            Telefone: {{ contatoBuscado.telefone }} <br>
+                            Mensagem: {{ contatoBuscado.mensagem }} <br>
+                            Ativo: {{ contatoBuscado.ativo ? 'Sim' : 'Não' }} <br>
+                            Resposta: {{ contatoBuscado.resposta }} <br>
+                            Data resposta {{ contatoBuscado.data_resposta }} <br>
+                            Data de Criação: {{ formataDataTempo(contatoBuscado.created_at) }} <br>
+                            Data de Modificação: {{ formataDataTempo(contatoBuscado.updated_at) }} <br><br>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal Update -->
+                <div class="modal fade" id="updateModal" tabindex="-1" aria-labelledby="updateModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="updateModalLabel" v-if="contatoBuscado.nome">Editar: {{ contatoBuscado.nome }}</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <div class="row">
+                                    <div class="col-12 form-group">
+                                        <input-container-component titulo="Nome" id="novoNome" idHelp="novoNomeHelp">
+                                            <input type="text" class="form-control" id="novoNome" aria-describedby="novoNomeHelp" placeholder="Nome do Contato" v-model="contatoBuscado.nome" disabled>
+                                        </input-container-component>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="row">
+                                    <div class="col-6 form-group">
+                                        <input-container-component titulo="Email" id="novoEmail" idHelp="novoEmailHelp">
+                                            <input type="text" class="form-control" id="novoEmail" aria-describedby="novoEmailHelp" placeholder="Email do Contato" v-model="contatoBuscado.email" disabled>
+                                        </input-container-component>
+                                    </div>
+                                    <div class="col-6 form-group">
+                                        <input-container-component titulo="Telefone" id="telefone" idHelp="telefoneHelp">
+                                            <input type="text" class="form-control" id="telefone" aria-describedby="telefoneHelp" placeholder="Telefone do Contato" v-model="contatoBuscado.telefone" disabled>
+                                        </input-container-component>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <input-container-component titulo="Mensagem" id="mensagem" idHelp="mensagemHelp">
+                                            <textarea name="mensagem" class="form-control" placeholder="Mensagem" id="mensagem" aria-describedby="mensagemHelp" style="width: 100% !important;" rows="4" cols="50" v-model="contatoBuscado.mensagem" disabled></textarea>
+                                        </input-container-component>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="row">
+                                    <div class="col-2">
+                                        <input-container-component titulo="Ativo" id="ativo" >
+                                            <input type="checkbox" id="ativo"  v-model="ativo">
+                                        </input-container-component>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="row">
+                                    <div class="col-8">
+                                        <input-container-component titulo="Resposta" id="resposta" idHelp="respostaHelp" texto-ajuda="Resposta para o contato">
+                                            <textarea name="resposta" class="form-control" placeholder="resposta" id="resposta" aria-describedby="respostaHelp" style="width: 100% !important;" rows="4" cols="50" v-model="contatoBuscado.resposta"></textarea>
+                                        </input-container-component>
+                                    </div>
+                                    <div class="col-4">
+                                        <input-container-component titulo="Status" id="status" idHelp="statusHelp" >
+                                            <select name="status" style="width: 100%;" v-model="contatoBuscado.status">
+                                                <option> Selecione </option>
+                                                <option value="1"> Aberto </option>
+                                                <option value="2"> Respondido </option>
+                                            </select>
+                                        </input-container-component>
+                                    </div>
+                                </div>                     
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                            <button type="button" class="btn btn-primary" @click="atualizar()">Salvar alterações</button>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            
             </div>
         </div>
     </div>
@@ -67,10 +193,11 @@ export default{
                 email: '',
                 telefone: '',
                 mensagem: '',
-                ativo: '',
+                ativo: false,
                 resposta: '',
                 status: '',
                 contatos: { data: [] },
+                contatoBuscado: { },
                 busca: { email:'', nome:'' }
             }
         },
@@ -88,6 +215,25 @@ export default{
             }
         },  
         methods: {
+            formataDataTempo(d){
+                if(!d) return ''
+
+                d = d.split('T');
+
+                let data = d[0];
+                let tempo = d[1];
+
+                data = data.split('-');
+
+                //formatando a data
+                data = data[2] + "/" + data[1] + "/" + data[0];
+
+                //formatando o tempo
+                tempo = tempo.split('.');
+                tempo = tempo[0];
+
+                return data + ' às ' + tempo;
+            },
             pesquisar(){
                 let filtro = '';
                 for(let chave in this.busca){
@@ -125,14 +271,111 @@ export default{
                     }
                 }
 
+                this.$swal.showLoading();
+
                 axios.get(url, config)
                     .then(response => {
                         this.contatos  = response.data;
+                        this.$swal.close();
                     })
                     .catch(errors => {
                         console.log(errors);
                     });
-            }
+            },
+            findContato(id){
+
+                let url = this.urlBase + '/' +id;
+                let config = {
+                    headers: {
+                        'Accept': 'application/json',
+                        'Authorization': this.token
+                    }
+                }
+
+                if(this.contatoBuscado){
+                    this.contatoBuscado = {};
+                }
+                this.$swal.showLoading();
+                axios.get(url, config)
+                    .then(response => {
+                        this.contatoBuscado  = response.data;
+                        this.ativo = this.contatoBuscado.ativo == 1 ? true : false;
+                        this.$swal.close();
+                    })
+                    .catch(errors => {
+                        this.$swal("Oops...", "Algum erro aconteceu! " +errors.response.data.message, "error");
+                    });
+                    console.log(this.contatoBuscado.ativo)
+                
+            },
+            atualizar(){
+                let url = this.urlBase + '/' +this.contatoBuscado.id;
+                let formData = new FormData();
+                formData.append('resposta', this.contatoBuscado.resposta);
+                formData.append('status', this.contatoBuscado.status);
+                formData.append('_method', 'patch');
+
+                let config = {
+                    headers: {
+                        'Content-Type': 'multipart/form-data',
+                        'Accept': 'application/json',
+                        'Authorization': this.token
+                    }
+                }
+
+                axios.post(url, formData, config)
+                    .then(response => {
+                        this.$swal("Sucesso", "Registro atualizado com sucesso!", "success");
+                        this.findContato(response.data.id);
+                    })  
+                    .catch(errors => {
+                        console.log(errors)
+                        this.$swal("Oops...", "Algum erro aconteceu! " +errors.response.data.message +"/" +errors.message, "error");
+                    })
+                
+                this.carregarLista();
+            },
+            deletar(id) {
+
+                let config = {
+                    headers: {
+                        'Content-Type': 'multipart/form-data',
+                        'Accept': 'application/json',
+                        'Authorization': this.token
+                    }
+                }
+
+                let formData = new FormData();
+                formData.append('_method', 'delete');
+
+                let url = this.urlBase + '/' + id;
+
+                this.$swal({
+                    title: 'Tem certeza que deseja excluir este registro?',
+                    showConfirmButton: true,
+                    showCancelButton: true,
+                    confirmButtonText: "OK",
+                    cancelButtonText: "Cancelar",
+                    icon: 'warning'
+                }
+                ).then((result) => {
+                    /* Read more about isConfirmed, isDenied below */
+                    if (result.isConfirmed) {
+                        axios.post(url, formData, config)
+                            .then(response => {                        
+                                this.$swal("Sucesso", "Registro removido com sucesso!", "success");
+                                this.carregarLista()
+                            })
+                            .catch(errors => {
+                                this.$swal("Oops...", "Algum erro aconteceu! " +errors.response.data.message, "error");
+                            })
+
+                    } else
+                        this.$swal('Cancelado', '', 'error')
+
+                })
+
+            },
         },
         mounted() {
             this.carregarLista();

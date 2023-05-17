@@ -28,7 +28,7 @@ class ContatoController extends Controller
         }
 
 
-        return response()->json($contatoRepository->getResultadoPaginado(2), 200);
+        return response()->json($contatoRepository->getResultadoPaginado(10), 200);
     }
 
     /**
