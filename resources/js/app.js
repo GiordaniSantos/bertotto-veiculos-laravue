@@ -40,9 +40,14 @@ const store = createStore({
  */
 
 const app = createApp({});
+const appSite = createApp({});
 app.use(store)
 app.use(router);
 app.component("font-awesome-icon", FontAwesomeIcon);
+
+appSite.use(store)
+appSite.use(router);
+appSite.component("font-awesome-icon", FontAwesomeIcon);
 
 import ExampleComponent from './components/ExampleComponent.vue';
 import Login from './components/Login.vue';
@@ -59,6 +64,7 @@ import AddBanner from './components/banner/AddBanner.vue';
 import EditConfiguracao from './components/configuracao/EditConfiguracao.vue';
 import Veiculos from './components/veiculo/Veiculos.vue';
 import AddVeiculo from './components/veiculo/AddVeiculo.vue';
+import HomeSite from './components/site/HomeSite.vue';
 app.component('example-component', ExampleComponent);
 app.component('login-component', Login);
 app.component('home-component', Home);
@@ -74,6 +80,7 @@ app.component('add-banner-component', AddBanner);
 app.component('edit-configuracao-component', EditConfiguracao);
 app.component('list-veiculo-component', Veiculos);
 app.component('add-veiculo-component', AddVeiculo);
+appSite.component('home-site-component', HomeSite);
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -97,3 +104,9 @@ app.use(Vuex);
 app.use(VueSweetalert2);
 
 app.mount('#app');
+
+appSite.use(Vuex);
+
+appSite.use(VueSweetalert2);
+
+appSite.mount('#app-site');

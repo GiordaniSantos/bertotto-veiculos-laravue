@@ -248,11 +248,8 @@ class BannerController extends Controller
             }
             $banner->arquivo->delete();
             $banner->delete();
-        }else if(!$banner->arquivo){
-            $banner->delete();
         }else{
-             // Em caso de falhas redireciona o usuário de volta e informa que não foi possível deletar
-            return response()->json(['erro' => 'Não foi possível deletar.'], 400);
+            $banner->delete();
         }
 
         return response()->json(['msg' => 'Registro deletado com sucesso!'], 200);

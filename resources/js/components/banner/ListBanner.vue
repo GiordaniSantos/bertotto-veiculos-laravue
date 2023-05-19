@@ -36,7 +36,7 @@
                                 <tr v-for="(banner,key) in banners.data" :key="key">
                                     <td>{{ banner.titulo }}</td>
                                     <td>{{ banner.ordem }} </td>
-                                    <td>{{ banner.ativo ? 'Sim' : 'Não' }}</td>
+                                    <td>{{ banner.ativo == 1 ? 'Sim' : 'Não' }}</td>
                                     <td>
                                         <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#showModal" @click="findBanner(banner.id)"><i class="fa-solid fa-eye"></i></button>
                                         <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#updateModal" @click="findBanner(banner.id)"><i class="fa-solid fa-pen"></i></button>
@@ -78,13 +78,36 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            ID: {{bannerBuscado.id}} <br>
-                            Titulo: {{bannerBuscado.titulo}} <br>
-                            Link: {{ bannerBuscado.link == null ? bannerBuscado.link : '' }} <br>
-                            Ativo: {{ bannerBuscado.ativo ? 'Sim' : 'Não' }} <br>
-                            Nova guia: {{ bannerBuscado.nova_guia ? 'Sim' : 'Não' }} <br>
-                            Data de Criação: {{ formataDataTempo(bannerBuscado.created_at) }} <br>
-                            Data de Modificação: {{ formataDataTempo(bannerBuscado.updated_at) }} <br><br>
+                            <table class="table table-striped table-hover">
+                                <tr>
+                                    <td>ID:</td>
+                                    <td>{{ bannerBuscado.id }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Titulo:</td>
+                                    <td>{{ bannerBuscado.titulo }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Link:</td>
+                                    <td>{{ bannerBuscado.link == null ? bannerBuscado.link : '' }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Ativo:</td>
+                                    <td>{{ bannerBuscado.ativo ? 'Sim' : 'Não' }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Nova Guia:</td>
+                                    <td>{{ bannerBuscado.nova_guia ? 'Sim' : 'Não'  }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Data Criação:</td>
+                                    <td>{{ formataDataTempo(bannerBuscado.created_at) }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Data Modificação:</td>
+                                    <td>{{ formataDataTempo(bannerBuscado.updated_at) }}</td>
+                                </tr>
+                            </table>
                             <div v-if="!isEmpty(imagemBannerBuscado)" class="row">
                                 <div class="col-12">
                                     <table class="table table-striped table-bordered">
@@ -115,7 +138,7 @@
 
                 <!-- Modal Update -->
                 <div class="modal fade" id="updateModal" tabindex="-1" aria-labelledby="updateModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
+                    <div class="modal-dialog modal-lg">
                         <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title" id="updateModalLabel" v-if="bannerBuscado.titulo">Editar: {{ bannerBuscado.titulo }}</h5>
@@ -144,7 +167,7 @@
                                             </input-container-component>
                                         </div>
                                     </div>
-                                    <br>
+                                    <br><br>
                                     <div class="row" style="margin-top: 15px;">
                                         <div class="col-4">
                                             <input type="checkbox" id="ativo" v-model="ativo">
@@ -154,8 +177,6 @@
                                             <input type="checkbox" id="nova_guia" v-model="nova_guia">
                                             <label for="nova_guia">Nova Guia</label>
                                         </div>
-                                    </div>
-                                    <div class="row" style="margin-top: 8px;">
                                         <div class="col-4">
                                             <label>Ordem</label>
                                             <input type="number" class="form-control" v-model="bannerBuscado.ordem">
@@ -330,8 +351,8 @@ export default{
                             this.imagemBannerBuscado = response.data.arquivo;
                             this.urlBaseImg = this.urlBaseImg+ "/storage/uploads/banner/"+response.data.arquivo.id+"/"+response.data.arquivo.arquivo;
                         }
-                        this.ativo = this.contatoBuscado.ativo == 1 ? true : false;
-                        this.nova_guia = this.contatoBuscado.nova_guia == 1 ? true : false;
+                        this.ativo = this.bannerBuscado.ativo == 1 ? true : false;
+                        this.nova_guia = this.bannerBuscado.nova_guia == 1 ? true : false;
                     })
                     .catch(errors => {
                         this.$swal("Oops...", "Algum erro aconteceu! " +errors.response.data.message, "error");
@@ -345,8 +366,8 @@ export default{
                 if(this.arquivoImagem[0]){
                     formData.append('arquivo', this.arquivoImagem[0])
                 }
-                formData.append('ativo', this.bannerBuscado.ativo == true ? 1 : 0);
-                formData.append('nova_guia', this.bannerBuscado.nova_guia == true ? 1 : 0);
+                formData.append('ativo', this.ativo == true ? 1 : 0);
+                formData.append('nova_guia', this.nova_guia == true ? 1 : 0);
                 formData.append('ordem', this.bannerBuscado.ordem);
                 formData.append('_method', 'patch');
 
@@ -373,7 +394,7 @@ export default{
                         this.$swal("Oops...", "Algum erro aconteceu! " +errors.response.data.message +"/" +errors.message, "error");
                     })
                 
-              
+              this.carregarLista();
             },
             deletar(id) {
 

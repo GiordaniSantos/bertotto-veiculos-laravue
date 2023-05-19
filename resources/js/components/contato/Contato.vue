@@ -43,7 +43,7 @@
                                     <td>{{ contato.nome }}</td>
                                     <td>{{ contato.telefone }} </td>
                                     <td>{{ formataDataTempo(contato.created_at) }} </td>
-                                    <td>{{ contato.status == 1 ? 'Aberto' : 'Respondido' }}</td>
+                                    <td><span v-html="getStatusLabel(contato)"></span></td>
                                     <td>
                                         <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#showModal" @click="findContato(contato.id)"><i class="fa-solid fa-eye"></i></button>
                                         <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#updateModal" @click="findContato(contato.id)"><i class="fa-solid fa-pen"></i></button>
@@ -85,17 +85,52 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            ID: {{contatoBuscado.id}} <br>
-                            Nome: {{contatoBuscado.nome}} <br>
-                            Status: {{ contatoBuscado.status == 1 ? 'Aberto' : 'Respondido' }} <br>
-                            Email: {{ contatoBuscado.email }} <br>
-                            Telefone: {{ contatoBuscado.telefone }} <br>
-                            Mensagem: {{ contatoBuscado.mensagem }} <br>
-                            Ativo: {{ contatoBuscado.ativo ? 'Sim' : 'Não' }} <br>
-                            Resposta: {{ contatoBuscado.resposta }} <br>
-                            Data resposta {{ contatoBuscado.data_resposta }} <br>
-                            Data de Criação: {{ formataDataTempo(contatoBuscado.created_at) }} <br>
-                            Data de Modificação: {{ formataDataTempo(contatoBuscado.updated_at) }} <br><br>
+                            <table class="table table-striped table-hover">
+                                <tr>
+                                    <td>ID:</td>
+                                    <td>{{ contatoBuscado.id }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Nome:</td>
+                                    <td>{{ contatoBuscado.nome }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Status:</td>
+                                    <td>{{ contatoBuscado.status == 1 ? 'Aberto' : 'Respondido' }}</td>
+                                </tr>
+                                <tr>
+                                    <td>E-mail:</td>
+                                    <td>{{contatoBuscado.email}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Telefone:</td>
+                                    <td>{{contatoBuscado.telefone}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Mensagem:</td>
+                                    <td>{{contatoBuscado.mensagem}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Ativo:</td>
+                                    <td>{{ contatoBuscado.ativo ? 'Sim' : 'Não'  }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Resposta:</td>
+                                    <td>{{contatoBuscado.resposta}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Data Resposta:</td>
+                                    <td>{{ contatoBuscado.data_resposta }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Data Criação:</td>
+                                    <td>{{ formataDataTempo(contatoBuscado.created_at) }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Data Modificação:</td>
+                                    <td>{{ formataDataTempo(contatoBuscado.updated_at) }}</td>
+                                </tr>
+                            </table>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
@@ -106,7 +141,7 @@
 
                 <!-- Modal Update -->
                 <div class="modal fade" id="updateModal" tabindex="-1" aria-labelledby="updateModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
+                    <div class="modal-dialog modal-lg">
                         <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title" id="updateModalLabel" v-if="contatoBuscado.nome">Editar: {{ contatoBuscado.nome }}</h5>
@@ -146,7 +181,7 @@
                                 <div class="row">
                                     <div class="col-2">
                                         <input-container-component titulo="Ativo" id="ativo" >
-                                            <input type="checkbox" id="ativo"  v-model="ativo">
+                                            <input type="checkbox" id="ativo"  v-model="ativo" disabled>
                                         </input-container-component>
                                     </div>
                                 </div>
@@ -376,6 +411,20 @@ export default{
                 })
 
             },
+            getStatusLabel(contato){
+                let statusContato = contato.status == 1 ? 'Aberto' : 'Respondido';
+                let classCss = 'default';
+
+                if(contato.status == 1){
+                    classCss = 'danger';
+                }else {
+                    classCss = 'success';
+                }
+
+                let label = '<span class="radius4 fontBranco text-uppercase label-'+classCss+'" style="font-size:.8em; letter-spacing:0.5px; padding:6px 12px; white-space:nowrap"><small>'+statusContato+'</small></span>';
+                return label;
+                
+            }
         },
         mounted() {
             this.carregarLista();

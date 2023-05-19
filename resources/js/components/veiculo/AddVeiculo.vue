@@ -4,7 +4,7 @@
             <div class="col-md-10">
 
                 <!-- Card de listagem -->
-                <card-component titulo="Criar Banner">
+                <card-component titulo="Criar Veículo">
                     <template v-slot:conteudo>
                         <div class="row">
                             <div class="col-6 form-group">
@@ -287,13 +287,52 @@
     export default{
         data(){
             return {
-                urlBase: 'http://localhost:8000/api/v1/banner',
-                titulo: '',
-                link: '',
+                urlBase: 'http://localhost:8000/api/v1/veiculo',
+                nome: '',
+                ano_modelo: '',
+                preco: '',
+                portas: '',
+                km: '',
+                cor: '',
+                cambio: '',
+                descricao: '',
                 arquivoImagem: [],
-                ativo: '',
-                nova_guia: '',
-                ordem: ''
+                tipo_combustivel: false,
+                aceita_troca: false,
+                ipva_pago: false,
+                licenciado: false,
+                air_bag: false,
+                air_bag_duplo: false,
+                alarme: false,
+                ar_condicionado_digital: false,
+                banco_couro: false,
+                banco_regulagem_altura: false,
+                chave_reserva: false,
+                computador_bordo: false,
+                desembacador_traseiro: false,
+                direcao_eletrica: false,
+                direcao_escamoteavel: false,
+                direcao_multifuncional: false,
+                farois_auxiliares: false,
+                farois_led: false,
+                freios_abs: false,
+                interfaces: false,
+                limpador_traseiro: false,
+                manual_proprietario: false,
+                porta_malas_eletrico: false,
+                retrovisor_eletrico: false,
+                liga_leve: false,
+                sensor_chuva: false,
+                sensor_estacionamento: false,
+                som_volante: false,
+                som_original: false,
+                teto_panoramico: false,
+                teto_solar: false,
+                travas_eletricas: false,
+                vidros_eletricos: false,
+                ativo: false,
+                destaque: false,
+                recomendado: false,
             }
         },
         computed: {
@@ -312,12 +351,53 @@
         methods: {
             salvar(){
                 let formData = new FormData();
-                formData.append('titulo', this.titulo);
-                formData.append('link', this.link);
-                formData.append('arquivo', this.arquivoImagem[0])
-                formData.append('ativo', this.ativo ? 1 : 0);
-                formData.append('nova_guia', this.nova_guia ? 1 : 0);
-                formData.append('ordem', this.ordem);
+                formData.append('nome', this.nome);
+                formData.append('ano_modelo', this.ano_modelo);
+                formData.append('preco', this.preco);
+                formData.append('portas', this.portas);
+                formData.append('km', this.km);
+                formData.append('cor', this.cor);
+                formData.append('cambio', this.cambio);
+                formData.append('descricao', this.descricao);
+                for(let i = 0; i < this.arquivoImagem.length; i++){
+                    formData.append('images[]', this.arquivoImagem[i])
+                }
+                formData.append('ativo', this.ativo == true ? 1 : 0);
+                formData.append('destaque', this.destaque == true ? 1 : 0);
+                formData.append('recomendado', this.recomendado == true ? 1 : 0);
+                formData.append('tipo_combustivel', this.tipo_combustivel == true ? 1 : 0);
+                formData.append('aceita_troca', this.aceita_troca == true ? 1 : 0);
+                formData.append('ipva_pago', this.ipva_pago == true ? 1 : 0);
+                formData.append('licenciado', this.licenciado == true ? 1 : 0);
+                formData.append('air_bag', this.air_bag == true ? 1 : 0);
+                formData.append('air_bag_duplo', this.air_bag_duplo == true ? 1 : 0);
+                formData.append('alarme', this.alarme == true ? 1 : 0);
+                formData.append('ar_condicionado_digital', this.ar_condicionado_digital == true ? 1 : 0);
+                formData.append('banco_couro', this.banco_couro == true ? 1 : 0);
+                formData.append('banco_regulavel_altura', this.banco_regulagem_altura == true ? 1 : 0);
+                formData.append('chave_reserva', this.chave_reserva == true ? 1 : 0);
+                formData.append('computador_bordo', this.computador_bordo == true ? 1 : 0);
+                formData.append('desembacador_traseiro', this.desembacador_traseiro == true ? 1 : 0);
+                formData.append('direcao_eletrica', this.direcao_eletrica == true ? 1 : 0);
+                formData.append('direcao_escamoteavel', this.direcao_escamoteavel == true ? 1 : 0);
+                formData.append('direcao_multifuncional', this.direcao_multifuncional == true ? 1 : 0);
+                formData.append('farois_auxiliares', this.farois_auxiliares == true ? 1 : 0);
+                formData.append('farois_led', this.farois_led == true ? 1 : 0);
+                formData.append('freios_abs', this.freios_abs == true ? 1 : 0);
+                formData.append('interface', this.interfaces == true ? 1 : 0);
+                formData.append('limpador_traseiro', this.limpador_traseiro == true ? 1 : 0);
+                formData.append('manual_proprietario', this.manual_proprietario == true ? 1 : 0);
+                formData.append('porta_malas_eletrico', this.porta_malas_eletrico == true ? 1 : 0);
+                formData.append('retrovisor_eletrico', this.retrovisor_eletrico == true ? 1 : 0);
+                formData.append('liga_leve', this.liga_leve == true ? 1 : 0);
+                formData.append('sensor_chuva', this.sensor_chuva == true ? 1 : 0);
+                formData.append('sensor_estacionamento', this.sensor_estacionamento == true ? 1 : 0);
+                formData.append('som_volante', this.som_volante == true ? 1 : 0);
+                formData.append('som_original', this.som_original == true ? 1 : 0);
+                formData.append('teto_panoramico', this.teto_panoramico == true ? 1 : 0);
+                formData.append('teto_solar', this.teto_solar == true ? 1 : 0);
+                formData.append('travas_eletricas', this.travas_eletricas == true ? 1 : 0);
+                formData.append('vidros_eletricos', this.vidros_eletricos == true ? 1 : 0);
 
                 let config = {
                     headers: {
@@ -329,7 +409,7 @@
 
                 axios.post(this.urlBase, formData, config)
                     .then(response => {
-                        console.log(response)
+                        document.getElementById("imagem").value = '';
                         this.$swal("Sucesso", "Registro cadastrado com sucesso!", "success");
                     })  
                     .catch(errors => {

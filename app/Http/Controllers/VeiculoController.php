@@ -312,23 +312,23 @@ class VeiculoController extends Controller
     public function destroy(Veiculo $veiculo)
     {
         if($veiculo->arquivos){
-            foreach($veiculo->arquivos as $arquivo){
-                if(Storage::exists("/uploads/veiculo/{$arquivo->id}/{$arquivo->arquivo}")){
-                    if(unlink(public_path('/storage/uploads/veiculo/'.$arquivo->id.'/'.$arquivo->arquivo))){
-                        rmdir(public_path('/storage/uploads/veiculo/'.$arquivo->id));
+            if(count($veiculo->arquivos) != 0){
+                foreach($veiculo->arquivos as $arquivo){
+                    if(Storage::exists("/uploads/veiculo/{$arquivo->id}/{$arquivo->arquivo}")){
+                        if(unlink(public_path('/storage/uploads/veiculo/'.$arquivo->id.'/'.$arquivo->arquivo))){
+                            rmdir(public_path('/storage/uploads/veiculo/'.$arquivo->id));
+                        }
+                    }else{
+                        return response()->json(['erro' => 'Arquivo não existe.'], 404);
                     }
-                }else{
-                    return response()->json(['erro' => 'Arquivo não existe.'], 404);
+                    $arquivo->delete();
+                    $veiculo->delete();
                 }
-                $arquivo->delete();
+                return response()->json(['msg' => 'Registro deletado com sucesso!'], 200);
+            }else{
                 $veiculo->delete();
+                return response()->json(['msg' => 'Registro deletado com sucesso!'], 200);
             }
-        }else if(!$veiculo->arquivos){
-            $veiculo->delete();
-        }else{
-            return response()->json(['erro' => 'Não foi possível deletar.'], 400);
         }
-
-        return response()->json(['msg' => 'Registro deletado com sucesso!'], 200);
     }
 }

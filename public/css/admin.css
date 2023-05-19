@@ -58,9 +58,9 @@ a {
     color: rgba(255,255,255,.85) !important;
 }
 
-.swal2-styled.swal2-confirm {
-    background-color: #044d2b !important;
-}
+/*.swal2-styled.swal2-confirm {
+    background-color: #573c0a !important;
+}*/
 
 .btn:hover {
 	color:#FFF !important;
