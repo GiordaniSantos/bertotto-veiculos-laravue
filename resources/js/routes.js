@@ -1,12 +1,18 @@
 import { createWebHistory, createRouter } from "vue-router";
 
-const BannerCreate = () => import('./components/banner/AddBanner.vue' /* webpackChunkName: "resource/js/components/banner/add" */)
+const Principal = () => import('./components/site/Principal.vue' /* webpackChunkName: "resource/js/components/banner/add" */)
+const VeiculosSite = () => import('./components/site/VeiculosSite.vue' /* webpackChunkName: "resource/js/components/banner/add" */)
 
 export const routes = [
     {
-        name: 'bannerAdd',
-        path: '/banner/add',
-        component: BannerCreate
+        name: 'Home',
+        path: '/',
+        component: Principal
+    },
+    {
+        name: 'Veiculos',
+        path: '/veiculos',
+        component: VeiculosSite
     }
 ]
 

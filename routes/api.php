@@ -39,7 +39,15 @@ Route::prefix('v1')->middleware('jwt.auth')->group(function() {
     Route::post('logout', [\App\Http\Controllers\AuthController::class, 'logout']);
 });
 
+//possibilitando o versionamento da api tornando viável a utilização pela versão
+Route::prefix('v1')->group(function() {
+    Route::get('site/veiculos/destaque', [\App\Http\Controllers\SiteController::class, 'destaque']);
+
+    Route::get('site/banner', [\App\Http\Controllers\SiteController::class, 'banner']);
+});
+
 Route::post('login', [\App\Http\Controllers\AuthController::class, 'login']);
+
 
 
 

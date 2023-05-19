@@ -65,6 +65,9 @@ import EditConfiguracao from './components/configuracao/EditConfiguracao.vue';
 import Veiculos from './components/veiculo/Veiculos.vue';
 import AddVeiculo from './components/veiculo/AddVeiculo.vue';
 import HomeSite from './components/site/HomeSite.vue';
+import VeiculosSite from './components/site/VeiculosSite.vue';
+import Menu from './components/site/Menu.vue';
+import Principal from './components/site/Principal.vue';
 app.component('example-component', ExampleComponent);
 app.component('login-component', Login);
 app.component('home-component', Home);
@@ -81,6 +84,9 @@ app.component('edit-configuracao-component', EditConfiguracao);
 app.component('list-veiculo-component', Veiculos);
 app.component('add-veiculo-component', AddVeiculo);
 appSite.component('home-site-component', HomeSite);
+appSite.component('veiculos-site-component', VeiculosSite);
+appSite.component('menu-site-component', Menu);
+appSite.component('principal-site-component', Principal);
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue

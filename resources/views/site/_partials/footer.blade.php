@@ -25,7 +25,7 @@
                 </ul>
             </div>
             <div class="col-sm-4 col-lg-3 col-xl-3">
-                <img src="{{url('/')}}/images/logo2.png" height="188px" alt="IPSS">
+                <img src="{{url('/')}}/images/logo2.png" height="188px" alt="BV" style="height: 188px;">
             </div>
         </div>
     </div>

@@ -35,7 +35,7 @@
                     </div>
                 </div>
                 <div id="posicao-menu" class="col-2 col-md-2 col-lg-4 col-xl-8">
-                    @include('site._partials.menu')
+                    <menu-site-component></menu-site-component>
                     <span data-menu-toggle="menu" class="menu-fechado"><i> menu</span>
                 </div>
             </div>
