@@ -10,6 +10,10 @@ abstract class AbstractRepository{
         $this->model = $model;
     }
 
+    public function selectAtributosListaSiteVeiculos(){
+        $this->model = $this->model->select('id', 'nome', 'ano_modelo', 'km', 'preco');
+    }
+
     public function selectAtributosRelacionados($atributos){
         $this->model = $this->model->with($atributos);
     }

@@ -24,7 +24,7 @@
             </div>
         </div>
     </div>
-    <div id="logo" class="bg-dark">
+    <div id="logo" class="bg-fundo-dark">
 
             <div class="row margin-menu">
                 <div id="logo-menu" class="col-10 col-md-10 col-lg-8 col-xl-4 nopadding">

@@ -1,7 +1,7 @@
 @import url(https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,900&display=swap);
 @import url(https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200);
 
-.bg-dark{
+.bg-fundo-dark{
     background-color: #2a2a2a !important;
 }
 
@@ -529,6 +529,7 @@ a.desc:after {
   min-width: 11.25rem;
   height: 3rem;
   border: 1px solid #cfd5da;
+  text-decoration: none;
 }
 
 .btn-padrao:hover {
@@ -942,7 +943,7 @@ footer i {
 }
 
 .padding80{
-  padding: 80px;
+  padding: 80px !important;
 }
 
 .line-height30{
@@ -1449,6 +1450,7 @@ h3 {
     text-align: center !important;
     padding: 0 20px !important;
     font-family: 'Montserrat',sans-serif !important;
+    text-decoration: none;
 }
 
 .menu-a-root:hover {
@@ -1539,109 +1541,111 @@ h3 {
 }
 
 
+.titulo-view-veiculo{
+    font-size: 2.25rem;
+    letter-spacing: -.09375rem;
+    line-height: 2.25rem;
+    margin-bottom: 0.875rem;
+    font-family: 'Frutiger Black',sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    letter-spacing: -.03125rem;
+    line-height: 1.5rem;
+    margin-bottom: 1.3125rem;
+    width: 65%;
+}
+
+.preco-view-veiculo{
+    font-size: 3rem;
+    letter-spacing: -.125rem;
+    line-height: 3rem;
+    font-family: 'Frutiger Black',sans-serif;
+    font-weight: 700;
+    letter-spacing: -.0625rem;
+    margin: 0;
+}
+
+.info-item{
+    -webkit-box-align: center;
+    align-items: center;
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    flex-direction: row;
+    margin-bottom: 1.25rem;
+}
+
+.info-item-icon{
+  margin-right: 0.625rem;
+    width: 2.25rem;
+}
+
+.info-item-icon svg{
+  width: 29px;
+  height: 28px;
+}
+
+.titulo-opcionais{
+  font-size: 24px;
+  line-height: 36px;
+  font-family: 'Frutiger Black',sans-serif;
+  font-weight: 700;
+  letter-spacing: -.0625rem;
+}
+
+.list-opcionais{
+  display: block;
+    width: 100%;
+    column-count: 4;
+    column-fill: balance;
+    column-gap: 40px;
+    margin-top: 20px;
+    padding-inline-start: 16px;
+}
+
+.descricao-view{
+  margin-bottom: 20px;
+  line-height: 23px;
+  letter-spacing: 1px;
+}
+
+.label{
+  color: #a5aeb4;
+}
+
+.value{
+    font-family: 'Frutiger Black',sans-serif;
+    font-weight: 700;
+    text-transform: lowercase;
+}
+
   /* -------- SLIDER GALERIA FOTO  ---------- */
   
-.column {
-  float: left;
-  width: 16.66%;
+.carousel__slide {
+    scroll-snap-stop: auto;
+    flex-shrink: 0;
+    margin: 0;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateZ(0);
 }
 
-.demo {
-  opacity: 0.6;
+.carousel__slide {
+  padding: 10px;
 }
 
-.active,
-.demo:hover {
-  opacity: 1;
+.imagem-view{
+  display: block;
+  object-fit: cover;
+  width: 100%;
+  border-radius: 10px;
 }
 
-#fotos{
-  margin-top:15px;
-  overflow-x: hidden;
-  overflow-y: hidden;
-  height:110px;
-  white-space: nowrap;
-  margin-bottom: 5px;
-  position: relative;
-}
-
-#fotos ul {
-  position: absolute;
-  left:0;
-  right:0;
-  top:0;
-  margin:0;
-  padding:0;
-}
-
-#fotos ul li{
-  cursor: pointer;
-  width:100px;
-  border:1px solid rgb(255,255,255);
-  border-radius:6px;
-  overflow: hidden;
-  display: inline-block;
-}
-
-.mySlides {
-  border-radius:12px;
-  overflow: hidden;
-}
-
-#galeria-foto {
-  position: relative;
-}
-
-#galeria-foto img {
-  width:100%;
-}
-
-#galeria-foto ul , #galeria-foto li {
-  list-style: none;
-  padding:0;
-  margin:0;
-}
-
-#galeria-foto li {
-  display:inline !important;
-}
-
-#galeria-foto li:hover {
-  cursor: pointer;
-}
-
-#galeria-foto ul img {
-  width:80px !important;
-  height:60px !important;
-  object-fit: cover !important;
-  object-position: center !important;
-  border-radius:6px !important;
-  margin:8px 1px !important;
-}
-
-#galeria-foto button:nth-of-type(1) {
-  position: absolute !important;
-  right:50px !important;
-  top:0 !important;
-  font-size:24px !important;
-  padding:10px 0 !important;
-  color:rgb(170,170,170) !important;
-  border:0 !important;
-  background-color:transparent !important;
-}
-
-#galeria-foto button:nth-of-type(2) {
-  position: absolute !important;
-  right:15px !important;
-  top:0 !important;
-  font-size:24px !important;
-  padding:10px 9px 10px 0 !important;
-  color:rgb(170,170,170) !important;
-  border:0 !important;
-  background-color:transparent !important;
-}
-
-#galeria-foto button:hover {
-  background-color: none !important;
-  color:rgb(0,0,0) !important;
+.carousel__prev, .carousel__next {
+  background-color: #ffc107 !important;
+  color: #000 !important;
+  border-radius: 50% !important;
 }

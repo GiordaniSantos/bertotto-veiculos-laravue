@@ -13,9 +13,22 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     return view('site.main');
-});
+});*/
+
+Route::any('/veiculos/{id}', function () {
+    return view('site.main');
+})->where(['all' => '.*']);
+
+Route::any('/', function () {
+    return view('site.main');
+})->where(['all' => '.*']);
+
+Route::any('/veiculos', function () {
+    return view('site.main');
+})->where(['all' => '.*']);
+
 
 Auth::routes();
 

@@ -44,6 +44,12 @@ Route::prefix('v1')->group(function() {
     Route::get('site/veiculos/destaque', [\App\Http\Controllers\SiteController::class, 'destaque']);
 
     Route::get('site/banner', [\App\Http\Controllers\SiteController::class, 'banner']);
+
+    Route::get('site/veiculos/recomendado', [\App\Http\Controllers\SiteController::class, 'recomendado']);
+
+    Route::get('site/veiculos/lista', [\App\Http\Controllers\SiteController::class, 'lista']);
+
+    Route::get('site/veiculo/{id}', [\App\Http\Controllers\SiteController::class, 'view']);
 });
 
 Route::post('login', [\App\Http\Controllers\AuthController::class, 'login']);
