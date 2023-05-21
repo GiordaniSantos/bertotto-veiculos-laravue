@@ -55,7 +55,7 @@
                     <template v-slot:rodape>
                         <div class="row">
                             <div class="col-10">
-                                <paginate-component>
+                                <paginate-component v-if="banners.data.length == 10">
                                     <li v-for="link, key in banners.links" :key="key" :class="link.active ? 'page-item active' : 'page-item'" @click="paginacao(link)">
                                         <a class="page-link" v-html="link.label"></a>
                                     </li>
@@ -208,7 +208,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-                            <button type="button" class="btn btn-primary" @click="atualizar()">Salvar alterações</button>
+                            <button type="button" class="btn btn-success" @click="atualizar()">Salvar alterações</button>
                         </div>
                         </div>
                     </div>

@@ -88,7 +88,7 @@
                         </div>
                     </template>
                     <template v-slot:rodape>
-                        <button type="submit" class="btn btn-primary btn-sm" style="float: right;" @click="atualizar()">Atualizar</button>
+                        <button type="submit" class="btn btn-success btn-sm" style="float: right;" @click="atualizar()">Atualizar</button>
                     </template>
                 </card-component>
                 <!-- fim da listagem -->

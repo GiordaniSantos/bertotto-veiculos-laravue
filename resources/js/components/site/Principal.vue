@@ -1,7 +1,7 @@
 <template>
     <div class="site-index">
         <div class="body-content">
-            <section v-if="banners.length >= 1">
+            <section v-if="banners.length >= 2">
                 <Carousel>
                     <Slide v-for="banner, key in banners" :key="key" style="display: block;">
                         <div class="carousel__item" ><img :src="urlBaseImg+'/storage/uploads/banner/'+banner.arquivo.id+'/'+banner.arquivo.arquivo" alt="Banner" class="banner-capa" width="100%" style="width: 100%;"></div>
@@ -51,7 +51,7 @@
                             <div class="col-12 text-right">
                                 <p class="texto-white">{{veiculosDestaque[1].descricao.slice(0, 840)}}</p>
                                 <br />
-                                <router-link :to="{name: 'ViewVeiculo', params: { id: veiculosDestaque[1].id }}" class="btn-padrao">Ver detalhes</router-link>
+                                <router-link :to="{name: 'ViewVeiculo', params: { id: veiculosDestaque[1].id }}" class="btn-padrao btn-cor-branco">Ver detalhes</router-link>
                             </div>
                         </div>   
                     </div>
@@ -136,7 +136,7 @@
                                 </div>
                                 <div class="row" v-if="veiculosRecomendado.lenght != 0">
                                     <div class="col-3 text-center padding-recomendado" v-for="veiculo, key in veiculosRecomendado" :key="key">
-                                        <div class="box-veiculo">
+                                        <div class="box-veiculo-capa">
                                             <div v-if="veiculo.arquivos.lenght !=0">
                                                 <img :src="urlBaseImg+'/storage/uploads/veiculo/'+veiculo.arquivos[0].id+'/'+veiculo.arquivos[0].arquivo" class="imagem-recomendacao" width="100%" :alt="veiculo.nome" :title="veiculo.nome" style="width: 100%;">
                                             </div>
@@ -254,7 +254,6 @@ export default{
                     .then(response => {
                         this.veiculosDestaque  = response.data;
                         this.$swal.close();
-                        console.log(this.veiculosDestaque);
                     })
                     .catch(errors => {
                         this.$swal("Oops...", "Algum erro aconteceu! " +errors.response.data.message, "error");
@@ -276,7 +275,6 @@ export default{
                     .then(response => {
                         this.veiculosRecomendado  = response.data;
                         this.$swal.close();
-                        console.log(this.veiculosRecomendado);
                     })
                     .catch(errors => {
                         this.$swal("Oops...", "Algum erro aconteceu! " +errors.response.data.message, "error");
@@ -297,6 +295,7 @@ export default{
                 axios.get(url, config)
                     .then(response => {
                         this.banners  = response.data;
+                        console.log(this.banners);
                         this.$swal.close();
                     })
                     .catch(errors => {

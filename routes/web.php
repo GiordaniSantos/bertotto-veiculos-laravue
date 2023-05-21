@@ -29,6 +29,13 @@ Route::any('/veiculos', function () {
     return view('site.main');
 })->where(['all' => '.*']);
 
+Route::any('/contato', function () {
+    return view('site.main');
+})->where(['all' => '.*']);
+
+Route::get('/admin', function(){
+    return redirect()->route('home');
+});
 
 Auth::routes();
 

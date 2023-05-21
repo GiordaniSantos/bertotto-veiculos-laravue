@@ -6,13 +6,16 @@
                     <div class="card-header">Login</div>
 
                     <div class="card-body">
+                        <div class="text-center" style="margin-bottom: 20px;">
+                            <img :src="urlBaseImg+'/images/brasao.png'" width="100%" alt="Indisponível" title="Indisponível" style="width: 80px;">
+                        </div>
                         <form method="POST" action="" @submit.prevent="login($event)">
                             <input type="hidden" name="_token" :value="csrf_token">
                             <div class="row mb-3">
                                 <label for="email" class="col-md-4 col-form-label text-md-end">Email</label>
 
                                 <div class="col-md-6">
-                                    <input id="email" type="email" class="form-control is-invalid" name="email" value="" required autocomplete="email" autofocus v-model="email">
+                                    <input id="email" type="email" class="form-control" name="email" value="" required autocomplete="email" autofocus v-model="email">
 
                                 </div>
                             </div>
@@ -21,7 +24,7 @@
                                 <label for="password" class="col-md-4 col-form-label text-md-end">Senha</label>
 
                                 <div class="col-md-6">
-                                    <input id="password" type="password" class="form-control is-invalid" name="password" required autocomplete="current-password" v-model="password">
+                                    <input id="password" type="password" class="form-control" name="password" required autocomplete="current-password" v-model="password">
 
                                 </div>
                             </div>
@@ -63,7 +66,8 @@
         data(){
             return {
                 email: '',
-                password: ''
+                password: '',
+                urlBaseImg: 'http://localhost:8000',
             }
         },
         methods:  {
@@ -86,6 +90,7 @@
                         }
                         //dar sequencia no envio do form de autenticacao
                         e.target.submit()
+                        this.$swal("Sucesso", "Login efetuado com sucesso!", "success");
                     });
                 
             }

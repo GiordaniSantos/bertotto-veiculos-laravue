@@ -57,7 +57,6 @@ import InputContainer from './components/InputContainer.vue';
 import Table from './components/Table.vue';
 import Card from './components/Card.vue';
 import CreateContato from './components/contato/CreateContato.vue';
-import ShowContato from './components/contato/ShowContato.vue';
 import Paginate from './components/Paginate.vue';
 import ListBanner from './components/banner/ListBanner.vue';
 import AddBanner from './components/banner/AddBanner.vue';
@@ -70,6 +69,7 @@ import Menu from './components/site/Menu.vue';
 import Principal from './components/site/Principal.vue';
 import FormContato from './components/site/FormContato.vue';
 import ViewVeiculo from './components/site/ViewVeiculo.vue';
+import ContatoSite from './components/site/ContatoSite.vue';
 app.component('example-component', ExampleComponent);
 app.component('login-component', Login);
 app.component('home-component', Home);
@@ -79,7 +79,6 @@ app.component('table-component', Table);
 app.component('card-component', Card);
 app.component('create-contato-component', CreateContato);
 app.component('paginate-component', Paginate);
-app.component('show-contato-component', ShowContato);
 app.component('list-banner-component', ListBanner);
 app.component('add-banner-component', AddBanner);
 app.component('edit-configuracao-component', EditConfiguracao);
@@ -92,6 +91,7 @@ appSite.component('principal-site-component', Principal);
 appSite.component('form-site-component', FormContato);
 appSite.component('paginate-component', Paginate);
 appSite.component('view-veiculo-site-component', ViewVeiculo);
+appSite.component('contato-site-component', ContatoSite);
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue

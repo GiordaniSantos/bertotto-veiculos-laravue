@@ -26,7 +26,7 @@ class SiteController extends Controller
     }
 
     public function recomendado(){
-        $veiculosDestaques = Veiculo::select('id', 'nome', 'ano_modelo', 'km', 'preco')->orderBy('id','desc')->with('arquivos')->where('ativo', 1)->where('destaque', 1)->take(3)->get()->all();
+        $veiculosDestaques = Veiculo::select('id', 'nome', 'ano_modelo', 'km', 'preco')->orderBy('id','desc')->with('arquivos')->where('ativo', 1)->where('recomendado', 1)->take(4)->get()->all();
 
         return response()->json($veiculosDestaques, 200);
     }

@@ -27,28 +27,35 @@
                                 </div>
                             </div>
                         </div>
-                        <paginate-component>
-                            <li v-for="link, key in veiculos.links" :key="key" :class="link.active ? 'page-item active' : 'page-item'" @click="paginacao(link)">
-                                <a class="page-link" v-html="link.label"></a>
-                            </li>
-                        </paginate-component>
+                        <div style="margin-top: 30px;">
+                            <paginate-component v-if="veiculos.data.length == 16">
+                                <li v-for="link, key in veiculos.links" :key="key" :class="link.active ? 'page-item active' : 'page-item'" @click="paginacao(link)">
+                                    <a class="page-link" v-html="link.label"></a>
+                                </li>
+                            </paginate-component>
+                        </div>
                     </div>
                     <br /><br />
                 </div>
                 <!--FILTRO LATERAL-->
                 <div class="col-12 col-xl-4 col-xxl-3">
                     <div class="box padding-busca responsive-reverse">
-                        <strong>Buscar</strong>
+                        <strong>Filtros</strong>
                         <hr />
-                        <p>Abaixo você poderá realizar buscas a partir de um termo.</p>
-                        
-                            <div class="mb-3"> 
-                            <input type="text" name="termo" placeholder="Termo..." class="form-busca" v-model="busca.nome">
-  
-                            </div>
-                            <button type="submit" class="btn-padrao">Buscar</button>
-                            <a href="/veiculos" class="btn-padrao">Limpar</a>
-                        
+                        <div class="mb-3"> 
+                            <input type="text" placeholder="Nome do Veículo..." class="form-control" v-model="busca.nome" style="width: 100%;">
+                        </div>
+                        <div class="mb-3"> 
+                            <select name="marca" id="marca" class="form-control">
+                                <option> Selecione a marca </option>
+                                <option value="1"> Volkswagen </option>
+                                <option value="2"> Chevrolet </option>
+                                <option value="3"> Renault </option>
+                            </select>
+                        </div>
+                        <button class="btn-busca" @click="pesquisar()">Buscar</button>
+                    
+                        <a href="/veiculos" class="btn-busca">Limpar</a>
                     </div>
                 </div>
             </div>
@@ -87,12 +94,12 @@
                     this.urlFiltro = '';
                 }
                 console.log(this.urlFiltro);
-                this.carregarLista();
+                this.carregarListaVeiculos();
             },
             paginacao(links){
                 if(links.url){
                     this.urlPaginacao = links.url.split('?')[1]; //ajustando a url de consulta com o parametro de pagina
-                    this.carregarLista();  //requisitando novamente os dados para a API com a paginacao 
+                    this.carregarListaVeiculos();  //requisitando novamente os dados para a API com a paginacao 
                 }
             },
             carregarListaVeiculos(){

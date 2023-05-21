@@ -58,7 +58,7 @@
                     </template>
                     <template v-slot:rodape>
                         <a href="/admin/banners" class="btn btn-primary btn-sm">Listar</a>
-                        <button type="submit" class="btn btn-primary btn-sm" style="float: right;" @click="salvar()">Criar</button>
+                        <button type="submit" class="btn btn-success btn-sm" style="float: right;" @click="salvar()">Criar</button>
                     </template>
                 </card-component>
                 <!-- fim da listagem -->

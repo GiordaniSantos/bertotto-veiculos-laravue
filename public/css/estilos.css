@@ -39,7 +39,7 @@
 }
 
 .margin-midiasT{
-  margin-top: -47px;
+  margin-top: -45px;
   margin-right: 150px;
 }
 
@@ -547,9 +547,18 @@ a.desc:after {
   border-bottom: 1px solid #ffffff;
 }
 
-.box-veiculo{
-  border: 1px solid #000000;
+.box-veiculo-capa{
+  border: 1px solid #2a2a2a;
   padding: 0.9375rem 1rem;
+  height: 470px;
+  /*margin-left: 0.75rem;
+  margin-right: 0.75rem;*/
+}
+
+.box-veiculo{
+  border: 1px solid #2a2a2a;
+  padding: 0.9375rem 1rem;
+  height: 400px;
   /*margin-left: 0.75rem;
   margin-right: 0.75rem;*/
 }
@@ -783,6 +792,7 @@ footer {
 
 .link-contato{
   color: #fff !important;
+  text-decoration: none;
 }
 
 .desc-conselho{
@@ -1648,4 +1658,33 @@ h3 {
   background-color: #ffc107 !important;
   color: #000 !important;
   border-radius: 50% !important;
+}
+
+.btn-busca {
+  color: rgb(50,50,50);
+  border: 2px solid #2a2a2a ;
+  padding: 8px 20px;
+  font-size: 14px;
+  font-weight: bold;
+  border-radius: 20px;
+  text-transform: uppercase;
+  transition: all .2s ease;
+  display: inline-flex;
+  text-decoration: none;
+}
+
+.btn-busca:hover {
+  padding:8px 30px;
+  border: 2px solid #000000 !important;
+  color: #000;
+} 
+
+.page-link.active, .active>.page-link {
+  color: #ffffff !important;
+  background-color: #000 !important;
+  border-color: #000 !important;
+}
+
+.btn-cor-branco{
+  color: #fff !important;
 }
