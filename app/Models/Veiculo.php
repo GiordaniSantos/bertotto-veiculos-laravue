@@ -19,6 +19,26 @@ class Veiculo extends Model
         self::CAMBIO_CVT => 'Câmbio Automático CVT',
     ];
 
+    const FLEX = 4;
+    const DIESEL = 5;
+    const GASOLINA = 6;
+    const GNV_FLEX = 7;
+    const GNV_GASOLINA = 8;
+    const ALCOOL = 9;
+    const GNV_ALCOOL = 10;
+    const ELETRICO = 11;
+
+    public static $tiposCombustivel = [
+        self::FLEX => 'Flex',
+        self::DIESEL => 'Diesel',
+        self::GASOLINA => 'Gasolina',
+        self::GNV_FLEX => 'GNV e Flex',
+        self::GNV_GASOLINA => 'GNV e Gasolina',
+        self::ALCOOL => 'Alcool',
+        self::GNV_ALCOOL => 'GNV e Alcool',
+        self::ELETRICO => 'Elétrico',
+    ];
+
     protected $fillable = ['nome','descricao', 'ano_modelo', 'preco', 'portas', 'cor', 'cambio', 'tipo_combustivel', 'aceita_troca', 'ipva_pago', 'licenciado', 'air_bag',
      'air_bag_duplo', 'alarme', 'ar_condicionado_digital', 'banco_couro', 'banco_regulavel_altura', 'chave_reserva', 'computador_bordo', 'desembacador_traseiro',
         'direcao_eletrica', 'direcao_escamoteavel', 'direcao_multifuncional', 'farois_auxiliares', 'farois_led', 'freios_abs', 'interface', 'limpador_traseiro', 'manual_proprietario', 'porta_malas_eletrico'

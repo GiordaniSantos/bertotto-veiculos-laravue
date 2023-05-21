@@ -117,15 +117,15 @@
                                 </tr>
                                 <tr>
                                     <td>Cambio:</td>
-                                    <td>{{ veiculoBuscado.cambio }}</td>
+                                    <td>{{ getCambioFormatado(veiculoBuscado.cambio) }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Tipo Combustivel:</td>
+                                    <td>{{ getTipoCombustivelFormatado(veiculoBuscado.tipo_combustivel) }}</td>
                                 </tr>
                                 <tr>
                                     <td>Descrição:</td>
                                     <td>{{veiculoBuscado.descricao}}</td>
-                                </tr>
-                                <tr>
-                                    <td>Flex:</td>
-                                    <td>{{ (veiculoBuscado.tipo_combustivel == 1) ? 'Sim' : 'Não'  }}</td>
                                 </tr>
                                 <tr>
                                     <td>Aceita Troca:</td>
@@ -374,6 +374,23 @@
                                        </div>
                                    </div>
                                </div>
+                               <div class="row" style="margin-top: 10px;">
+                                    <div class="col-6">
+                                        <label>Tipo Combustível</label>
+                                        <select name="tipoCombustivel" id="tipoCombustivel" class="form-control" v-model="veiculoBuscado.tipo_combustivel">
+                                            <option> Selecione </option>
+                                            <option value="4"> Flex </option>
+                                            <option value="5"> Diesel </option>
+                                            <option value="6"> Gasolina </option>
+                                            <option value="7"> GNV e Flex </option>
+                                            <option value="8"> GNV e Gasolina </option>
+                                            <option value="10"> GNV e Álcool </option>
+                                            <option value="9"> Álcool </option>
+                                            <option value="10"> GNV e Álcool </option>
+                                            <option value="11"> Elétrico </option>
+                                        </select>
+                                    </div>
+                               </div>
                                <div class="row">
                                     <div class="col-12">
                                         <div class="form-group" style="margin-top: 10px;">
@@ -435,11 +452,6 @@
                                 <br>
                                 <legend>Opcionais</legend>
                                 <div class="row">
-                                    <div class="col-3">
-                                        <input-container-component titulo="Flex" id="tipoCombustivel" idHelp="tipoCombustivelHelp" >
-                                            <input type="checkbox" id="tipoCombustivel" name="tipoCombustivel" aria-describedby="tipoCombustivelHelp" v-model="tipo_combustivel">
-                                        </input-container-component>
-                                    </div>
                                     <div class="col-3">
                                         <input-container-component titulo="Aceita Troca" id="aceitaTroca" idHelp="aceitaTrocaHelp" >
                                             <input type="checkbox" id="aceitaTroca" name="aceitaTroca" aria-describedby="aceitaTrocaHelp" v-model="aceita_troca">
@@ -630,7 +642,7 @@ export default{
                 veiculos: { data: [] },
                 veiculoBuscado: { },
                 busca: { nome:'', ativo: '' },
-                tipo_combustivel: false,
+                tipo_combustivel: '',
                 aceita_troca: false,
                 ipva_pago: false,
                 licenciado: false,
@@ -669,6 +681,42 @@ export default{
             }
         },  
         methods: {
+            getCambioFormatado(cambio){
+                let cambioFormatado = '';
+                if(cambio == 1){
+                    cambioFormatado = 'Câmbio Manual';
+                }else if(cambio == 2){
+                    cambioFormatado = 'Cambio Automático';
+                }else if(cambio == 3) {
+                    cambioFormatado = 'Cambio Automático CVT';
+                } else {
+                    cambioFormatado = '';
+                }
+                return cambioFormatado;
+            },
+            getTipoCombustivelFormatado(combustivel){
+                let combustivelFormatado = '';
+                if(combustivel == 4){
+                    combustivelFormatado = 'Flex';
+                }else if(combustivel == 5){
+                    combustivelFormatado = 'Diesel';
+                }else if(combustivel == 6) {
+                    combustivelFormatado = 'Gasolina';
+                } else if(combustivel == 7) {
+                    combustivelFormatado = 'GNV e Flex';
+                } else if(combustivel == 8) {
+                    combustivelFormatado = 'GNV e Gasolina';
+                } else if(combustivel == 9) {
+                    combustivelFormatado = 'Alcool';
+                } else if(combustivel == 10) {
+                    combustivelFormatado = 'GNV e Alcool';
+                } else if(combustivel == 11) {
+                    combustivelFormatado = 'Elétrico';
+                } else {
+                    combustivelFormatado = '';
+                }
+                return combustivelFormatado;
+            },
             formataDataTempo(d){
                 if(!d) return ''
 
@@ -750,7 +798,6 @@ export default{
                                 this.imagensVeiculoBuscado[i] = response.data.arquivos[i];
                             }
                         }
-                        this.tipo_combustivel = this.veiculoBuscado.tipo_combustivel == 1 ? true : false;
                         this.aceita_troca = this.veiculoBuscado.aceita_troca == 1 ? true : false;
                         this.ipva_pago = this.veiculoBuscado.ipva_pago == 1 ? true : false;
                         this.licenciado = this.veiculoBuscado.licenciado == 1 ? true : false;
@@ -803,6 +850,7 @@ export default{
                 formData.append('km', this.veiculoBuscado.km ? this.veiculoBuscado.km : '');
                 formData.append('cor', this.veiculoBuscado.cor ? this.veiculoBuscado.cor : '');
                 formData.append('cambio', this.veiculoBuscado.cambio ? this.veiculoBuscado.cambio : '');
+                formData.append('tipo_combustivel', this.veiculoBuscado.tipo_combustivel ? this.veiculoBuscado.tipo_combustivel : '');
                 formData.append('descricao', this.veiculoBuscado.descricao ? this.veiculoBuscado.descricao : '');
                 for(let i = 0; i < this.arquivoImagem.length; i++){
                     formData.append('images[]', this.arquivoImagem[i]);
@@ -810,7 +858,6 @@ export default{
                 formData.append('ativo', this.ativo == true ? 1 : 0);
                 formData.append('destaque', this.destaque == true ? 1 : 0);
                 formData.append('recomendado', this.recomendado == true ? 1 : 0);
-                formData.append('tipo_combustivel', this.tipo_combustivel == true ? 1 : 0);
                 formData.append('aceita_troca', this.aceita_troca == true ? 1 : 0);
                 formData.append('ipva_pago', this.ipva_pago == true ? 1 : 0);
                 formData.append('licenciado', this.licenciado == true ? 1 : 0);

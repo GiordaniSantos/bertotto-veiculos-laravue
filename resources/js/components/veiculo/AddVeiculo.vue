@@ -62,11 +62,29 @@
                         </div>
                         <br>
                         <div class="row">
+                            <div class="col-6 form-group">
+                                <input-container-component titulo="Tipo Combustível" id="tipoCombustivel" idHelp="tipoCombustivelHelp">
+                                    <select name="tipoCombustivel" id="tipoCombustivel" class="form-control" v-model="tipo_combustivel">
+                                        <option> Selecione </option>
+                                        <option value="4"> Flex </option>
+                                        <option value="5"> Diesel </option>
+                                        <option value="6"> Gasolina </option>
+                                        <option value="7"> GNV e Flex </option>
+                                        <option value="8"> GNV e Gasolina </option>
+                                        <option value="10"> GNV e Álcool </option>
+                                        <option value="9"> Álcool </option>
+                                        <option value="10"> GNV e Álcool </option>
+                                        <option value="11"> Elétrico </option>
+                                    </select>
+                                </input-container-component>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
                             <div class="col-12">
                                 <input-container-component titulo="Descrição" id="descricao" idHelp="descricaoHelp">
                                     <textarea name="descricao" class="form-control" placeholder="descricao" id="descricao" aria-describedby="descricaoHelp" style="width: 100% !important;" rows="4" cols="50" v-model="descricao"></textarea>
                                 </input-container-component>
-                                {{ mensagem }}
                             </div>
                         </div>
                         <br>
@@ -84,13 +102,26 @@
                             </div>
                         </div>
                         <br>
-                        <legend>Opcionais</legend>
                         <div class="row">
                             <div class="col-2">
-                                <input-container-component titulo="Flex" id="tipoCombustivel" idHelp="tipoCombustivelHelp" >
-                                    <input type="checkbox" id="tipoCombustivel" name="tipoCombustivel" aria-describedby="tipoCombustivelHelp" v-model="tipo_combustivel">
+                                <input-container-component titulo="Ativo" id="ativo" idHelp="ativoHelp" >
+                                    <input type="checkbox" id="ativo" name="ativo" aria-describedby="ativoHelp" v-model="ativo">
                                 </input-container-component>
                             </div>
+                            <div class="col-2">
+                                <input-container-component titulo="Destaque" id="destaque" idHelp="destaqueHelp" >
+                                    <input type="checkbox" id="destaque" name="destaque" aria-describedby="destaqueHelp" v-model="destaque">
+                                </input-container-component>
+                            </div>
+                            <div class="col-2">
+                                <input-container-component titulo="Recomendado" id="recomendado" idHelp="recomendadoHelp" >
+                                    <input type="checkbox" id="recomendado" name="recomendado" aria-describedby="recomendadoHelp" v-model="recomendado">
+                                </input-container-component>
+                            </div>
+                        </div>
+                        <br><br>
+                        <legend>Opcionais</legend>
+                        <div class="row">
                             <div class="col-2">
                                 <input-container-component titulo="Aceita Troca" id="aceitaTroca" idHelp="aceitaTrocaHelp" >
                                     <input type="checkbox" id="aceitaTroca" name="aceitaTroca" aria-describedby="aceitaTrocaHelp" v-model="aceita_troca">
@@ -253,23 +284,6 @@
                             </div>
                         </div>
                         <br><br>
-                        <div class="row">
-                            <div class="col-2">
-                                <input-container-component titulo="Ativo" id="ativo" idHelp="ativoHelp" >
-                                    <input type="checkbox" id="ativo" name="ativo" aria-describedby="ativoHelp" v-model="ativo">
-                                </input-container-component>
-                            </div>
-                            <div class="col-2">
-                                <input-container-component titulo="Destaque" id="destaque" idHelp="destaqueHelp" >
-                                    <input type="checkbox" id="destaque" name="destaque" aria-describedby="destaqueHelp" v-model="destaque">
-                                </input-container-component>
-                            </div>
-                            <div class="col-2">
-                                <input-container-component titulo="Recomendado" id="recomendado" idHelp="recomendadoHelp" >
-                                    <input type="checkbox" id="recomendado" name="recomendado" aria-describedby="recomendadoHelp" v-model="recomendado">
-                                </input-container-component>
-                            </div>
-                        </div>
                     </template>
                     <template v-slot:rodape>
                         <a href="/admin/veiculos" class="btn btn-primary btn-sm">Listar</a>
@@ -297,7 +311,7 @@
                 cambio: '',
                 descricao: '',
                 arquivoImagem: [],
-                tipo_combustivel: false,
+                tipo_combustivel: '',
                 aceita_troca: false,
                 ipva_pago: false,
                 licenciado: false,
@@ -358,6 +372,7 @@
                 formData.append('km', this.km);
                 formData.append('cor', this.cor);
                 formData.append('cambio', this.cambio);
+                formData.append('tipo_combustivel', this.tipo_combustivel ? this.tipo_combustivel : '');
                 formData.append('descricao', this.descricao);
                 for(let i = 0; i < this.arquivoImagem.length; i++){
                     formData.append('images[]', this.arquivoImagem[i])
@@ -365,7 +380,6 @@
                 formData.append('ativo', this.ativo == true ? 1 : 0);
                 formData.append('destaque', this.destaque == true ? 1 : 0);
                 formData.append('recomendado', this.recomendado == true ? 1 : 0);
-                formData.append('tipo_combustivel', this.tipo_combustivel == true ? 1 : 0);
                 formData.append('aceita_troca', this.aceita_troca == true ? 1 : 0);
                 formData.append('ipva_pago', this.ipva_pago == true ? 1 : 0);
                 formData.append('licenciado', this.licenciado == true ? 1 : 0);

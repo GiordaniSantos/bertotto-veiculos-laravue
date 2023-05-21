@@ -33,7 +33,7 @@
                                 <h2 class="titulo">{{veiculosDestaque[0].nome}}<span class="square"></span></h2>
                             </div>
                             <div class="col-12 text-left">
-                                <p class="texto-black">{{veiculosDestaque[0].descricao.slice(0, 840)}}</p>
+                                <p class="texto-black" v-if="veiculosDestaque[0].descricao">{{veiculosDestaque[0].descricao.slice(0, 840)}}</p>
                                 <br />
                                 <router-link :to="{name: 'ViewVeiculo', params: { id: veiculosDestaque[0].id }}" class="btn-padrao">Ver detalhes</router-link>
                             </div>
@@ -49,7 +49,7 @@
                                 <h2 class="titulo titulo-white">{{veiculosDestaque[1].nome}}<span class="square"></span></h2>
                             </div>
                             <div class="col-12 text-right">
-                                <p class="texto-white">{{veiculosDestaque[1].descricao.slice(0, 840)}}</p>
+                                <p class="texto-white" v-if="veiculosDestaque[1].descricao">{{veiculosDestaque[1].descricao.slice(0, 840)}}</p>
                                 <br />
                                 <router-link :to="{name: 'ViewVeiculo', params: { id: veiculosDestaque[1].id }}" class="btn-padrao btn-cor-branco">Ver detalhes</router-link>
                             </div>
@@ -87,7 +87,7 @@
                                 <h2 class="titulo">{{veiculosDestaque[2].nome}}<span class="square"></span></h2>
                             </div>
                             <div class="col-12 text-left">
-                                <p class="texto-black">{{veiculosDestaque[2].descricao.slice(0, 840)}}</p>
+                                <p class="texto-black" v-if="veiculosDestaque[2].descricao">{{veiculosDestaque[2].descricao.slice(0, 840)}}</p>
                                 <br />
                                 <router-link :to="{name: 'ViewVeiculo', params: { id: veiculosDestaque[2].id }}" class="btn-padrao">Ver detalhes</router-link>
                             </div>
