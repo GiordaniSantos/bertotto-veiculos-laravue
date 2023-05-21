@@ -78,6 +78,14 @@
                                     </select>
                                 </input-container-component>
                             </div>
+                            <div class="col-6 form-group">
+                                <input-container-component titulo="Marca" id="marca" idHelp="marcaHelp">
+                                    <select name="marca" id="marca" class="form-control" v-model="marca">
+                                        <option> Selecione </option>
+                                        <option :value="marca.id" v-for="marca in marcas" :key="marca.id"> {{marca.nome}} </option>
+                                    </select>
+                                </input-container-component>
+                            </div>
                         </div>
                         <br>
                         <div class="row">
@@ -309,7 +317,9 @@
                 km: '',
                 cor: '',
                 cambio: '',
+                marca: '',
                 descricao: '',
+                marcas: {},
                 arquivoImagem: [],
                 tipo_combustivel: '',
                 aceita_troca: false,
@@ -363,6 +373,22 @@
             }
         },  
         methods: {
+            carregarMarcas(){
+
+                let url = 'http://localhost:8000/api/v1/marca';
+
+                this.$swal.showLoading();
+
+                axios.get(url)
+                    .then(response => {
+                        this.marcas  = response.data;
+                        this.$swal.close();
+                        console.log(this.marcas);
+                    })
+                    .catch(errors => {
+                        this.$swal("Oops...", "Algum erro aconteceu! " +errors.response.data.message, "error");
+                    });
+            },
             salvar(){
                 let formData = new FormData();
                 formData.append('nome', this.nome);
@@ -372,6 +398,7 @@
                 formData.append('km', this.km);
                 formData.append('cor', this.cor);
                 formData.append('cambio', this.cambio);
+                formData.append('marca_id', this.marca);
                 formData.append('tipo_combustivel', this.tipo_combustivel ? this.tipo_combustivel : '');
                 formData.append('descricao', this.descricao);
                 for(let i = 0; i < this.arquivoImagem.length; i++){
@@ -434,6 +461,9 @@
             carregarImagem(e) {
                 this.arquivoImagem = e.target.files
             },
+        },
+        mounted() {
+            this.carregarMarcas();
         }
     }
 </script>

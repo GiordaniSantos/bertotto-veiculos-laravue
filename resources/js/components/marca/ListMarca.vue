@@ -13,8 +13,8 @@
                                     <th></th>
                                 </tr>
                             </thead>
-                            <tbody v-if="marcas.data.length > 0">
-                                <tr v-for="(marca,key) in marcas.data" :key="key">
+                            <tbody v-if="marcas.length > 0">
+                                <tr v-for="(marca,key) in marcas" :key="key">
                                     <td>{{ marca.nome }}</td>
                                     <td>
                                         <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#showModal" @click="findMarca(marca.id)"><i class="fa-solid fa-eye"></i></button>
@@ -34,11 +34,7 @@
                     <template v-slot:rodape>
                         <div class="row">
                             <div class="col-10">
-                                <paginate-component v-if="marcas.data.length == 10">
-                                    <li v-for="link, key in marcas.links" :key="key" :class="link.active ? 'page-item active' : 'page-item'" @click="paginacao(link)">
-                                        <a class="page-link" v-html="link.label"></a>
-                                    </li>
-                                </paginate-component>
+                              
                             </div>
                             <div class="col-2">
                                 <a href="/admin/marca/create" class="btn btn-primary btn-sm" style="float: right;">Adicionar</a>
@@ -146,31 +142,6 @@ export default{
                 tempo = tempo[0];
 
                 return data + ' às ' + tempo;
-            },
-            pesquisar(){
-                let filtro = '';
-                for(let chave in this.busca){
-                    if(this.busca[chave]){
-                        if(filtro != ''){
-                            filtro += ';';
-                        }
-                        filtro += chave + ':like:' + this.busca[chave];
-                    }
-                }
-                if(filtro != ''){
-                    this.urlPaginacao = 'page=1';
-                    this.urlFiltro = '&termo=' +filtro;
-                }else{
-                    this.urlFiltro = '';
-                }
-                console.log(this.urlFiltro);
-                this.carregarLista();
-            },
-            paginacao(links){
-                if(links.url){
-                    this.urlPaginacao = links.url.split('?')[1]; //ajustando a url de consulta com o parametro de pagina
-                    this.carregarLista();  //requisitando novamente os dados para a API com a paginacao 
-                }
             },
             carregarLista(){
 

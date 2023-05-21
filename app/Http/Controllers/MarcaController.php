@@ -20,7 +20,7 @@ class MarcaController extends Controller
     {
         $marcaRepository = new MarcaRepository($this->marca);
 
-        return response()->json($marcaRepository->getResultadoPaginado(10), 200);
+        return response()->json($marcaRepository->getResultado(), 200);
     }
 
     /**

@@ -100,6 +100,10 @@
                                     <td>{{ veiculoBuscado.nome }}</td>
                                 </tr>
                                 <tr>
+                                    <td>Marca:</td>
+                                    <td>{{ veiculoBuscado.marca ? veiculoBuscado.marca.nome : '' }}</td>
+                                </tr>
+                                <tr>
                                     <td>Ano/Modelo:</td>
                                     <td>{{veiculoBuscado.ano_modelo}}</td>
                                 </tr>
@@ -374,21 +378,32 @@
                                        </div>
                                    </div>
                                </div>
-                               <div class="row" style="margin-top: 10px;">
+                               <div class="row">
                                     <div class="col-6">
-                                        <label>Tipo Combustível</label>
-                                        <select name="tipoCombustivel" id="tipoCombustivel" class="form-control" v-model="veiculoBuscado.tipo_combustivel">
-                                            <option> Selecione </option>
-                                            <option value="4"> Flex </option>
-                                            <option value="5"> Diesel </option>
-                                            <option value="6"> Gasolina </option>
-                                            <option value="7"> GNV e Flex </option>
-                                            <option value="8"> GNV e Gasolina </option>
-                                            <option value="10"> GNV e Álcool </option>
-                                            <option value="9"> Álcool </option>
-                                            <option value="10"> GNV e Álcool </option>
-                                            <option value="11"> Elétrico </option>
-                                        </select>
+                                        <div class="form-group" style="margin-top: 10px;">
+                                            <label>Tipo Combustível</label>
+                                            <select name="tipoCombustivel" id="tipoCombustivel" class="form-control" v-model="veiculoBuscado.tipo_combustivel">
+                                                <option> Selecione </option>
+                                                <option value="4"> Flex </option>
+                                                <option value="5"> Diesel </option>
+                                                <option value="6"> Gasolina </option>
+                                                <option value="7"> GNV e Flex </option>
+                                                <option value="8"> GNV e Gasolina </option>
+                                                <option value="10"> GNV e Álcool </option>
+                                                <option value="9"> Álcool </option>
+                                                <option value="10"> GNV e Álcool </option>
+                                                <option value="11"> Elétrico </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-group" style="margin-top: 10px;">
+                                            <label>Marca</label>
+                                            <select name="marca" id="marca" class="form-control" v-model="veiculoBuscado.marca_id">
+                                                <option> Selecione </option>
+                                                <option :value="marca.id" v-for="marca in marcas" :key="marca.id"> {{marca.nome}} </option>
+                                            </select>
+                                        </div>
                                     </div>
                                </div>
                                <div class="row">
@@ -641,6 +656,7 @@ export default{
                 posicao: 0,
                 veiculos: { data: [] },
                 veiculoBuscado: { },
+                marcas: {},
                 busca: { nome:'', ativo: '' },
                 tipo_combustivel: '',
                 aceita_troca: false,
@@ -770,10 +786,24 @@ export default{
                     .then(response => {
                         this.veiculos  = response.data;
                         this.$swal.close();
-                        console.log(this.veiculos);
                     })
                     .catch(errors => {
                         this.$swal("Oops...", "Algum erro aconteceu! " +errors.response.data.message, "error");
+                    });
+            },
+            carregarMarcas(){
+
+                let url = 'http://localhost:8000/api/v1/marca';
+
+                this.$swal.showLoading();
+
+                axios.get(url)
+                    .then(response => {
+                        this.marcas  = response.data;
+                        this.$swal.close();
+                    })
+                    .catch(errors => {
+                        this.$swal("Oops...", "Algum erro aconteceu! " +errors.response, "error");
                     });
             },
             findVeiculo(id){
@@ -833,8 +863,9 @@ export default{
                         this.ativo = this.veiculoBuscado.ativo == 1 ? true : false;
                         this.destaque = this.veiculoBuscado.destaque == 1 ? true : false;
                         this.recomendado = this.veiculoBuscado.recomendado == 1 ? true : false;
-
+                        this.carregarMarcas();
                         this.$swal.close();
+                        console.log(this.veiculoBuscado)
                     })
                     .catch(errors => {
                         this.$swal("Oops...", "Algum erro aconteceu! " +errors.message, "error");
@@ -850,6 +881,7 @@ export default{
                 formData.append('km', this.veiculoBuscado.km ? this.veiculoBuscado.km : '');
                 formData.append('cor', this.veiculoBuscado.cor ? this.veiculoBuscado.cor : '');
                 formData.append('cambio', this.veiculoBuscado.cambio ? this.veiculoBuscado.cambio : '');
+                formData.append('marca_id', this.veiculoBuscado.marca_id ? this.veiculoBuscado.marca_id : '');
                 formData.append('tipo_combustivel', this.veiculoBuscado.tipo_combustivel ? this.veiculoBuscado.tipo_combustivel : '');
                 formData.append('descricao', this.veiculoBuscado.descricao ? this.veiculoBuscado.descricao : '');
                 for(let i = 0; i < this.arquivoImagem.length; i++){
@@ -905,7 +937,6 @@ export default{
                         this.$swal("Sucesso", "Registro atualizado com sucesso!", "success");
                     })  
                     .catch(errors => {
-                        console.log(errors)
                         this.$swal("Oops...", "Algum erro aconteceu! " +errors.response.data.message, "error");
                     })
                 
@@ -962,7 +993,6 @@ export default{
                 formData.append('_method', 'delete');
 
                 let url = 'http://localhost:8000/api/v1/arquivo/excluir/' + id + "/veiculo";
-                console.log(url);
                 this.$swal({
                     title: 'Tem certeza que deseja excluir este arquivo?',
                     showConfirmButton: true,

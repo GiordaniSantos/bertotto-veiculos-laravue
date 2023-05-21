@@ -24,6 +24,8 @@ class VeiculoController extends Controller
 
         $veiculoRepository->selectAtributosRelacionados('arquivos');
 
+        $veiculoRepository->selectAtributosRelacionados('marca');
+
         if($request->has('termo')){
             $veiculoRepository->filtro($request->termo);
             
@@ -52,6 +54,7 @@ class VeiculoController extends Controller
             $veiculo->cor = $request->input('cor');
             $veiculo->cambio = $request->input('cambio');
             $veiculo->descricao = $request->input('descricao');
+            $veiculo->marca_id = $request->input('marca_id');
             $veiculo->tipo_combustivel = $request->input('tipo_combustivel');
             $veiculo->aceita_troca = $request->input('aceita_troca');
             $veiculo->ipva_pago = $request->input('ipva_pago');
@@ -145,7 +148,7 @@ class VeiculoController extends Controller
      */
     public function show($id)
     {
-        $veiculo = $this->veiculo->with('arquivos')->find($id);
+        $veiculo = $this->veiculo->with('arquivos')->with('marca')->find($id);
         if($veiculo === null){
             return response()->json(['erro' => 'Recurso pesquisado não existe.'], 404);
         }

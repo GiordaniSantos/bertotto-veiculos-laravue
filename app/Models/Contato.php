@@ -34,4 +34,8 @@ class Contato extends Model
             'email.email' => 'Digite um email válido.'
         ];
     }
+
+    public function veiculos(){
+        return $this->hasMany('App\Models\Veiculo');
+    }
 }
