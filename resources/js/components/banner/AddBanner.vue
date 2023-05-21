@@ -80,20 +80,7 @@
                 nova_guia: '',
                 ordem: ''
             }
-        },
-        computed: {
-            token(){
-                //pegando o token JWT do cookie
-                let token = document.cookie.split(';').find(indice => {
-                    return indice.includes('token=');
-                });
-
-                token = token.split('=')[1];
-                token = 'Bearer ' + token;
-
-                return token;
-            }
-        },  
+        }, 
         methods: {
             salvar(){
                 let formData = new FormData();
@@ -107,8 +94,6 @@
                 let config = {
                     headers: {
                         'Content-Type': 'multipart/form-data',
-                        'Accept': 'application/json',
-                        'Authorization': this.token
                     }
                 }
 

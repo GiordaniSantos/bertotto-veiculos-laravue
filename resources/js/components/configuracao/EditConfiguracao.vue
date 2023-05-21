@@ -117,20 +117,7 @@
                 youtube: '',
                 spotify: '',
             }
-        },
-        computed: {
-            token(){
-                //pegando o token JWT do cookie
-                let token = document.cookie.split(';').find(indice => {
-                    return indice.includes('token=');
-                });
-
-                token = token.split('=')[1];
-                token = 'Bearer ' + token;
-
-                return token;
-            }
-        },  
+        }, 
         methods: {
             atualizar(){
                 let formData = new FormData();
@@ -150,8 +137,6 @@
                 let config = {
                     headers: {
                         'Content-Type': 'multipart/form-data',
-                        'Accept': 'application/json',
-                        'Authorization': this.token
                     }
                 }
 
@@ -166,16 +151,9 @@
             },
             findConfiguracao(){
 
-            let config = {
-                headers: {
-                    'Accept': 'application/json',
-                    'Authorization': this.token
-                }
-            }
-
             this.$swal.showLoading();
 
-            axios.get(this.urlBase, config)
+            axios.get(this.urlBase)
                 .then(response => {
                     this.nome = response.data.nome;
                     this.endereco = response.data.endereco;

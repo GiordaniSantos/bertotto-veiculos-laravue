@@ -38,11 +38,12 @@ class SiteController extends Controller
 
         $veiculoRepository->selectAtributosRelacionados('arquivos');
 
+        $veiculoRepository->selectAtivos();
+
         if($request->has('termo')){
             $veiculoRepository->filtro($request->termo);
             
         }
-
 
         return response()->json($veiculoRepository->getResultadoPaginado(16), 200);
     }

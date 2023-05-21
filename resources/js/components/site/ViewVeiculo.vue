@@ -236,16 +236,10 @@ export default{
             carregarListaVeiculos(){
 
                 let url = this.urlBase + '/veiculo/' + this.$route.params.id;
-                
-                let config = {
-                    headers: {
-                        'Accept': 'application/json',
-                    }
-                }
 
                 this.$swal.showLoading();
 
-                axios.get(url, config)
+                axios.get(url)
                     .then(response => {
                         this.veiculo  = response.data;
                         this.$swal.close();

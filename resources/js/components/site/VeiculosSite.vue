@@ -105,16 +105,10 @@
             carregarListaVeiculos(){
 
                 let url = this.urlBase + '/veiculos/lista' + '?' +this.urlPaginacao + this.urlFiltro;
-                
-                let config = {
-                    headers: {
-                        'Accept': 'application/json',
-                    }
-                }
 
                 this.$swal.showLoading();
 
-                axios.get(url, config)
+                axios.get(url)
                     .then(response => {
                         this.veiculos  = response.data;
                         this.$swal.close();

@@ -24,6 +24,7 @@
                         </div>
                     </template>
                     <template v-slot:rodape>
+                        <a href="/admin/veiculos" class="btn btn-primary btn-sm">Limpar</a>
                         <button type="submit" class="btn btn-primary btn-sm" style="float: right;" @click="pesquisar()">Pesquisar</button>
                     </template>
                 </card-component>
@@ -666,20 +667,6 @@ export default{
                 destaque: false,
                 recomendado: false,
             }
-        },
-        computed: {
-            token(){
-                //pegando o token JWT do cookie
-                let token = document.cookie.split(';').find(indice => {
-                    return indice.includes('token=');
-                });
-
-                token = token.split('=')[1];
-                token = 'Bearer ' + token;
-
-                return token;
-            },
-
         },  
         methods: {
             formataDataTempo(d){
@@ -717,7 +704,6 @@ export default{
                 }else{
                     this.urlFiltro = '';
                 }
-                console.log(this.urlFiltro);
                 this.carregarLista();
             },
             paginacao(links){
@@ -729,18 +715,10 @@ export default{
             carregarLista(){
 
                 let url = this.urlBase + '?' +this.urlPaginacao + this.urlFiltro;
-                
-                let config = {
-                    headers: {
-                        'Content-Type': 'multipart/form-data',
-                        'Accept': 'application/json',
-                        'Authorization': this.token
-                    }
-                }
 
                 this.$swal.showLoading();
 
-                axios.get(url, config)
+                axios.get(url)
                     .then(response => {
                         this.veiculos  = response.data;
                         this.$swal.close();
@@ -753,12 +731,6 @@ export default{
             findVeiculo(id){
 
                 let url = this.urlBase + '/' +id;
-                let config = {
-                    headers: {
-                        'Accept': 'application/json',
-                        'Authorization': this.token
-                    }
-                }
 
                 this.$swal.showLoading();
 
@@ -770,7 +742,7 @@ export default{
                     this.imagensVeiculoBuscado = [];
                 }
 
-                axios.get(url, config)
+                axios.get(url)
                     .then(response => {
                         this.veiculoBuscado  = response.data;
                         if(response.data.arquivos){
@@ -876,8 +848,6 @@ export default{
                 let config = {
                     headers: {
                         'Content-Type': 'multipart/form-data',
-                        'Accept': 'application/json',
-                        'Authorization': this.token
                     }
                 }
 
@@ -899,8 +869,6 @@ export default{
                 let config = {
                     headers: {
                         'Content-Type': 'multipart/form-data',
-                        'Accept': 'application/json',
-                        'Authorization': this.token
                     }
                 }
                 
@@ -940,8 +908,6 @@ export default{
                 let config = {
                     headers: {
                         'Content-Type': 'multipart/form-data',
-                        'Accept': 'application/json',
-                        'Authorization': this.token
                     }
                 }
 

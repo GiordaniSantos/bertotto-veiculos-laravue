@@ -219,87 +219,49 @@ export default{
             },
         },  
         methods: {
-            formataDataTempo(d){
-                if(!d) return ''
-
-                d = d.split('T');
-
-                let data = d[0];
-                let tempo = d[1];
-
-                data = data.split('-');
-
-                //formatando a data
-                data = data[2] + "/" + data[1] + "/" + data[0];
-
-                //formatando o tempo
-                tempo = tempo.split('.');
-                tempo = tempo[0];
-
-                return data + ' às ' + tempo;
-            },
             carregarListaDestaque(){
 
                 let url = this.urlBase + '/veiculos/destaque';
-                
-                let config = {
-                    headers: {
-                        'Accept': 'application/json',
-                    }
-                }
 
                 this.$swal.showLoading();
 
-                axios.get(url, config)
+                axios.get(url)
                     .then(response => {
                         this.veiculosDestaque  = response.data;
                         this.$swal.close();
                     })
                     .catch(errors => {
-                        this.$swal("Oops...", "Algum erro aconteceu! " +errors.response.data.message, "error");
+                        this.$swal("Oops...", "Algum erro aconteceu! " +errors.response, "error");
                     });
             },
             carregarListaRecomendado(){
 
                 let url = this.urlBase + '/veiculos/recomendado';
 
-                let config = {
-                    headers: {
-                        'Accept': 'application/json',
-                    }
-                }
-
                 this.$swal.showLoading();
 
-                axios.get(url, config)
+                axios.get(url)
                     .then(response => {
                         this.veiculosRecomendado  = response.data;
                         this.$swal.close();
                     })
                     .catch(errors => {
-                        this.$swal("Oops...", "Algum erro aconteceu! " +errors.response.data.message, "error");
+                        this.$swal("Oops...", "Algum erro aconteceu! " +errors.response, "error");
                     });
             },
             carregarBanners(){
 
                 let url = this.urlBase + '/banner';
 
-                let config = {
-                    headers: {
-                        'Accept': 'application/json',
-                    }
-                }
-
                 this.$swal.showLoading();
 
-                axios.get(url, config)
+                axios.get(url)
                     .then(response => {
                         this.banners  = response.data;
-                        console.log(this.banners);
                         this.$swal.close();
                     })
                     .catch(errors => {
-                        this.$swal("Oops...", "Algum erro aconteceu! " +errors.response.data.message, "error");
+                        this.$swal("Oops...", "Algum erro aconteceu! " +errors.response, "error");
                     });
                 },
         },

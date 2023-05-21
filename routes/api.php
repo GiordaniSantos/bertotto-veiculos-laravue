@@ -34,10 +34,10 @@ Route::prefix('v1')->middleware('jwt.auth')->group(function() {
     
     Route::post('me', [\App\Http\Controllers\AuthController::class, 'me']);
     
-    Route::post('refresh', [\App\Http\Controllers\AuthController::class, 'refresh']);
-
     Route::post('logout', [\App\Http\Controllers\AuthController::class, 'logout']);
 });
+
+Route::post('refresh', [\App\Http\Controllers\AuthController::class, 'refresh']);
 
 //possibilitando o versionamento da api tornando viável a utilização pela versão
 Route::prefix('v1')->group(function() {

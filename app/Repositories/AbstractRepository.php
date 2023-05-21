@@ -18,6 +18,10 @@ abstract class AbstractRepository{
         $this->model = $this->model->with($atributos);
     }
 
+    public function selectAtivos(){
+        $this->model = $this->model->where('ativo', 1);
+    }
+
     public function filtro($filtros){
         $filtros = explode(';', $filtros);
             foreach($filtros as $key => $condicao){

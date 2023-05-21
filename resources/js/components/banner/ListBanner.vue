@@ -236,20 +236,6 @@ export default{
                 busca: { titulo:'' }
             }
         },
-        computed: {
-            token(){
-                //pegando o token JWT do cookie
-                let token = document.cookie.split(';').find(indice => {
-                    return indice.includes('token=');
-                });
-
-                token = token.split('=')[1];
-                token = 'Bearer ' + token;
-
-                return token;
-            },
-
-        },  
         methods: {
             isEmpty(obj) {
                 for(var prop in obj) {
@@ -309,9 +295,7 @@ export default{
                 
                 let config = {
                     headers: {
-                        'Content-Type': 'multipart/form-data',
-                        'Accept': 'application/json',
-                        'Authorization': this.token
+                        'Content-Type': 'multipart/form-data'
                     }
                 }
 
@@ -330,12 +314,7 @@ export default{
             findBanner(id){
 
                 let url = this.urlBase + '/' +id;
-                let config = {
-                    headers: {
-                        'Accept': 'application/json',
-                        'Authorization': this.token
-                    }
-                }
+
                 if(this.urlBaseImg != ''){
                     this.urlBaseImg = '';
                 }
@@ -344,7 +323,7 @@ export default{
                     this.bannerBuscado = {};
                 }
 
-                axios.get(url, config)
+                axios.get(url)
                     .then(response => {
                         this.bannerBuscado  = response.data;
                         if(response.data.arquivo){
@@ -374,8 +353,6 @@ export default{
                 let config = {
                     headers: {
                         'Content-Type': 'multipart/form-data',
-                        'Accept': 'application/json',
-                        'Authorization': this.token
                     }
                 }
 
@@ -401,8 +378,6 @@ export default{
                 let config = {
                     headers: {
                         'Content-Type': 'multipart/form-data',
-                        'Accept': 'application/json',
-                        'Authorization': this.token
                     }
                 }
                 
@@ -442,8 +417,6 @@ export default{
                 let config = {
                     headers: {
                         'Content-Type': 'multipart/form-data',
-                        'Accept': 'application/json',
-                        'Authorization': this.token
                     }
                 }
 

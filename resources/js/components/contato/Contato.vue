@@ -236,19 +236,6 @@ export default{
                 busca: { email:'', nome:'' }
             }
         },
-        computed: {
-            token(){
-                //pegando o token JWT do cookie
-                let token = document.cookie.split(';').find(indice => {
-                    return indice.includes('token=');
-                });
-
-                token = token.split('=')[1];
-                token = 'Bearer ' + token;
-
-                return token;
-            }
-        },  
         methods: {
             formataDataTempo(d){
                 if(!d) return ''
@@ -297,18 +284,10 @@ export default{
             carregarLista(){
 
                 let url = this.urlBase + '?' +this.urlPaginacao + this.urlFiltro;
-                console.log(url);
-                let config = {
-                    headers: {
-                        'Content-Type': 'multipart/form-data',
-                        'Accept': 'application/json',
-                        'Authorization': this.token
-                    }
-                }
 
                 this.$swal.showLoading();
 
-                axios.get(url, config)
+                axios.get(url)
                     .then(response => {
                         this.contatos  = response.data;
                         this.$swal.close();
@@ -320,18 +299,12 @@ export default{
             findContato(id){
 
                 let url = this.urlBase + '/' +id;
-                let config = {
-                    headers: {
-                        'Accept': 'application/json',
-                        'Authorization': this.token
-                    }
-                }
 
                 if(this.contatoBuscado){
                     this.contatoBuscado = {};
                 }
                 this.$swal.showLoading();
-                axios.get(url, config)
+                axios.get(url)
                     .then(response => {
                         this.contatoBuscado  = response.data;
                         this.ativo = this.contatoBuscado.ativo == 1 ? true : false;
@@ -353,8 +326,6 @@ export default{
                 let config = {
                     headers: {
                         'Content-Type': 'multipart/form-data',
-                        'Accept': 'application/json',
-                        'Authorization': this.token
                     }
                 }
 
@@ -375,8 +346,6 @@ export default{
                 let config = {
                     headers: {
                         'Content-Type': 'multipart/form-data',
-                        'Accept': 'application/json',
-                        'Authorization': this.token
                     }
                 }
 
