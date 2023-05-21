@@ -30,6 +30,8 @@ Route::prefix('v1')->middleware('jwt.auth')->group(function() {
     
     Route::apiResource('veiculo', \App\Http\Controllers\VeiculoController::class);
 
+    Route::apiResource('marca', \App\Http\Controllers\MarcaController::class);
+
     Route::delete('arquivo/excluir/{id}/{tabela}', [\App\Http\Controllers\ArquivoController::class, 'excluir']);
     
     Route::post('me', [\App\Http\Controllers\AuthController::class, 'me']);

@@ -55,6 +55,14 @@ Route::prefix('/admin')->middleware('auth')->group(function(){
         return view('admin.contato.show');
     })->name('admin.contato.show');
 
+    Route::get('/marcas', function(){
+        return view('admin.marca.index');
+    })->name('admin.marca');
+
+    Route::get('/marca/create', function(){
+        return view('admin.marca.create');
+    })->name('admin.marca.create');
+
     Route::get('/banners', function(){
         return view('admin.banner.index');
     })->name('admin.banner');

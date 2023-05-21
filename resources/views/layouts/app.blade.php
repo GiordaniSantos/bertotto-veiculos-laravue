@@ -43,6 +43,9 @@
                                 <a href="{{ route('admin.veiculo') }}" class="nav-link">Veículos</a>
                             </li>
                             <li class="nav-item">
+                                <a href="{{ route('admin.marca') }}" class="nav-link">Marcas</a>
+                            </li>
+                            <li class="nav-item">
                                 <a href="{{ route('admin.contato') }}" class="nav-link">Contatos</a>
                             </li>
                             <li class="nav-item">
