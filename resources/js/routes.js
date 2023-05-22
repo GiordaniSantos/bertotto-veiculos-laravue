@@ -18,7 +18,7 @@ export const routes = [
     },
     {
         name: 'ViewVeiculo',
-        path: '/veiculos/:id',
+        path: '/veiculos/:id/:nome',
         component: ViewVeiculos
     },
     {

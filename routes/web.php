@@ -21,6 +21,10 @@ Route::any('/veiculos/{id}', function () {
     return view('site.main');
 })->where(['all' => '.*']);
 
+Route::any('/veiculos/{id}/{nome}', function () {
+    return view('site.main');
+})->where(['all' => '.*']);
+
 Route::any('/', function () {
     return view('site.main');
 })->where(['all' => '.*']);

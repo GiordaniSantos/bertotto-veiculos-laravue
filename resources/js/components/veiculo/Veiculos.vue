@@ -96,6 +96,10 @@
                                     <td>{{ veiculoBuscado.id }}</td>
                                 </tr>
                                 <tr>
+                                    <td>Data de Publicação:</td>
+                                    <td>{{ formataDataTempo(veiculoBuscado.data_publicacao) }}</td>
+                                </tr>
+                                <tr>
                                     <td>Nome:</td>
                                     <td>{{ veiculoBuscado.nome }}</td>
                                 </tr>
@@ -396,13 +400,19 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="col-6">
+                                    <div class="col-3">
                                         <div class="form-group" style="margin-top: 10px;">
                                             <label>Marca</label>
                                             <select name="marca" id="marca" class="form-control" v-model="veiculoBuscado.marca_id">
                                                 <option> Selecione </option>
                                                 <option :value="marca.id" v-for="marca in marcas" :key="marca.id"> {{marca.nome}} </option>
                                             </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-3">
+                                        <div class="form-group" style="margin-top: 10px;">
+                                            <label>Data de Publicação</label>
+                                            <input type="datetime-local" class="form-control" id="data" name="data_publicacao" v-model="veiculoBuscado.data_publicacao">
                                         </div>
                                     </div>
                                </div>
@@ -882,6 +892,7 @@ export default{
                 formData.append('cor', this.veiculoBuscado.cor ? this.veiculoBuscado.cor : '');
                 formData.append('cambio', this.veiculoBuscado.cambio ? this.veiculoBuscado.cambio : '');
                 formData.append('marca_id', this.veiculoBuscado.marca_id ? this.veiculoBuscado.marca_id : '');
+                formData.append('data_publicacao', this.veiculoBuscado.data_publicacao ? this.veiculoBuscado.data_publicacao : '');
                 formData.append('tipo_combustivel', this.veiculoBuscado.tipo_combustivel ? this.veiculoBuscado.tipo_combustivel : '');
                 formData.append('descricao', this.veiculoBuscado.descricao ? this.veiculoBuscado.descricao : '');
                 for(let i = 0; i < this.arquivoImagem.length; i++){

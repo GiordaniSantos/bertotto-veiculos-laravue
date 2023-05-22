@@ -35,7 +35,7 @@
                             <div class="col-12 text-left">
                                 <p class="texto-black" v-if="veiculosDestaque[0].descricao">{{veiculosDestaque[0].descricao.slice(0, 840)}}</p>
                                 <br />
-                                <router-link :to="{name: 'ViewVeiculo', params: { id: veiculosDestaque[0].id }}" class="btn-padrao">Ver detalhes</router-link>
+                                <router-link :to="{name: 'ViewVeiculo', params: { id: veiculosDestaque[0].id, nome: formatarTituloParaLink(veiculosDestaque[0].nome)  }}" class="btn-padrao">Ver detalhes</router-link>
                             </div>
                         </div>   
                     </div>
@@ -51,7 +51,7 @@
                             <div class="col-12 text-right">
                                 <p class="texto-white" v-if="veiculosDestaque[1].descricao">{{veiculosDestaque[1].descricao.slice(0, 840)}}</p>
                                 <br />
-                                <router-link :to="{name: 'ViewVeiculo', params: { id: veiculosDestaque[1].id }}" class="btn-padrao btn-cor-branco">Ver detalhes</router-link>
+                                <router-link :to="{name: 'ViewVeiculo', params: { id: veiculosDestaque[1].id, nome: formatarTituloParaLink(veiculosDestaque[1].nome) }}" class="btn-padrao btn-cor-branco">Ver detalhes</router-link>
                             </div>
                         </div>   
                     </div>
@@ -89,7 +89,7 @@
                             <div class="col-12 text-left">
                                 <p class="texto-black" v-if="veiculosDestaque[2].descricao">{{veiculosDestaque[2].descricao.slice(0, 840)}}</p>
                                 <br />
-                                <router-link :to="{name: 'ViewVeiculo', params: { id: veiculosDestaque[2].id }}" class="btn-padrao">Ver detalhes</router-link>
+                                <router-link :to="{name: 'ViewVeiculo', params: { id: veiculosDestaque[2].id, nome: formatarTituloParaLink(veiculosDestaque[2].nome) }}" class="btn-padrao">Ver detalhes</router-link>
                             </div>
                         </div>   
                     </div>
@@ -147,7 +147,7 @@
                                             <div class="info">{{veiculo.ano_modelo}} - {{veiculo.km}}km</div>
                                             <div class="preco preco-titulo">R$ {{veiculo.preco}}</div>
                                             <br />
-                                            <router-link :to="{name: 'ViewVeiculo', params: { id: veiculo.id }}" class="btn-padrao">Ver detalhes</router-link>
+                                            <router-link :to="{name: 'ViewVeiculo', params: { id: veiculo.id, nome: formatarTituloParaLink(veiculo.nome) }}" class="btn-padrao">Ver detalhes</router-link>
                                         </div>
                                     </div>
                                 </div>
@@ -219,6 +219,9 @@ export default{
             },
         },  
         methods: {
+            formatarTituloParaLink(nome) {
+                return nome.normalize('NFD').replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[- ]+/g, "-").replace(/[. ]/g, "-");
+            },
             carregarListaDestaque(){
 
                 let url = this.urlBase + '/veiculos/destaque';

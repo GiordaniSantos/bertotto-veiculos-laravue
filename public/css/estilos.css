@@ -1688,3 +1688,14 @@ h3 {
 .btn-cor-branco{
   color: #fff !important;
 }
+
+.swal2-loader {
+  width: 5.2em !important;
+  height: 5.2em !important;
+  border-color: #ffc107 rgba(0,0,0,0) #ffc107 rgba(0,0,0,0) !important;
+}
+
+.swal2-popup {
+
+   background: none !important; 
+}

@@ -78,12 +78,17 @@
                                     </select>
                                 </input-container-component>
                             </div>
-                            <div class="col-6 form-group">
+                            <div class="col-3 form-group">
                                 <input-container-component titulo="Marca" id="marca" idHelp="marcaHelp">
                                     <select name="marca" id="marca" class="form-control" v-model="marca">
                                         <option> Selecione </option>
                                         <option :value="marca.id" v-for="marca in marcas" :key="marca.id"> {{marca.nome}} </option>
                                     </select>
+                                </input-container-component>
+                            </div>
+                            <div class="col-3 form-group">
+                                <input-container-component titulo="Data de Publicação" id="data" idHelp="dataHelp">
+                                    <input type="datetime-local" class="form-control" id="data" name="data_publicacao" v-model="data_publicacao">
                                 </input-container-component>
                             </div>
                         </div>
@@ -319,6 +324,7 @@
                 cambio: '',
                 marca: '',
                 descricao: '',
+                data_publicacao: '',
                 marcas: {},
                 arquivoImagem: [],
                 tipo_combustivel: '',
@@ -399,6 +405,7 @@
                 formData.append('cor', this.cor);
                 formData.append('cambio', this.cambio);
                 formData.append('marca_id', this.marca);
+                formData.append('data_publicacao', this.data_publicacao);
                 formData.append('tipo_combustivel', this.tipo_combustivel ? this.tipo_combustivel : '');
                 formData.append('descricao', this.descricao);
                 for(let i = 0; i < this.arquivoImagem.length; i++){

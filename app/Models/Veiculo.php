@@ -39,7 +39,9 @@ class Veiculo extends Model
         self::ELETRICO => 'Elétrico',
     ];
 
-    protected $fillable = ['nome','descricao', 'marca_id' ,'ano_modelo', 'preco', 'portas', 'cor', 'cambio', 'tipo_combustivel', 'aceita_troca', 'ipva_pago', 'licenciado', 'air_bag',
+    protected $dates = ['created_at', 'updated_at', 'data_publicacao'];
+
+    protected $fillable = ['nome','descricao', 'marca_id' ,'ano_modelo', 'data_publicacao', 'preco', 'portas', 'cor', 'cambio', 'tipo_combustivel', 'aceita_troca', 'ipva_pago', 'licenciado', 'air_bag',
      'air_bag_duplo', 'alarme', 'ar_condicionado_digital', 'banco_couro', 'banco_regulavel_altura', 'chave_reserva', 'computador_bordo', 'desembacador_traseiro',
         'direcao_eletrica', 'direcao_escamoteavel', 'direcao_multifuncional', 'farois_auxiliares', 'farois_led', 'freios_abs', 'interface', 'limpador_traseiro', 'manual_proprietario', 'porta_malas_eletrico'
         , 'retrovisor_eletrico', 'liga_leve', 'sensor_chuva', 'sensor_estacionamento', 'som_volante', 'som_original', 'teto_panoramico', 'teto_solar', 'travas_eletricas', 'vidros_eletricos', 'ativo', 'destaque', 'recomendado', 'km'
@@ -49,8 +51,14 @@ class Veiculo extends Model
         return [
             'nome' => 'required|max:350',
             'ano_modelo' => 'required|max:25',
-            'preco' => 'max:25',
-            'cor' => 'max:25',
+            'preco' => 'required|max:25',
+            'cor' => 'required|max:25',
+            'portas' => 'required',
+            'km' => 'required',
+            'cambio' => 'required',
+            'tipo_combustivel' => 'required',
+            'portas' => 'required',
+            'marca_id' => 'exists:marcas,id',
             'arquivo' => 'image'
         ];
     }
@@ -62,6 +70,7 @@ class Veiculo extends Model
             'ano_modelo.max' => 'O campo :attribute não pode ultrapassar 25 caracteres.',
             'preco.max' => 'O campo :attribute não pode ultrapassar 25 caracteres.',
             'cor.max' => 'O campo :attribute não pode ultrapassar 25 caracteres.',
+            'marca_id.exists' => 'A marca informada não existe!',
             'arquivo.image' => "Tipo não suportado, envie uma imagem ('jpg, jpeg, png...')"
         ];
     }
@@ -95,23 +104,8 @@ class Veiculo extends Model
         return $arquivos;
     }
 
-    public function getTituloUrl(){
-        $titulo_url = strtolower( preg_replace("[^a-zA-Z0-9-]", "-", 
-        strtr(utf8_decode(trim($this->nome)), utf8_decode("áàãâéêíóôõúüñçÁÀÃÂÉÊÍÓÔÕÚÜÑÇ"),
-        "aaaaeeiooouuncAAAAEEIOOOUUNC-")) );
-        $novoNome = str_replace(".", "-", $titulo_url);
-        $tituloUrl = strtolower($novoNome);
-
-        return preg_replace('/[ -]+/' , '-' , $tituloUrl);
-    }
-
     public function arquivos(){
         return $this->hasMany('App\Models\Arquivo');
-    }
-
-    public function getTipoCambioFormatado()
-    {
-        return isset(self::$tiposCambio[$this->cambio]) ? self::$tiposCambio[$this->cambio] : '';
     }
 
     public function marca(){

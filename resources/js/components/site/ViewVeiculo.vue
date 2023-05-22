@@ -8,7 +8,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-3">
+                <div class="col-3" v-if="veiculo.ano_modelo">
                     <div class="info-item">
                         <div class="info-item-icon">
                             <i class="fa-solid fa-calendar-days"></i>
@@ -18,12 +18,12 @@
                                 Ano
                             </div>
                             <div class="value">
-                                2010 / 2011
+                                {{ veiculo.ano_modelo }}
                             </div>
                         </div>
                     </div>
                 </div>  
-                <div class="col-3">
+                <div class="col-3" v-if="veiculo.km">
                     <div class="info-item">
                         <div class="info-item-icon">
                             <img :src="urlBaseImg+'/images/velocimetro-do-carro.png'" width="100%" alt="Indisponível" title="Indisponível" style="width: 100%;">
@@ -33,12 +33,12 @@
                                 Km
                             </div>
                             <div class="value">
-                                117.000
+                                {{ veiculo.km }}
                             </div>
                         </div>
                     </div>
                 </div>  
-                <div class="col-3">
+                <div class="col-3" v-if="veiculo.cambio">
                     <div class="info-item">
                         <div class="info-item-icon">
                             <img :src="urlBaseImg+'/images/cambio-de-marchas.png'" width="100%" alt="Indisponível" title="Indisponível" style="width: 100%;">
@@ -48,12 +48,12 @@
                                 Câmbio
                             </div>
                             <div class="value">
-                                Automático
+                                {{getCambioFormatado(veiculo.cambio)}}
                             </div>
                         </div>
                     </div>
                 </div>  
-                <div class="col-3">
+                <div class="col-3" v-if="veiculo.portas">
                     <div class="info-item">
                         <div class="info-item-icon">
                             <img :src="urlBaseImg+'/images/porta-do-carro.png'" width="100%" alt="Indisponível" title="Indisponível" style="width: 100%;">
@@ -63,7 +63,7 @@
                                 Portas
                             </div>
                             <div class="value">
-                                4
+                                {{ veiculo.portas }}
                             </div>
                         </div>
                     </div>
@@ -71,7 +71,7 @@
             </div>
             <br>
             <div class="row">
-                <div class="col-3">
+                <div class="col-3" v-if="veiculo.cor">
                     <div class="info-item">
                         <div class="info-item-icon">
                             <i class="fa-solid fa-fill-drip"></i>
@@ -81,12 +81,12 @@
                                 Cor
                             </div>
                             <div class="value">
-                                Vermelho
+                                {{ veiculo.cor }}
                             </div>
                         </div>
                     </div>
                 </div>  
-                <div class="col-3">
+                <div class="col-3" v-if="veiculo.tipo_combustivel">
                     <div class="info-item">
                         <div class="info-item-icon">
                             <i class="fa-solid fa-gas-pump"></i>
@@ -96,12 +96,12 @@
                                 Combustível
                             </div>
                             <div class="value">
-                                Flex
+                                {{ getTipoCombustivelFormatado(veiculo.tipo_combustivel) }}
                             </div>
                         </div>
                     </div>
                 </div>  
-                <div class="col-3">
+                <div class="col-3" v-if="veiculo.data_publicacao">
                     <div class="info-item">
                         <div class="info-item-icon">
                             <i class="fa-solid fa-calendar"></i>
@@ -111,12 +111,12 @@
                                 Data de Publicação
                             </div>
                             <div class="value">
-                                24/02/2023
+                                {{ formataData(veiculo.data_publicacao) }}
                             </div>
                         </div>
                     </div>
                 </div>  
-                <div class="col-3">
+                <div class="col-3" v-if="veiculo.aceita_troca">
                     <div class="info-item">
                         <div class="info-item-icon">
                             <i class="fa-solid fa-handshake"></i>
@@ -126,7 +126,7 @@
                                 Aceita Troca
                             </div>
                             <div class="value">
-                                Sim
+                                {{ veiculo.aceita_troca == 1 ? "Sim" : "Não" }}
                             </div>
                         </div>
                     </div>
@@ -135,7 +135,7 @@
         </div>
     </section>
     <br>
-    <Carousel :items-to-show="2.5" :wrap-around="true" v-if="veiculo.arquivos.length > 1">
+    <Carousel :items-to-show="2.5" :wrap-around="true" v-if="veiculo.arquivos && veiculo.arquivos.length > 1">
         <Slide v-for="arquivo, key in veiculo.arquivos" :key="key">
         <div class="carousel__item"><img :src="urlBaseImg+'/storage/uploads/veiculo/'+arquivo.id+'/'+arquivo.arquivo" class="imagem-view" width="100%" :alt="veiculo.nome" :title="veiculo.nome" ></div>
         </Slide>
@@ -144,7 +144,7 @@
         <Navigation />
         </template>
     </Carousel>
-    <div v-else>
+    <div v-else-if="veiculo.arquivos.lenght == 1">
         <div class="container">
             <img :src="urlBaseImg+'/storage/uploads/veiculo/'+veiculo.arquivos[0].id+'/'+veiculo.arquivos[0].arquivo" class="imagem-view" width="100%" :alt="veiculo.nome" :title="veiculo.nome" >
         </div>
@@ -156,46 +156,46 @@
         </div>
         <div>
             <ul class="list-opcionais">
-                <li>IPVA Pago</li>
-                <li>Licenciado</li>
-                <li>Air Bag</li>
-                <li>Air Bag Duplo</li>
-                <li>Alarme</li>
-                <li>Ar Condicionado Digital</li>
-                <li>Banco de Couro</li>
-                <li>Banco Regulagem Altura</li>
-                <li>Chave Reserva</li>
-                <li>Computador de Bordo</li>
-                <li>Desembaçador Traseiro</li>
-                <li>Direção Elétrica</li>
-                <li>Direção Escamoteável</li>
-                <li>Direção Multifuncional</li>
-                <li>Faróis Auxiliares</li>
-                <li>Faróis de Led</li>
-                <li>Freios ABS</li>
-                <li>Interface</li>
-                <li>Limpador Traseiro</li>
-                <li>Manual do Proprietário</li>
-                <li>Porta Malas Elétrico</li>
-                <li>Retrovisor Elétrico</li>
-                <li>Roda de Liga Leve</li>
-                <li>Sensor de Chuva</li>
-                <li>Sensor de Estacionamento</li>
-                <li>Som no Volante</li>
-                <li>Som Original</li>
-                <li>Teto Panorâmico</li>
-                <li>Teto Solar</li>
-                <li>Travas Elétricas</li>
-                <li>Vidros Elétricos</li>
+                <li v-if="veiculo.ipva_pago == 1">IPVA Pago</li>
+                <li v-if="veiculo.licenciado == 1">Licenciado</li>
+                <li v-if="veiculo.air_bag == 1">Air Bag</li>
+                <li v-if="veiculo.air_bag_duplo == 1">Air Bag Duplo</li>
+                <li v-if="veiculo.alarme == 1">Alarme</li>
+                <li v-if="veiculo.ar_condicionado_digital == 1">Ar Condicionado Digital</li>
+                <li v-if="veiculo.banco_couro == 1">Banco de Couro</li>
+                <li v-if="veiculo.banco_regulavel_altura">Banco Regulagem Altura</li>
+                <li v-if="veiculo.chave_reserva">Chave Reserva</li>
+                <li v-if="veiculo.computador_bordo">Computador de Bordo</li>
+                <li v-if="veiculo.desembacador_traseiro">Desembaçador Traseiro</li>
+                <li v-if="veiculo.direcao_eletrica">Direção Elétrica</li>
+                <li v-if="veiculo.direcao_escamoteavel">Direção Escamoteável</li>
+                <li v-if="veiculo.direcao_multifuncional">Direção Multifuncional</li>
+                <li v-if="veiculo.farois_auxiliares">Faróis Auxiliares</li>
+                <li v-if="veiculo.farois_led">Faróis de Led</li>
+                <li v-if="veiculo.freios_abs">Freios ABS</li>
+                <li v-if="veiculo.interface">Interface</li>
+                <li v-if="veiculo.limpador_traseiro">Limpador Traseiro</li>
+                <li v-if="veiculo.manual_proprietario">Manual do Proprietário</li>
+                <li v-if="veiculo.porta_malas_eletrico">Porta Malas Elétrico</li>
+                <li v-if="veiculo.retrovisor_eletrico">Retrovisor Elétrico</li>
+                <li v-if="veiculo.liga_leve">Roda de Liga Leve</li>
+                <li v-if="veiculo.sensor_chuva">Sensor de Chuva</li>
+                <li v-if="veiculo.sensor_estacionamento">Sensor de Estacionamento</li>
+                <li v-if="veiculo.som_volante">Som no Volante</li>
+                <li v-if="veiculo.som_original">Som Original</li>
+                <li v-if="veiculo.teto_panoramico">Teto Panorâmico</li>
+                <li v-if="veiculo.teto_solar">Teto Solar</li>
+                <li v-if="veiculo.travas_eletricas">Travas Elétricas</li>
+                <li v-if="veiculo.vidros_eletricos">Vidros Elétricos</li>
             </ul>
         </div>
         <br>
-        <div class="row">
+        <div class="row" v-if="veiculo.descricao">
             <div class="row">
                 <h2 class="titulo-opcionais">Descrição</h2>
             </div>
             <div class="col-12">
-                <p class="descricao-view">PEUGEOT 308 ALLURE 2.0 AUT ANO 2014 NA LINDA COR VERMELHO LUC, VERSÃO TOP DE LINHA, POSSUI AR CONDICIONADO DIGITAL DUAL ZONE, DIREÇÃO ELETRO-HIDRÁULICA ESCAMOTEÁVEL E MULTIFUNCIONAL, TETO SOLAR PANORÂMICO COM CORTINA ELÉTRICA, PILOTO AUTOMÁTICO, COMPUTADOR DE BORDO, ACENDIMENTO DO FAROL AUTOMÁTICO E ACIONAMENTO DO LIMPADOR DE PARABRISA AUTOMÁTICO, RÁDIO ORIGINAL COM COMANDOS NO VOLANTE, BANCOS EM COURO COM REGULAGEM DE ALTURA E APOIO DE BRAÇO INDIVIDUAL, ESPELHOS ELÉTRICOS, VIDROS ELÉTRICOS, TRAVAS ELÉTRICAS, PORTA-MALAS ELÉTRICO, ALARME ORIGINAL NA CHAVE CANIVETE COM INTERFACE, SENSOR DE ESTACIONAMENTO, RODAS DE LIGA LEVE ORIGINAIS ARO 17", FREIO À DISCO NAS 4 RODAS, FAROLETES, LEDS DIURNO, PISCA NOS ESPELHOS, MANUAL DO PROPRIETÁRIO, IPVA 2023 PG, PLACAS MERCOSUL, 104 MIL KM, PLACA I RS, SEM LEILÃO, NEM SINISTRO. TRABALHAMOS COM FINANCIAMENTO VIA BANCO EM ATÉ 60X, CONSIGNADO PARA APOSENTADOS E PENSIONISTAS DO INSS EM ATÉ 84X, PARCELAMOS SUA ENTRADA OU VALOR TOTAL NO CARTÃO DE CRÉDITO EM ATÉ 21X, UTILIZE ATÉ MESMO SEU FGTS, ACEITAMOS TROCAS POR CARRO OU MOTO MEDIANTE AVALIAÇÃO. SIMULAÇÃO APENAS COM CPF E DATA DE NASCIMENTO, PODENDO SER REALIZADA ATRAVÉS DO NOSSO WHATSAPP 51 998007554. AGUARDAMOS SEU CONTATO E SUA VISITA !</p>
+                <p class="descricao-view">{{ veiculo.descricao }}</p>
             </div>
         </div>
         <br><br>
@@ -248,6 +248,56 @@ export default{
                     .catch(errors => {
                         this.$swal("Oops...", "Algum erro aconteceu! " +errors.response.data.message, "error");
                     });
+            },
+            formataData(d){
+                if(!d) return ''
+
+                d = d.split('T');
+
+                let data = d[0];
+
+                data = data.split('-');
+
+                //formatando a data
+                data = data[2] + "/" + data[1] + "/" + data[0];
+
+                return data;
+            },
+            getCambioFormatado(cambio){
+                let cambioFormatado = '';
+                if(cambio == 1){
+                    cambioFormatado = 'Câmbio Manual';
+                }else if(cambio == 2){
+                    cambioFormatado = 'Câmbio Automático';
+                }else if(cambio == 3) {
+                    cambioFormatado = 'Câmbio Automático CVT';
+                } else {
+                    cambioFormatado = '';
+                }
+                return cambioFormatado;
+            },
+            getTipoCombustivelFormatado(combustivel){
+                let combustivelFormatado = '';
+                if(combustivel == 4){
+                    combustivelFormatado = 'Flex';
+                }else if(combustivel == 5){
+                    combustivelFormatado = 'Diesel';
+                }else if(combustivel == 6) {
+                    combustivelFormatado = 'Gasolina';
+                } else if(combustivel == 7) {
+                    combustivelFormatado = 'GNV e Flex';
+                } else if(combustivel == 8) {
+                    combustivelFormatado = 'GNV e Gasolina';
+                } else if(combustivel == 9) {
+                    combustivelFormatado = 'Alcool';
+                } else if(combustivel == 10) {
+                    combustivelFormatado = 'GNV e Alcool';
+                } else if(combustivel == 11) {
+                    combustivelFormatado = 'Elétrico';
+                } else {
+                    combustivelFormatado = '';
+                }
+                return combustivelFormatado;
             },
         },
         created() {

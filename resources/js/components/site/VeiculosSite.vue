@@ -22,7 +22,7 @@
                                         <div class="info">{{veiculo.ano_modelo}} - {{veiculo.km}}km</div>
                                         <div class="preco preco-titulo">R$ {{veiculo.preco}}</div>
                                         <br />
-                                        <router-link :to="{name: 'ViewVeiculo', params: { id: veiculo.id }}" class="btn-padrao">Ver detalhes</router-link>
+                                        <router-link :to="{name: 'ViewVeiculo', params: { id: veiculo.id, nome: formatarTituloParaLink(veiculo.nome) }}" class="btn-padrao">Ver detalhes</router-link>
                                     </div>
                                 </div>
                             </div>
@@ -77,6 +77,9 @@
             }
         },
         methods: {
+            formatarTituloParaLink(nome) {
+                return nome.normalize('NFD').replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[- ]+/g, "-").replace(/[. ]/g, "-");
+            },
             pesquisar(){
                 let filtro = '';
                 for(let chave in this.busca){
