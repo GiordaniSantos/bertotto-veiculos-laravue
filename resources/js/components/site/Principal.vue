@@ -226,7 +226,12 @@ export default{
 
                 let url = this.urlBase + '/veiculos/destaque';
 
-                this.$swal.showLoading();
+                this.$swal({title: 'Carregando',
+                    allowEscapeKey: false,
+                    allowOutsideClick: false,
+                    onOpen: () => {
+                    swal.showLoading();
+                }});
 
                 axios.get(url)
                     .then(response => {
@@ -269,6 +274,7 @@ export default{
                 },
         },
         mounted() {
+            document.title = "Bertotto Veículos";
             this.carregarBanners();
             this.carregarListaDestaque();
             this.carregarListaRecomendado();

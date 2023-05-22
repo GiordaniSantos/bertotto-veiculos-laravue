@@ -31,5 +31,17 @@
 </template>
 
 <script>
+    export default{
+        data(){
+            return {
+                urlBase: 'http://localhost:8000/api/v1/site',
+            }
+        },
+        methods: {
 
+        },
+        mounted() {
+            document.title = "Contato";
+        },
+    }
 </script>

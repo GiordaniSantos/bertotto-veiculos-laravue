@@ -123,6 +123,7 @@
             },
         },
         mounted() {
+            document.title = "Estoque de Veículos";
             this.carregarListaVeiculos();
         },
     }

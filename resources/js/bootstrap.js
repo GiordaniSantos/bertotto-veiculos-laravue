@@ -38,6 +38,8 @@ axios.interceptors.request.use(
         //definir para todas as requisições os parametros de accept e authorization
         config.headers.Accept = 'application/json';
 
+        if(document.cookie.indexOf("token=") < 0){
+        }else{
         //pegando o token JWT do cookie
         let token = document.cookie.split(';').find(indice => {
             return indice.includes('token=');
@@ -47,6 +49,7 @@ axios.interceptors.request.use(
         token = 'Bearer ' + token;
 
         config.headers.Authorization = token;
+        }
 
         return config;
     },

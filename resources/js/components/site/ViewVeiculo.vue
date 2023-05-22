@@ -242,12 +242,14 @@ export default{
                 axios.get(url)
                     .then(response => {
                         this.veiculo  = response.data;
+                        document.title = this.veiculo.nome + "- Bertotto Veículos";
                         this.$swal.close();
-                        console.log(this.veiculo.arquivos);
                     })
                     .catch(errors => {
                         this.$swal("Oops...", "Algum erro aconteceu! " +errors.response.data.message, "error");
                     });
+
+            
             },
             formataData(d){
                 if(!d) return ''
@@ -300,8 +302,13 @@ export default{
                 return combustivelFormatado;
             },
         },
-        created() {
+        mounted() {
             this.carregarListaVeiculos();
+            console.log(this.veiculo)
+
+        },
+        created() {
+
         },
     }
 </script>
