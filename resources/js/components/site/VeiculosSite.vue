@@ -7,7 +7,7 @@
                         Veículos em Estoque
                         <span></span>
                     </div>
-                    <div class="row">
+                    <div class="row" v-if="veiculos.data">
                         <div v-for="veiculo, key in veiculos.data" :key="key" class="col-12 col-md-3 marginB-resp">
                             <div class="padding10">
                                 <div class="box-veiculo">
@@ -35,6 +35,10 @@
                             </paginate-component>
                         </div>
                     </div>
+                    <div v-if="veiculos.data.length == 0">
+                        <br><br><br>
+                        <h3 class="text-center">Nenhum resultado foi encontrado.</h3>
+                    </div>
                     <br /><br />
                 </div>
                 <!--FILTRO LATERAL-->
@@ -43,14 +47,27 @@
                         <strong>Filtros</strong>
                         <hr />
                         <div class="mb-3"> 
-                            <input type="text" placeholder="Nome do Veículo..." class="form-control" v-model="busca.nome" style="width: 100%;">
+                            <label for="nome">Nome do Veículo</label>
+                            <input type="text" id="nome" class="form-control" v-model="busca.nome" style="width: 100%;">
                         </div>
                         <div class="mb-3"> 
-                            <select name="marca" id="marca" class="form-control">
-                                <option> Selecione a marca </option>
-                                <option value="1"> Volkswagen </option>
-                                <option value="2"> Chevrolet </option>
-                                <option value="3"> Renault </option>
+                            <label for="marca">Selecione a marca</label>
+                            <select name="marca" id="marca" class="form-control" v-model="busca.marca_id">
+                                <option :value="marca.id" v-for="marca in marcas" :key="marca.id"> {{marca.nome}} </option>
+                            </select>
+                        </div>
+                        <div class="mb-3"> 
+                            <label for="combustivel">Selecione o tipo de Combustível</label>
+                            <select name="combustivel" id="combustivel" class="form-control" v-model="busca.tipo_combustivel">
+                                <option value="4"> Flex </option>
+                                <option value="5"> Diesel </option>
+                                <option value="6"> Gasolina </option>
+                                <option value="7"> GNV e Flex </option>
+                                <option value="8"> GNV e Gasolina </option>
+                                <option value="10"> GNV e Álcool </option>
+                                <option value="9"> Álcool </option>
+                                <option value="10"> GNV e Álcool </option>
+                                <option value="11"> Elétrico </option>
                             </select>
                         </div>
                         <button class="btn-busca" @click="pesquisar()">Buscar</button>
@@ -73,7 +90,8 @@
                 veiculos: {},
                 urlPaginacao: '',
                 urlFiltro: '',
-                busca: { nome:'' }
+                marcas: {},
+                busca: { nome:'', marca_id:'', tipo_combustivel: '' }
             }
         },
         methods: {
@@ -87,7 +105,7 @@
                         if(filtro != ''){
                             filtro += ';';
                         }
-                        filtro += chave + ':like:' + this.busca[chave];
+                        filtro += chave + ':like:%' + this.busca[chave]+'%';
                     }
                 }
                 if(filtro != ''){
@@ -110,21 +128,37 @@
                 let url = this.urlBase + '/veiculos/lista' + '?' +this.urlPaginacao + this.urlFiltro;
 
                 this.$swal.showLoading();
-
+                console.log(url)
                 axios.get(url)
                     .then(response => {
                         this.veiculos  = response.data;
                         this.$swal.close();
-                        console.log(this.veiculos);
                     })
                     .catch(errors => {
                         this.$swal("Oops...", "Algum erro aconteceu! " +errors.response.data.message, "error");
+                    });
+            },
+            carregarMarcas(){
+
+                let url = this.urlBase + '/marcas/lista';
+
+                this.$swal.showLoading();
+
+                axios.get(url)
+                    .then(response => {
+                        this.marcas  = response.data;
+                        this.$swal.close();
+                        console.log(this.marcas)
+                    })
+                    .catch(errors => {
+                        this.$swal("Oops...", "Algum erro aconteceu! " +errors.response, "error");
                     });
             },
         },
         mounted() {
             document.title = "Estoque de Veículos";
             this.carregarListaVeiculos();
+            this.carregarMarcas();
         },
     }
 </script>

@@ -291,7 +291,6 @@
                                             <tr>
                                                 <th>Arquivo</th>
                                                 <th>Nome</th>
-                                                <th>Posição</th>
                                                 <th></th>
                                             </tr>
                                         </thead>
@@ -299,12 +298,6 @@
                                             <tr v-for="(imagem,key) in imagensVeiculoBuscado" :key="key">
                                                 <td><a :href="urlBaseImg+'/storage/uploads/veiculo/'+imagem.id+'/'+imagem.arquivo" target="_blank"><img :src="urlBaseImg+'/storage/uploads/veiculo/'+imagem.id+'/'+imagem.arquivo" alt="Veiculo" style="width: 100%;"></a></td>
                                                 <th>{{ imagem.nome_original  }}</th>
-                                                <th>
-                                                    <input-container-component id="posicao" idHelp="posicaoHelp" >
-                                                        <input type="number" id="posicao" name="posicao" aria-describedby="posicaoHelp" v-model="posicao">
-                                                    </input-container-component>
-                                                    <button type="button" class="btn btn-success button-submit" @click="atualizarArquivo(imagem.id)"><i class="fa-solid fa-pen"></i></button>
-                                                </th>
                                                 <th><button type="button" class="btn btn-danger" @click="deletarArquivo(imagem.id)"><i class="fa-solid fa-trash"></i></button></th>
                                             </tr>
                                         </tbody>
@@ -440,7 +433,6 @@
                                                 <tr>
                                                     <th>Arquivo</th>
                                                     <th>Nome</th>
-                                                    <th>Posição</th>
                                                     <th></th>
                                                 </tr>
                                             </thead>
@@ -448,12 +440,6 @@
                                                 <tr v-for="(imagem,key) in imagensVeiculoBuscado" :key="key">
                                                     <td><a :href="urlBaseImg+'/storage/uploads/veiculo/'+imagem.id+'/'+imagem.arquivo" target="_blank"><img :src="urlBaseImg+'/storage/uploads/veiculo/'+imagem.id+'/'+imagem.arquivo" alt="Veiculo" style="width: 100%;"></a></td>
                                                     <th>{{ imagem.nome_original  }}</th>
-                                                    <th>
-                                                        <input-container-component id="posicao" idHelp="posicaoHelp" >
-                                                            <input type="number" id="posicao" name="posicao" aria-describedby="posicaoHelp" v-model="posicao">
-                                                        </input-container-component>
-                                                        <button type="button" class="btn btn-success button-submit" @click="atualizarArquivo(imagem.id)"><i class="fa-solid fa-pen"></i></button>
-                                                    </th>
                                                     <th><button type="button" class="btn btn-danger" @click="deletarArquivo(imagem.id)"><i class="fa-solid fa-trash"></i></button></th>
                                                 </tr>
                                             </tbody>
@@ -663,7 +649,6 @@ export default{
                 imagensVeiculoBuscado: [],
                 arquivoImagem: [],
                 nome: '',
-                posicao: 0,
                 veiculos: { data: [] },
                 veiculoBuscado: { },
                 marcas: {},

@@ -50,9 +50,6 @@
                             <li class="nav-item">
                                 <a href="{{ route('admin.contato') }}" class="nav-link">Contatos</a>
                             </li>
-                            <li class="nav-item">
-                                <a href="{{ route('admin.configuracao.edit') }}" class="nav-link">Configuração</a>
-                            </li>
                         @endauth
                     </ul>
 
@@ -78,6 +75,9 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('admin.configuracao.edit') }}">
+                                        {{ __('Configurações') }}
+                                    </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

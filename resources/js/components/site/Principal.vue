@@ -95,13 +95,13 @@
                     </div>
                 </div>   
             </section>
-            <section class="padding10 bg-fundo-dark " :class="border">
+            <section class="padding5 bg-fundo-dark " :class="border">
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-12 col-md-12">
                             <div class="d-flex ">
                                 <p class="texto-white line-height30">Siga nossas Redes Sociais</p>
-                                <div style="margin-left: 30px;"> 
+                                <div style="margin-left: 30px;line-height: 25px;"> 
                                     <a href="" target="_blank" class="midia-footer">
                                         <img :src="urlBaseImg+'/images/facebook.png'" alt="Facebook" width="24" class="midia-topo">
                                     </a>
@@ -182,6 +182,9 @@
     </section>
     <div class="row">
         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3460.8457791442443!2d-51.12890152351193!3d-29.83987302182192!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95196ff6686714df%3A0x2cc1eae54f3d005f!2sBertotto%20Ve%C3%ADculos!5e0!3m2!1spt-BR!2sbr!4v1683158378770!5m2!1spt-BR!2sbr" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+    <div v-if="banners.lenght == 0">
+        <h3>teste</h3>
     </div>
 </template>
 

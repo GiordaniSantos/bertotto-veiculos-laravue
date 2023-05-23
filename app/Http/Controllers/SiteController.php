@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Veiculo;
 use App\Models\Banner;
+use App\Models\Marca;
 use App\Repositories\VeiculoRepository;
 
 class SiteController extends Controller
@@ -17,6 +18,12 @@ class SiteController extends Controller
         $veiculosDestaques = Veiculo::select('id', 'nome', 'descricao')->orderBy('id','desc')->with('arquivos')->where('ativo', 1)->where('destaque', 1)->take(3)->get()->all();
 
         return response()->json($veiculosDestaques, 200);
+    }
+
+    public function marcas(){
+        $marcas = Marca::orderBy('nome','asc')->get()->all();
+
+        return response()->json($marcas, 200);
     }
 
     public function banner(){
