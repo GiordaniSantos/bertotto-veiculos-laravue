@@ -8,11 +8,45 @@
                 </div>
                 <br>
                 <p>
-                Para entrar em contato conosco, envie um e-mail para contato@ipss.org.br ou preencha o formulário abaixo.
+                Para entrar em contato conosco, envie um e-mail para bertotto.veic@gmail.com ou preencha o formulário abaixo.
                 </p>
                 <div class="row">
                     <div class="col-md-8 col-sm-12 col-xs-12">
-                        <form-site-component></form-site-component>
+                        <div class="box-formulario" style="padding: 0px 0px 15px 0px;">        
+        
+                            <div class="formulario">
+                        
+                                <form action="#" method="post">
+                                        
+                                    <span>
+                                        <input type="text" class="input" id="nome" name="nome" placeholder="Nome" autocomplete="off" required=""/>
+                                        <label for="nome"> <i class="fa-solid fa-user"></i> </label>
+                                    </span>
+                        
+                                    <span>
+                                        <input type="text" class="input" id="email" name="email" placeholder="E-mail" autocomplete="off" required=""/>
+                                        <label for="email"> <i class="fa-solid fa-envelope"></i> </label>
+                                    </span>
+                        
+                                    <span>
+                                        <input type="text" class="input" id="assunto" name="assunto" placeholder="Assunto" autocomplete="off" required=""/>
+                                        <label for="assunto"> <i class="fa-solid fa-phone"></i> </label>
+                                    </span>
+                        
+                                    <span>
+                                        <textarea type="text" class="textarea" id="mensagem" name="mensagem" rows="3" placeholder="Mensagem" autocomplete="off" required=""></textarea>
+                                        <label for="mensagem"> <i class="fa-solid fa-comment"></i> </label>
+                                    </span>
+                        
+                                    <div class="box-pulse">
+                                        <button type="submit" class="botao-pulse"><i class="fa-solid fa-share"></i> Enviar</button>
+                                    </div>
+                        
+                                </form>
+                        
+                            </div>
+                        
+                        </div>
                     </div>
                 </div>
             </div>

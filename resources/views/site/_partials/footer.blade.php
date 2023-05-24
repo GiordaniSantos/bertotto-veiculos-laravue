@@ -13,11 +13,11 @@
                 <h5 style="margin-bottom: 23px;">Contatos</h5>
                 <dl class="list-contatos" style="margin-bottom: 0;">
                     <dt class="cor-texto-endereco" style="margin-right: 7px;">Telefone:</dt>
-                    <dd><a href="" class="link-contato">519848421684</a></dd>
+                    <dd><a href="" class="link-contato">51 9800-7554</a></dd>
                 </dl>
                 <dl class="list-contatos">
                     <dt class="cor-texto-endereco" style="margin-right: 7px;">Email:</dt>
-                    <dd><a href="" class="link-contato">bertotto@gmail.com</a></dd>
+                    <dd><a href="" class="link-contato">bertotto.veic@gmail.com</a></dd>
                 </dl>
                 <ul class="list-inline list-contatos">
                     <li><a href="" ><img src="{{url('/')}}/images/facebook.png" alt="Facebook" width="44" class="efeito-midia"></a></li>
