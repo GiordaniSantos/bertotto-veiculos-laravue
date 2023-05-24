@@ -14,7 +14,6 @@
                                 Dúvidas, envie mensagem (51) 98421-9721.</p>
                             </div>
                         </div>
-                        apresentar alguns indicadores teste
                     </div>
                 </div>
             </div>
