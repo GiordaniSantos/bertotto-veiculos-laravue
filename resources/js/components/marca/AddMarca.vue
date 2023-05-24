@@ -30,7 +30,7 @@
     export default{
         data(){
             return {
-                urlBase: 'http://localhost:8000/api/v1/marca',
+                urlBase: '',
                 nome: '',
             }
         }, 
@@ -44,10 +44,9 @@
                         'Content-Type': 'multipart/form-data',
                     }
                 }
-
+                
                 axios.post(this.urlBase, formData, config)
                     .then(response => {
-                        console.log(response)
                         this.$swal("Sucesso", "Registro cadastrado com sucesso!", "success");
                     })  
                     .catch(errors => {
@@ -55,6 +54,9 @@
                         this.$swal("Oops...", "Algum erro aconteceu! " +errors.response.data.message, "error");
                     })
             }
+        },
+        mounted(){
+            this.urlBase = import.meta.env.VITE_API_URL + "/marca";
         }
     }
 </script>

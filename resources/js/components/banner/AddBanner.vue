@@ -72,7 +72,7 @@
     export default{
         data(){
             return {
-                urlBase: 'http://localhost:8000/api/v1/banner',
+                urlBase: '',
                 titulo: '',
                 link: '',
                 arquivoImagem: [],
@@ -110,6 +110,9 @@
             carregarImagem(e) {
                 this.arquivoImagem = e.target.files
             },
+        },
+        mounted(){
+            this.urlBase = import.meta.env.VITE_API_URL + "/banner";
         }
     }
 </script>

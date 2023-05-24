@@ -642,8 +642,10 @@
 export default{
         data(){
             return {
-                urlBase: 'http://localhost:8000/api/v1/veiculo',
-                urlBaseImg: 'http://localhost:8000',
+                urlBase: '',
+                urlBaseImg: '',
+                urlMarcas: '',
+                urlExcluirArquivo: '',
                 urlPaginacao: '',
                 urlFiltro: '',
                 imagensVeiculoBuscado: [],
@@ -788,11 +790,9 @@ export default{
             },
             carregarMarcas(){
 
-                let url = 'http://localhost:8000/api/v1/marca';
-
                 this.$swal.showLoading();
 
-                axios.get(url)
+                axios.get(this.urlMarcas)
                     .then(response => {
                         this.marcas  = response.data;
                         this.$swal.close();
@@ -988,7 +988,7 @@ export default{
                 let formData = new FormData();
                 formData.append('_method', 'delete');
 
-                let url = 'http://localhost:8000/api/v1/arquivo/excluir/' + id + "/veiculo";
+                let url = this.urlExcluirArquivo + id + "/veiculo";
                 this.$swal({
                     title: 'Tem certeza que deseja excluir este arquivo?',
                     showConfirmButton: true,
@@ -1021,6 +1021,10 @@ export default{
             },
         },
         mounted() {
+            this.urlBase = import.meta.env.VITE_API_URL + "/veiculo";
+            this.urlMarcas = import.meta.env.VITE_API_URL + "/marca";
+            this.urlExcluirArquivo = import.meta.env.VITE_API_URL + "/arquivo/excluir/";
+            this.urlBaseImg = import.meta.env.VITE_URL_BASE_IMG;
             this.carregarLista();
         }
     }

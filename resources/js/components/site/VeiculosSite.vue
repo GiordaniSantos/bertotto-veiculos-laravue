@@ -85,8 +85,8 @@
     export default{
         data(){
             return {
-                urlBase: 'http://localhost:8000/api/v1/site',
-                urlBaseImg: 'http://localhost:8000',
+                urlBase: '',
+                urlBaseImg: '',
                 veiculos: {},
                 urlPaginacao: '',
                 urlFiltro: '',
@@ -156,6 +156,8 @@
             },
         },
         mounted() {
+            this.urlBase = import.meta.env.VITE_API_URL_SITE;
+            this.urlBaseImg = import.meta.env.VITE_URL_BASE_IMG;
             document.title = "Estoque de Veículos";
             this.carregarListaVeiculos();
             this.carregarMarcas();

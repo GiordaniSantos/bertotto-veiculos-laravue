@@ -222,8 +222,8 @@ export default{
         },
         data(){
             return {
-                urlBase: 'http://localhost:8000/api/v1/site',
-                urlBaseImg: 'http://localhost:8000',
+                urlBase: '',
+                urlBaseImg: '',
                 veiculo: {},
                 currentSlide: 0,
             }
@@ -303,6 +303,8 @@ export default{
             },
         },
         mounted() {
+            this.urlBase = import.meta.env.VITE_API_URL_SITE;
+            this.urlBaseImg = import.meta.env.VITE_URL_BASE_IMG;
             this.carregarListaVeiculos();
             console.log(this.veiculo)
 

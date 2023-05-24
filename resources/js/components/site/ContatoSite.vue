@@ -34,13 +34,14 @@
     export default{
         data(){
             return {
-                urlBase: 'http://localhost:8000/api/v1/site',
+                urlBase: '',
             }
         },
         methods: {
 
         },
         mounted() {
+            this.urlBase = import.meta.env.VITE_API_URL_SITE;
             document.title = "Contato";
         },
     }

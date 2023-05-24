@@ -222,8 +222,9 @@
 export default{
         data(){
             return {
-                urlBase: 'http://localhost:8000/api/v1/banner',
-                urlBaseImg: 'http://localhost:8000',
+                urlBase: '',
+                urlBaseImg: '',
+                urlExcluirArquivo: '',
                 urlPaginacao: '',
                 urlFiltro: '',
                 imagemBannerBuscado: {},
@@ -423,7 +424,7 @@ export default{
                 let formData = new FormData();
                 formData.append('_method', 'delete');
 
-                let url = 'http://localhost:8000/api/v1/arquivo/excluir/' + id + "/banner";
+                let url = this.urlExcluirArquivo + id + "/banner";
                 console.log(url);
                 this.$swal({
                     title: 'Tem certeza que deseja excluir este arquivo?',
@@ -458,6 +459,9 @@ export default{
             },
         },
         mounted() {
+            this.urlBase = import.meta.env.VITE_API_URL + "/banner";
+            this.urlBaseImg = import.meta.env.VITE_URL_BASE_IMG;
+            this.urlExcluirArquivo = import.meta.env.VITE_API_URL + "/arquivo/excluir/";
             this.carregarLista();
         }
     }

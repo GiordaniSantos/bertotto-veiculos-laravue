@@ -11,7 +11,6 @@
                                 <input-container-component titulo="Nome" id="novoNome" idHelp="novoNomeHelp" texto-ajuda="Informe o nome do contato">
                                     <input type="text" class="form-control" id="novoNome" aria-describedby="novoNomeHelp" placeholder="Nome do Contato" v-model="nome">
                                 </input-container-component>
-                                {{ nome }}
                             </div>
                         </div>
                         <div class="row">
@@ -19,7 +18,6 @@
                                 <input-container-component titulo="Email" id="novoEmail" idHelp="novoEmailHelp" texto-ajuda="Informe o email do contato">
                                     <input type="text" class="form-control" id="novoEmail" aria-describedby="novoEmailHelp" placeholder="Email do Contato" v-model="email">
                                 </input-container-component>
-                                {{ email }}
                             </div>
                             <div class="col-6 form-group">
                                 <input-container-component titulo="Telefone" id="telefone" idHelp="telefoneHelp" texto-ajuda="Informe o telefone do contato">
@@ -32,7 +30,6 @@
                                 <input-container-component titulo="Mensagem" id="mensagem" idHelp="mensagemHelp" texto-ajuda="Informe o mensagem do contato">
                                     <textarea name="mensagem" class="form-control" placeholder="Mensagem" id="mensagem" aria-describedby="mensagemHelp" style="width: 100% !important;" rows="4" cols="50" v-model="mensagem"></textarea>
                                 </input-container-component>
-                                {{ mensagem }}
                             </div>
                         </div>
                         <div class="row">
@@ -40,7 +37,6 @@
                                 <input-container-component titulo="Ativo" id="ativo" idHelp="ativoHelp" >
                                     <input type="checkbox" id="ativo" name="ativo" aria-describedby="ativoHelp" v-model="ativo">
                                 </input-container-component>
-                                {{ ativo }}
                             </div>
                         </div>
                         <div class="row">
@@ -57,7 +53,6 @@
                                         <option value="2"> Respondido </option>
                                     </select>
                                 </input-container-component>
-                                {{ status }}
                             </div>
                         </div>
                     </template>
@@ -77,7 +72,7 @@
     export default{
         data(){
             return {
-                urlBase: 'http://localhost:8000/api/v1/contato',
+                urlBase: '',
                 nome: '',
                 email: '',
                 telefone: '',
@@ -114,6 +109,9 @@
                         this.$swal("Oops...", "Algum erro aconteceu! " +errors.response.data.message, "error");
                     })
             }
+        },
+        mounted() {
+            this.urlBase = import.meta.env.VITE_API_URL + "/contato";
         }
     }
 </script>

@@ -115,7 +115,7 @@
 export default{
         data(){
             return {
-                urlBase: 'http://localhost:8000/api/v1/marca',
+                urlBase: '',
                 urlPaginacao: '',
                 urlFiltro: '',
                 nome: '',
@@ -146,7 +146,7 @@ export default{
             carregarLista(){
 
                 let url = this.urlBase + '?' +this.urlPaginacao + this.urlFiltro;
-
+                console.log(this.urlBase)
                 this.$swal.showLoading();
 
                 axios.get(url)
@@ -240,6 +240,7 @@ export default{
             },
         },
         mounted() {
+            this.urlBase = import.meta.env.VITE_API_URL + "/marca";
             this.carregarLista();
         }
     }

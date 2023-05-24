@@ -314,7 +314,8 @@
     export default{
         data(){
             return {
-                urlBase: 'http://localhost:8000/api/v1/veiculo',
+                urlBase: '',
+                urlMarcas: '',
                 nome: '',
                 ano_modelo: '',
                 preco: '',
@@ -381,11 +382,9 @@
         methods: {
             carregarMarcas(){
 
-                let url = 'http://localhost:8000/api/v1/marca';
-
                 this.$swal.showLoading();
 
-                axios.get(url)
+                axios.get(this.urlMarcas)
                     .then(response => {
                         this.marcas  = response.data;
                         this.$swal.close();
@@ -470,6 +469,8 @@
             },
         },
         mounted() {
+            this.urlBase = import.meta.env.VITE_API_URL + "/veiculo";
+            this.urlMarcas = import.meta.env.VITE_API_URL + "/marca";
             this.carregarMarcas();
         }
     }

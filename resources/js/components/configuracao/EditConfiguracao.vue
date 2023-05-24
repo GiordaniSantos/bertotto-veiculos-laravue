@@ -104,7 +104,7 @@
         
         data(){
             return {
-                urlBase: 'http://localhost:8000/api/v1/configuracao/1',
+                urlBase: '',
                 nome: '',
                 endereco: '',
                 telefone: '',
@@ -174,6 +174,7 @@
             },
         },
         mounted() {
+            this.urlBase = import.meta.env.VITE_API_URL + "/configuracao/1";
             this.findConfiguracao();
         }
     }

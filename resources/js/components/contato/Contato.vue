@@ -221,7 +221,7 @@
 export default{
         data(){
             return {
-                urlBase: 'http://localhost:8000/api/v1/contato',
+                urlBase: '',
                 urlPaginacao: '',
                 urlFiltro: '',
                 nome: '',
@@ -396,6 +396,7 @@ export default{
             }
         },
         mounted() {
+            this.urlBase = import.meta.env.VITE_API_URL + "/contato";
             this.carregarLista();
         }
     }

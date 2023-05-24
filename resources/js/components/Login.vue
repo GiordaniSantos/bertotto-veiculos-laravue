@@ -67,13 +67,13 @@
             return {
                 email: '',
                 password: '',
-                urlBaseImg: 'http://localhost:8000',
+                urlBaseImg: '',
+                urlBase: ''
             }
         },
         methods:  {
             login(e) {
 
-                let url = 'http://localhost:8000/api/login';
                 let configuracao = {
                     method: 'post',
                     body: new URLSearchParams({
@@ -82,7 +82,7 @@
                     })
                 };
 
-                fetch(url, configuracao)
+                fetch(this.urlBase, configuracao)
                     .then(response => response.json())
                     .then(data => {
                         if(data.token){
@@ -94,6 +94,10 @@
                     });
                 
             }
+        },
+        mounted() {
+            this.urlBase = import.meta.env.VITE_URL_BASE_IMG + "/api/login";
+            this.urlBaseImg = import.meta.env.VITE_URL_BASE_IMG;
         }
     }
 </script>
