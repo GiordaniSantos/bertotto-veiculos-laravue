@@ -1,7 +1,7 @@
 <footer>
     <div class="row container-fluid borda-top">
-        <div class="justify-content-beetween">
-            <div class="col-sm-4 col-lg-3 col-xl-3">
+
+            <div class="col-12 col-sm-4 col-lg-4 col-xl-4 endereco-footer-responsivo paddingFooterL">
                 <h5 style="margin-bottom: 35px;">Endereço</h5>
                 <ul class="list-inline">
                     <li class="cor-texto-endereco">Av. Coronel Theodomiro Porto da Fonseca, 2009</li>
@@ -9,7 +9,7 @@
                     <li class="cor-texto-endereco">Sapucaia do Sul - RS, 93230-440</li>
                 </ul>
             </div>
-            <div class="col-sm-4 col-lg-3 col-xl-3">
+            <div class="col-12 col-sm-4 col-lg-4 col-xl-4 contatos-footer-responsivo paddingFooterL">
                 <h5 style="margin-bottom: 23px;">Contatos</h5>
                 <dl class="list-contatos" style="margin-bottom: 0;">
                     <dt class="cor-texto-endereco" style="margin-right: 7px;">Telefone:</dt>
@@ -20,14 +20,13 @@
                     <dd><a href="" class="link-contato">bertotto.veic@gmail.com</a></dd>
                 </dl>
                 <ul class="list-inline list-contatos">
-                    <li><a href="" ><img src="{{url('/')}}/images/facebook.png" alt="Facebook" width="44" class="efeito-midia"></a></li>
-                    <li><a href=""><img src="{{url('/')}}/images/instagram.png" alt="Facebook" width="44" class="efeito-midia"></a></li>
+                    <li><a href="" ><img src="{{url('/')}}/images/facebook.png" alt="Facebook" class="img-midia-footer efeito-midia" width="44" class="efeito-midia"></a></li>
+                    <li><a href=""><img src="{{url('/')}}/images/instagram.png" alt="Facebook" class="img-midia-footer efeito-midia" width="44" class="efeito-midia"></a></li>
                 </ul>
             </div>
-            <div class="col-sm-4 col-lg-3 col-xl-3">
-                <img src="{{url('/')}}/images/logo2.png" height="188px" alt="BV" style="height: 188px;">
+            <div class="col-12 col-sm-4 col-lg-4 col-xl-4 img-logo-footer-responsivo paddingFooterL">
+                <img src="{{url('/')}}/images/logo2.png" class="img-logo-footer" height="188px" alt="BV" style="height: 188px;">
             </div>
-        </div>
     </div>
     <div>
     <div class="footer-2 rodape-resp">

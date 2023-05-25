@@ -142,6 +142,10 @@ a.desc:after {
   margin-top: 40px;
 }
 
+.paddingFooterL{
+  padding-left: 80px !important;
+}
+
 
 /* style breadcrumb widget as in previous bootstrap versions */
 .breadcrumb {
