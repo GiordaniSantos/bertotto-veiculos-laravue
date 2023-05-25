@@ -14,9 +14,9 @@
         font-size: 12px !important;
     }
     #logo-menu img {
-        left: -45px;
-        height: 110px;
-        top: 10px;
+        left: -132px;
+        height: 140px;
+        top: 0px;
     }
     footer #nome-observatorio{
         border-right: none;
@@ -80,6 +80,10 @@
     .margin-midiasT{
         margin-right: 30px !important;
     }
+    .banner-capa{
+        width: 100%;
+        height: 160px;
+    }
 }
 
 
@@ -100,7 +104,9 @@
         font-size: 15px !important;
     }
     #logo-menu img {
-        left: -40px;
+        left: -140px;
+        height: 155px;
+        top: -7px;
     }
     footer #nome-observatorio{
         border-right: none;
@@ -159,6 +165,10 @@
     .margin-midiasT{
         margin-right: 35px !important;
     }
+    .banner-capa{
+        width: 100%;
+        height: 180px;
+    }
 }
 
 
@@ -179,7 +189,9 @@
         font-size: 18px !important;
     }
     #logo-menu img {
-        left: -20px;
+        left: -140px;
+        height: 180px;
+        top: -20px;
     }
     footer #nome-observatorio{
         border-right: none;
@@ -232,6 +244,10 @@
     .margin-midiasT{
         margin-right: 40px !important;
     }
+    .banner-capa{
+        width: 100%;
+        height: 175px;
+    }
 }
 
 
@@ -249,15 +265,9 @@
         margin-top: 38px;
     }
     #logo-menu img {
-        left: 50px;
-    }
-    footer #nome-observatorio{
-        border-right: none;
-        font-size: 26px;   
-    }
-    footer #nome-ifsul{
-        border-right: none;
-        border-bottom: 1px solid rgba(255,255,255,.3);
+        left: -140px;
+        height: 190px;
+        top: -26px;
     }
     .margin-footer-responsiva{
         margin-top: 30px !important;
@@ -293,6 +303,10 @@
     .margin-midiasT{
         margin-right: 45px !important;
     }
+    .banner-capa{
+        width: 100%;
+        height: 180px;
+    }
 }
 
 
@@ -314,9 +328,6 @@
     .responsive-reverse{
     	display: none;
     }
-    #nome-observatorio{
-        font-size: 28px !important;
-    }
     .rodape-resp{
         font-size: 14px;
     }
@@ -325,6 +336,13 @@
     }
     .margin-midiasT{
         margin-right: 50px !important;
+    }
+    #logo-menu img {
+        left: -65px;
+    }
+    .banner-capa{
+        width: 100%;
+        height: 200px;
     }
 }
 
@@ -428,8 +446,8 @@
 
 /* ----- MENU FECHADO ----- */
 @media (max-width: 1200px) {
-    .dynamika-menu-nav-forest {display:none}
-    .dynamika-menu-nav-forest {
+    .menu-nav-forest {display:none}
+    .menu-nav-forest {
         position:fixed;
         top:0;
         left:0;
@@ -438,19 +456,19 @@
         width:230px !important;
         z-index: 99;
     }
-    .dynamika-menu-ul-forest {
+    .menu-ul-forest {
         min-width:230px !important;
     }
-    .dynamika-menu-li-root {
+    .menu-li-root {
         width:230px !important;
         line-height:auto !important;
         margin-top:0 !important;
         border-top:1px solid rgb(255, 255, 255) !important;
     }
-    .dynamika-menu-li-root:hover {
+    .menu-li-root:hover {
         border-top:0 !important;
     }
-    .dynamika-menu-a-root {
+    .menu-a-root {
         line-height:20px !important;
         padding:10px 30px !important;
         width:100% !important;
@@ -459,7 +477,7 @@
         font-size:12px !important;
         text-align: left !important;
     }
-    .dynamika-menu-span-items {
+    .menu-span-items {
         background-color:#198754 !important;
         margin:0;
         padding:0;
@@ -467,15 +485,15 @@
         border-radius:0;
         overflow-y:scroll !important;
     }
-    .dynamika-menu-span-sub h3 {
+    .menu-span-sub h3 {
         font-size:.9em;
         padding:10px 0;
     }
-    .dynamika-menu-span-sub {
+    .menu-span-sub {
         margin:0;
         padding:5px 0;
     }
-    .dynamika-menu-a-link {
+    .menu-a-link {
         border:0;
         color: #ffffff !important;
         font-size:10px !important;
@@ -488,10 +506,10 @@
         padding:10px 15px;
         border-radius:6px;
         position: absolute;
-        top:40px;
+        top:49px;
         right:0;
         cursor:pointer;
-        color:#044d2b !important;
+        color:#ad8037 !important;
         font-weight:900;
         font-family:'Gotham',sans-serif;
         text-transform: uppercase;
@@ -499,6 +517,6 @@
         text-align: center;
     }
     .menu-fechado svg {
-        color:#044d2b !important;
+        color:#ad8037 !important;
     }
 }
