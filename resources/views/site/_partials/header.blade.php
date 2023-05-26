@@ -25,19 +25,18 @@
         </div>
     </div>
     <div id="logo" class="bg-fundo-dark">
-
-            <div class="row margin-menu">
-                <div id="logo-menu" class="col-10 col-md-10 col-lg-8 col-xl-4 nopadding">
-                    <div class="col-4">
-                        <a href="/" title="IPSS">
-                        <h1 class="nopadding nomargin"><img src="{{url('/')}}/images/logo.png" alt="Bertotto Veículos"></h1>
-                        </a>  
-                    </div>
-                </div>
-                <div id="posicao-menu" class="col-2 col-md-2 col-lg-4 col-xl-8">
-                    <menu-site-component></menu-site-component>
-                    <span data-menu-toggle="menu" class="menu-fechado"><i class="fa-solid fa-bars"></i> menu</span>
+        <div class="row margin-menu">
+            <div id="logo-menu" class="col-10 col-md-10 col-lg-8 col-xl-4 nopadding">
+                <div class="col-4">
+                    <a href="/" title="IPSS">
+                    <h1 class="nopadding nomargin"><img src="{{url('/')}}/images/logo.png" alt="Bertotto Veículos"></h1>
+                    </a>  
                 </div>
             </div>
+            <div id="posicao-menu" class="col-2 col-md-2 col-lg-4 col-xl-8">
+                <menu-site-component></menu-site-component>
+                <span data-menu-toggle="menu" class="menu-fechado"><i class="fa-solid fa-bars"></i> menu</span>
+            </div>
+        </div>
     </div>
 </header>

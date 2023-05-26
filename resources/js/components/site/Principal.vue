@@ -17,7 +17,7 @@
             </section>
             <section v-if="veiculosDestaque" class="margin-section" style="height: 590px;">
                 <div class="row">
-                    <div class="col-12 col-md-12 col-lg-6 margin-bottom-responsiva">
+                    <div class="col-12 col-md-12 col-lg-6">
                         <div class="row">
                             <div class="col-12 pastor text-center"  v-if="veiculosDestaque[0].arquivos.length != 0">
                                 <img :src="urlBaseImg+'/storage/uploads/veiculo/'+veiculosDestaque[0].arquivos[0].id+'/'+veiculosDestaque[0].arquivos[0].arquivo" width="100%" :alt="veiculosDestaque[0].nome" :title="veiculosDestaque[0].nome" style="width: 100%;">
@@ -26,9 +26,8 @@
                                 <img :src="urlBaseImg+'/images/indisponivel.jpg'" width="100%" alt="Indisponível" title="Indisponível" style="width: 100%;">
                             </div>
                         </div>
-                    <br />
                     </div>
-                    <div class="col-12 col-md-12 col-lg-6 margin-top-responsiva margin-bottom-responsiva padding80">
+                    <div class="col-12 col-md-12 col-lg-6 margin-top-responsiva paddingResponsivo padding80">
                         <div class="row">
                             <div class="col-12">
                                 <h2 class="titulo">{{veiculosDestaque[0].nome}}<span class="square"></span></h2>
@@ -42,9 +41,9 @@
                     </div>
                 </div>   
             </section>
-            <section v-if="veiculosDestaque.length == 2 || veiculosDestaque.length > 1" class="bg-fundo-dark" style="height: 590px;">
+            <section v-if="veiculosDestaque.length == 2 || veiculosDestaque.length > 1" class="bg-fundo-dark margin-section column" style="height: 590px;">
                 <div class="row">
-                    <div class="col-12 col-md-12 col-lg-6 margin-top-responsiva margin-bottom-responsiva padding80">
+                    <div class="col-12 col-md-12 col-lg-6 margin-top-responsiva paddingResponsivo padding80 d2">
                         <div class="row">
                             <div class="col-12">
                                 <h2 class="titulo titulo-white">{{veiculosDestaque[1].nome}}<span class="square"></span></h2>
@@ -56,7 +55,7 @@
                             </div>
                         </div>   
                     </div>
-                    <div class="col-12 col-md-12 col-lg-6 margin-bottom-responsiva">
+                    <div class="col-12 col-md-12 col-lg-6 d1">
                         <div class="row">
                             <div class="col-12 pastor text-center" v-if="veiculosDestaque[1].arquivos.length != 0">
                                 <img :src="urlBaseImg+'/storage/uploads/veiculo/'+veiculosDestaque[1].arquivos[0].id+'/'+veiculosDestaque[1].arquivos[0].arquivo" width="100%" :alt="veiculosDestaque[1].nome" :title="veiculosDestaque[1].nome" style="width: 100%;">
@@ -65,13 +64,12 @@
                                 <img :src="urlBaseImg+'/images/indisponivel.jpg'" width="100%" alt="Indisponível" title="Indisponível" style="width: 100%;">
                             </div>
                         </div>
-                    <br />
                     </div>
                 </div>
             </section>
             <section v-if="veiculosDestaque.length == 3 || veiculosDestaque.length > 2" class="margin-section" style="height: 590px;">
                 <div class="row">
-                    <div class="col-12 col-md-12 col-lg-6 margin-bottom-responsiva">
+                    <div class="col-12 col-md-12 col-lg-6">
                         <div class="row">
                             <div class="col-12 pastor text-center" v-if="veiculosDestaque[2].arquivos.length != 0">
                                 <img :src="urlBaseImg+'/storage/uploads/veiculo/'+veiculosDestaque[2].arquivos[0].id+'/'+veiculosDestaque[2].arquivos[0].arquivo" width="100%" :alt="veiculosDestaque[2].nome" :title="veiculosDestaque[2].nome" style="width: 100%;">
@@ -80,9 +78,8 @@
                                 <img :src="urlBaseImg+'/images/indisponivel.jpg'" width="100%" alt="Indisponível" title="Indisponível" style="width: 100%;">
                             </div>
                         </div>
-                    <br />
                     </div>
-                    <div class="col-12 col-md-12 col-lg-6 margin-top-responsiva margin-bottom-responsiva padding80">
+                    <div class="col-12 col-md-12 col-lg-6 paddingResponsivo padding80">
                         <div class="row">
                             <div class="col-12">
                                 <h2 class="titulo">{{veiculosDestaque[2].nome}}<span class="square"></span></h2>
@@ -136,7 +133,7 @@
                                     <h2 class="titulo">Recomendamos para você<span class="square"></span></h2>
                                 </div>
                                 <div class="row" v-if="veiculosRecomendado.lenght != 0">
-                                    <div class="col-3 text-center padding-recomendado" v-for="veiculo, key in veiculosRecomendado" :key="key">
+                                    <div class="col-12 col-md-6 col-lg-3 text-center padding-recomendado" v-for="veiculo, key in veiculosRecomendado" :key="key">
                                         <div class="box-veiculo-capa">
                                             <div v-if="veiculo.arquivos.lenght !=0">
                                                 <img :src="urlBaseImg+'/storage/uploads/veiculo/'+veiculo.arquivos[0].id+'/'+veiculo.arquivos[0].arquivo" class="imagem-recomendacao" width="100%" :alt="veiculo.nome" :title="veiculo.nome" style="width: 100%;">
@@ -163,6 +160,7 @@
                     </div>
                 </div>
             </section>
+            <hr>
             <section class="padding30">
                 <div class="container-fluid">
                     <div class="row">

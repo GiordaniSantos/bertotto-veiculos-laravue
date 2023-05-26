@@ -26,7 +26,7 @@
 
             @include('site._partials.footer')
 
-            <a href="https://web.whatsapp.com/send?phone=555182153223&text=Olá" id="whatsapp" target="_blank">
+            <a href="https://web.whatsapp.com/send?phone=555198007554&text=Olá+é+da+Bertotto+Veículos?" id="whatsapp" target="_blank">
                 <img src="{{url('/')}}/images/whatsapp-flutuante.png" alt="Whatsapp" width="100%" style="width: 100%;">
             </a>
         </div>
