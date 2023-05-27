@@ -67,11 +67,13 @@ import Veiculos from './components/veiculo/Veiculos.vue';
 import AddVeiculo from './components/veiculo/AddVeiculo.vue';
 import HomeSite from './components/site/HomeSite.vue';
 import VeiculosSite from './components/site/VeiculosSite.vue';
-import Menu from './components/site/Menu.vue';
+import Menu from './components/site/partials/Menu.vue';
 import Principal from './components/site/Principal.vue';
 import FormContato from './components/site/FormContato.vue';
 import ViewVeiculo from './components/site/ViewVeiculo.vue';
 import ContatoSite from './components/site/ContatoSite.vue';
+import Header from './components/site/partials/Header.vue';
+import Footer from './components/site/partials/Footer.vue';
 app.component('example-component', ExampleComponent);
 app.component('login-component', Login);
 app.component('home-component', Home);
@@ -96,6 +98,8 @@ appSite.component('form-site-component', FormContato);
 appSite.component('paginate-component', Paginate);
 appSite.component('view-veiculo-site-component', ViewVeiculo);
 appSite.component('contato-site-component', ContatoSite);
+appSite.component('header-site-component', Header);
+appSite.component('footer-site-component', Footer);
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue

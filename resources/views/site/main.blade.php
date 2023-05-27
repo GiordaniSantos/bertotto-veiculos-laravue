@@ -20,11 +20,12 @@
     </head>
     <body class="d-flex flex-column h-100">
         <div id="app-site">
-            @include('site._partials.header')
+            
+            <header-site-component></header-site-component>
 
             <home-site-component></home-site-component>
 
-            @include('site._partials.footer')
+            <footer-site-component></footer-site-component>
 
             <a href="https://web.whatsapp.com/send?phone=555198007554&text=Olá+é+da+Bertotto+Veículos?" id="whatsapp" target="_blank">
                 <img src="{{url('/')}}/images/whatsapp-flutuante.png" alt="Whatsapp" width="100%" style="width: 100%;">
