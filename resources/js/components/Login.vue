@@ -85,12 +85,18 @@
                 fetch(this.urlBase, configuracao)
                     .then(response => response.json())
                     .then(data => {
-                        if(data.token){
-                            document.cookie = 'token='+data.token+';SameSite=Lax'
+                        if(data.erro){
+                            console.log(data.erro)
+                            this.$swal("Oops...", "Algum erro aconteceu! " +data.erro, "error");
+                        }else{
+
+                            if(data.token){
+                                document.cookie = 'token='+data.token+';SameSite=Lax'
+                            }
+                            //dar sequencia no envio do form de autenticacao
+                            e.target.submit()
+                            this.$swal("Sucesso", "Login efetuado com sucesso!", "success");
                         }
-                        //dar sequencia no envio do form de autenticacao
-                        e.target.submit()
-                        this.$swal("Sucesso", "Login efetuado com sucesso!", "success");
                     });
                 
             }
