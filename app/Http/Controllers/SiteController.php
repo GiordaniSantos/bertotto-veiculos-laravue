@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Veiculo;
 use App\Models\Banner;
 use App\Models\Marca;
+use App\Models\Contato;
 use App\Repositories\VeiculoRepository;
 
 class SiteController extends Controller
