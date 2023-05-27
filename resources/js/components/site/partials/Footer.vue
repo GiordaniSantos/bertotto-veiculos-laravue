@@ -20,8 +20,8 @@
                     <dd><a href="" class="link-contato">bertotto.veic@gmail.com</a></dd>
                 </dl>
                 <ul class="list-inline list-contatos">
-                    <li><a href="" ><img :src="urlBaseImg+'/images/facebook.png'" class="img-midia-footer efeito-midia" alt="Facebook" style="width: 34px;"></a></li>
-                    <li><a href=""><img :src="urlBaseImg+'/images/instagram.png'" class="img-midia-footer efeito-midia" alt="Instagram" style="width: 34px;"></a></li>
+                    <li><a href="https://www.facebook.com/bertotto.veic/" ><img :src="urlBaseImg+'/images/facebook.png'" class="img-midia-footer efeito-midia" alt="Facebook" style="width: 34px;"></a></li>
+                    <li><a href="https://www.instagram.com/bertottoveiculos/"><img :src="urlBaseImg+'/images/instagram.png'" class="img-midia-footer efeito-midia" alt="Instagram" style="width: 34px;"></a></li>
                 </ul>
             </div>
             <div class="col-12 col-sm-4 col-lg-4 col-xl-4 img-logo-footer-responsivo paddingFooterL">

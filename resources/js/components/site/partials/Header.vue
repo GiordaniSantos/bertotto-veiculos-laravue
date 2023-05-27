@@ -3,24 +3,12 @@
         <div class="col-12">
             <div class="text-right margin-midiasT">
                 <br><br>
-                    <a href="" target="_blank" class="midia-footer">
-                        <img :src="urlBaseImg+'/images/facebook.png'" class="midia-topo" alt="Facebook" style="width: 24px;">
-                    </a>
-                    <a href="" target="blank" class="midia-footer">
-                        <img :src="urlBaseImg+'/images/instagram.png'" class="midia-topo" alt="Instagram" style="width: 24px;">
-                    </a>
-                    <a href="" target="_blank" class="midia-footer">
-                        <img :src="urlBaseImg+'/images/youtube.png'" class="midia-topo" alt="Youtube" style="width: 24px;">
-                    </a>
-                    <a href="" target="_blank" class="midia-footer">
-                        <img :src="urlBaseImg+'/images/twitter.png'" class="midia-topo" alt="Twitter" style="width: 24px;">
-                    </a>
-                    <a href="" target="_blank" class="midia-footer">
-                        <img :src="urlBaseImg+'/images/spotify.png'" class="midia-topo" alt="Spotify" style="width: 24px;">
-                    </a>
-                    <a href="" target="_blank" class="midia-footer">
-                        <img :src="urlBaseImg+'/images/whatsapp.png'" class="midia-topo" alt="Whatsapp" style="width: 24px;">
-                    </a>
+                <a href="https://www.facebook.com/bertotto.veic/" target="_blank" class="midia-footer">
+                    <img :src="urlBaseImg+'/images/facebook.png'" class="midia-topo" alt="Facebook" style="width: 24px;">
+                </a>
+                <a href="https://www.instagram.com/bertottoveiculos/" target="blank" class="midia-footer">
+                    <img :src="urlBaseImg+'/images/instagram.png'" class="midia-topo" alt="Instagram" style="width: 24px;">
+                </a>
             </div>
         </div>
     </div>

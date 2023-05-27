@@ -99,24 +99,12 @@
                         <div class="col-12 col-md-12">
                             <div class="d-flex ">
                                 <p class="texto-white line-height30">Siga nossas Redes Sociais</p>
-                                <div style="margin-left: 30px;line-height: 25px;"> 
-                                    <a href="" target="_blank" class="midia-footer">
+                                <div style="margin-left: 30px;line-height: 26px;"> 
+                                    <a href="https://www.facebook.com/bertotto.veic/" target="_blank" class="midia-footer">
                                         <img :src="urlBaseImg+'/images/facebook.png'" alt="Facebook" width="24" class="midia-topo">
                                     </a>
-                                    <a href="" target="blank" class="midia-footer">
+                                    <a href="https://www.instagram.com/bertottoveiculos/" target="blank" class="midia-footer">
                                         <img :src="urlBaseImg+'/images/instagram.png'" alt="Instagram" width="24" class="midia-topo">
-                                    </a>
-                                    <a href="" target="_blank" class="midia-footer">
-                                        <img :src="urlBaseImg+'/images/youtube.png'" alt="Youtube" width="24" class="midia-topo">
-                                    </a>
-                                    <a href="" target="_blank" class="midia-footer">
-                                        <img :src="urlBaseImg+'/images/twitter.png'" alt="Twitter" width="24" class="midia-topo">
-                                    </a>
-                                    <a href="" target="_blank" class="midia-footer">
-                                        <img :src="urlBaseImg+'/images/spotify.png'" alt="Spotify" width="24" class="midia-topo">
-                                    </a>
-                                    <a href="" target="_blank" class="midia-footer">
-                                        <img :src="urlBaseImg+'/images/whatsapp.png'" alt="Whatsapp" width="24" class="midia-topo">
                                     </a>
                                 </div>  
                             </div> 
