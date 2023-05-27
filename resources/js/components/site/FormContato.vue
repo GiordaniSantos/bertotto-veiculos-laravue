@@ -8,7 +8,7 @@
               <h1>Entre em Contato</h1>
             </div>
     
-            <form action="#" method="post">
+      
                      
                 <span>
                     <input type="text" class="input" id="nome" name="nome" placeholder="Nome" autocomplete="off" required="" v-model="nome"/>
@@ -16,7 +16,7 @@
                 </span>
     
                 <span>
-                    <input type="text" class="input" id="email" name="email" placeholder="E-mail" autocomplete="off" required="" v-model="telefone"/>
+                    <input type="text" class="input" id="email" name="email" placeholder="E-mail" autocomplete="off" required="" v-model="email"/>
                     <label for="email"> <i class="fa-solid fa-envelope"></i> </label>
                 </span>
     
@@ -34,7 +34,6 @@
                     <button type="submit" class="botao-pulse" @click="enviar()"><i class="fa-solid fa-share"></i> Enviar</button>
                 </div>
     
-            </form>
     
         </div>
     
