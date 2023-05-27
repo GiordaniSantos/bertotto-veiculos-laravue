@@ -24,7 +24,7 @@
     .margin-bottom-responsiva{
         margin-bottom: 50px;
     }
-    .pastor img{
+    .img-veiculo-capa img{
         width: 300px;
         height: 300px;
     }
@@ -93,16 +93,13 @@
         padding-left: 0px !important;
     }
     .paddingResponsivo{
-        padding: 60px !important;
-    }
-    .margin-section{
-        margin-bottom: 623px;
+        padding: 40px !important;
     }
     .texto-black{
-        font-size: 13px;
+        font-size: 12px;
     }
     .texto-white{
-        font-size: 13px;
+        font-size: 12px;
     }
     .d1{
         order: 1;
@@ -112,15 +109,15 @@
         order: 2;
         background-color: #2a2a2a !important;
     }
-    .pastor img{
-        height: 565px !important;
+    .img-veiculo-capa img{
+        height: 340px !important;
     }
     .btn-padrao{
         min-width: 0 !important;
-        font-size: 0.69rem;
+        font-size: 0.63rem;
     }
     .box-veiculo-capa{
-        height: 440px !important;
+        height: 430px !important;
         margin-bottom: 20px;
     }
     .preco-titulo{
@@ -144,7 +141,7 @@
         font-size: 0.64rem;
     }
     .box-veiculo{
-        height: 486px !important;
+        height: 483px !important;
     }
     .box-veiculo .preco-titulo{
         font-size: 1.45rem;
@@ -274,9 +271,6 @@
     .paddingResponsivo{
         padding: 60px !important;
     }
-    .margin-section{
-        margin-bottom: 502px;
-    }
     .texto-black{
         font-size: 13px;
     }
@@ -291,15 +285,15 @@
         order: 2;
         background-color: #2a2a2a !important;
     }
-    .pastor img{
-        height: 565px !important;
+    .img-veiculo-capa img{
+        height: 340px !important;
     }
     .btn-padrao{
         min-width: 0 !important;
         font-size: 0.69rem;
     }
     .box-veiculo-capa{
-        height: 505px !important;
+        height: 500px !important;
         margin-bottom: 20px;
     }
     .preco-titulo{
@@ -445,9 +439,6 @@
     .paddingResponsivo{
         padding: 60px !important;
     }
-    .margin-section{
-        margin-bottom: 500px;
-    }
     .texto-black{
         font-size: 13px;
     }
@@ -462,8 +453,8 @@
         order: 2;
         background-color: #2a2a2a !important;
     }
-    .pastor img{
-        height: 565px !important;
+    .img-veiculo-capa img{
+        height: 490px !important;
     }
     .btn-padrao{
         min-width: 0 !important;
@@ -580,9 +571,6 @@
     .paddingResponsivo{
         padding: 60px !important;
     }
-    .margin-section{
-        margin-bottom: 407px;
-    }
     .texto-black{
         font-size: 13px;
     }
@@ -597,7 +585,7 @@
         order: 2;
         background-color: #2a2a2a !important;
     }
-    .pastor img{
+    .img-veiculo-capa img{
         height: 565px !important;
     }
     .btn-padrao{
@@ -957,6 +945,7 @@
         text-transform: uppercase;
         width:110px;
         text-align: center;
+        z-index: 1;
     }
     .menu-fechado svg {
         color:#ad8037 !important;

@@ -15,14 +15,14 @@
             <section v-else>
                 <img :src="urlBaseImg+'/storage/uploads/banner/'+banners[0].arquivo.id+'/'+banners[0].arquivo.arquivo" alt="Banner" class="banner-capa" width="100%" style="width: 100%;">
             </section>
-            <section v-if="veiculosDestaque" class="margin-section" style="height: 590px;">
+            <section v-if="veiculosDestaque" class="margin-section">
                 <div class="row">
                     <div class="col-12 col-md-12 col-lg-6">
                         <div class="row">
-                            <div class="col-12 pastor text-center"  v-if="veiculosDestaque[0].arquivos.length != 0">
+                            <div class="col-12 img-veiculo-capa text-center"  v-if="veiculosDestaque[0].arquivos.length != 0">
                                 <img :src="urlBaseImg+'/storage/uploads/veiculo/'+veiculosDestaque[0].arquivos[0].id+'/'+veiculosDestaque[0].arquivos[0].arquivo" width="100%" :alt="veiculosDestaque[0].nome" :title="veiculosDestaque[0].nome" style="width: 100%;">
                             </div>
-                            <div class="col-12 pastor text-center" v-else>
+                            <div class="col-12 img-veiculo-capa text-center" v-else>
                                 <img :src="urlBaseImg+'/images/indisponivel.jpg'" width="100%" alt="Indisponível" title="Indisponível" style="width: 100%;">
                             </div>
                         </div>
@@ -41,7 +41,7 @@
                     </div>
                 </div>   
             </section>
-            <section v-if="veiculosDestaque.length == 2 || veiculosDestaque.length > 1" class="bg-fundo-dark margin-section column" style="height: 590px;">
+            <section v-if="veiculosDestaque.length == 2 || veiculosDestaque.length > 1" class="bg-fundo-dark margin-section column">
                 <div class="row">
                     <div class="col-12 col-md-12 col-lg-6 margin-top-responsiva paddingResponsivo padding80 d2">
                         <div class="row">
@@ -57,24 +57,24 @@
                     </div>
                     <div class="col-12 col-md-12 col-lg-6 d1">
                         <div class="row">
-                            <div class="col-12 pastor text-center" v-if="veiculosDestaque[1].arquivos.length != 0">
+                            <div class="col-12 img-veiculo-capa text-center" v-if="veiculosDestaque[1].arquivos.length != 0">
                                 <img :src="urlBaseImg+'/storage/uploads/veiculo/'+veiculosDestaque[1].arquivos[0].id+'/'+veiculosDestaque[1].arquivos[0].arquivo" width="100%" :alt="veiculosDestaque[1].nome" :title="veiculosDestaque[1].nome" style="width: 100%;">
                             </div>
-                            <div class="col-12 pastor text-center" v-else>
+                            <div class="col-12 img-veiculo-capa text-center" v-else>
                                 <img :src="urlBaseImg+'/images/indisponivel.jpg'" width="100%" alt="Indisponível" title="Indisponível" style="width: 100%;">
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
-            <section v-if="veiculosDestaque.length == 3 || veiculosDestaque.length > 2" class="margin-section" style="height: 590px;">
+            <section v-if="veiculosDestaque.length == 3 || veiculosDestaque.length > 2" class="margin-section">
                 <div class="row">
                     <div class="col-12 col-md-12 col-lg-6">
                         <div class="row">
-                            <div class="col-12 pastor text-center" v-if="veiculosDestaque[2].arquivos.length != 0">
+                            <div class="col-12 img-veiculo-capa text-center" v-if="veiculosDestaque[2].arquivos.length != 0">
                                 <img :src="urlBaseImg+'/storage/uploads/veiculo/'+veiculosDestaque[2].arquivos[0].id+'/'+veiculosDestaque[2].arquivos[0].arquivo" width="100%" :alt="veiculosDestaque[2].nome" :title="veiculosDestaque[2].nome" style="width: 100%;">
                             </div>
-                            <div class="col-12 pastor text-center" v-else>
+                            <div class="col-12 img-veiculo-capa text-center" v-else>
                                 <img :src="urlBaseImg+'/images/indisponivel.jpg'" width="100%" alt="Indisponível" title="Indisponível" style="width: 100%;">
                             </div>
                         </div>
