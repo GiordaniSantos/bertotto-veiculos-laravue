@@ -54,6 +54,8 @@ Route::prefix('v1')->group(function() {
     Route::get('site/veiculo/{id}', [\App\Http\Controllers\SiteController::class, 'view']);
 
     Route::get('site/marcas/lista', [\App\Http\Controllers\SiteController::class, 'marcas']);
+
+    Route::post('site/contato', [\App\Http\Controllers\SiteController::class, 'contato']);
 });
 
 Route::post('login', [\App\Http\Controllers\AuthController::class, 'login']);

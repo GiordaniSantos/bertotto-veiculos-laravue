@@ -63,4 +63,20 @@ class SiteController extends Controller
         }
         return response()->json($veiculo, 200);
     }
+
+    public function contato(Request $request)
+    {
+        $contato = new Contato();
+        //validacao
+        $request->validate($contato->rules(), $contato->feedback());
+        //vai preencher o objeto de acordo com o request
+        $contato->nome = $request->input('nome');
+        $contato->email = $request->input('email');
+        $contato->telefone = $request->input('telefone');
+        $contato->mensagem = $request->input('mensagem');
+        $contato->status = Contato::STATUS_ABERTO;
+        $contato->ativo = 1;
+        $retorno = $contato->save();
+        return response()->json($retorno, 201);
+    }
 }
