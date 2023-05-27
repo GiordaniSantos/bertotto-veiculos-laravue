@@ -92,6 +92,87 @@
     .paddingFooterL{
         padding-left: 0px !important;
     }
+    .paddingResponsivo{
+        padding: 60px !important;
+    }
+    .margin-section{
+        margin-bottom: 580px;
+    }
+    .texto-black{
+        font-size: 13px;
+    }
+    .texto-white{
+        font-size: 13px;
+    }
+    .d1{
+        order: 1;
+        
+    }
+    .d2{
+        order: 2;
+        background-color: #2a2a2a !important;
+    }
+    .pastor img{
+        height: 565px !important;
+    }
+    .btn-padrao{
+        min-width: 0 !important;
+        font-size: 0.69rem;
+    }
+    .box-veiculo-capa{
+        height: 440px !important;
+        margin-bottom: 20px;
+    }
+    .preco-titulo{
+        font-size: 1.59rem;
+    }
+    .box-veiculo-capa h3{
+        font-size: 16px !important;
+    }
+    .d3{
+        order: 1;
+        
+    }
+    .d4{
+        order: 2;
+    }
+    .margin-busca{
+        margin-bottom: 45px;
+    }
+    .box-veiculo .btn-padrao{
+        min-width: 0 !important;
+        font-size: 0.64rem;
+    }
+    .box-veiculo{
+        height: 486px !important;
+    }
+    .box-veiculo .preco-titulo{
+        font-size: 1.45rem;
+    }
+    .box-veiculo h3{
+        font-size: 17px !important;
+    }
+    .preco-view-veiculo{
+        font-size: 2.0rem;
+        margin-left: 15px;
+    }
+    .titulo-view-veiculo{
+        font-size: 0.8rem;
+        margin-left: 15px;
+    }
+    .label, .value{
+        font-size: 12px;
+    }
+    .align-responsive-view{
+        padding-left: 70px;
+    }
+    .list-opcionais{
+        column-count: 2;
+        padding-inline-start: 50px ;
+    }
+    .descricao-view{
+        padding: 25px;
+    }
 }
 
 
@@ -190,6 +271,87 @@
     .paddingFooterL{
         padding-left: 0px !important;
     }
+    .paddingResponsivo{
+        padding: 60px !important;
+    }
+    .margin-section{
+        margin-bottom: 502px;
+    }
+    .texto-black{
+        font-size: 13px;
+    }
+    .texto-white{
+        font-size: 13px;
+    }
+    .d1{
+        order: 1;
+        
+    }
+    .d2{
+        order: 2;
+        background-color: #2a2a2a !important;
+    }
+    .pastor img{
+        height: 565px !important;
+    }
+    .btn-padrao{
+        min-width: 0 !important;
+        font-size: 0.69rem;
+    }
+    .box-veiculo-capa{
+        height: 505px !important;
+        margin-bottom: 20px;
+    }
+    .preco-titulo{
+        font-size: 1.59rem;
+    }
+    .box-veiculo-capa h3{
+        font-size: 16px !important;
+    }
+    .d3{
+        order: 1;
+        
+    }
+    .d4{
+        order: 2;
+    }
+    .margin-busca{
+        margin-bottom: 45px;
+    }
+    .box-veiculo .btn-padrao{
+        min-width: 0 !important;
+        font-size: 0.64rem;
+    }
+    .box-veiculo{
+        height: 552px !important;
+    }
+    .box-veiculo .preco-titulo{
+        font-size: 1.45rem;
+    }
+    .box-veiculo h3{
+        font-size: 17px !important;
+    }
+    .preco-view-veiculo{
+        font-size: 2.0rem;
+        margin-left: 15px;
+    }
+    .titulo-view-veiculo{
+        font-size: 0.8rem;
+        margin-left: 15px;
+    }
+    .label, .value{
+        font-size: 12px;
+    }
+    .align-responsive-view{
+        padding-left: 70px;
+    }
+    .list-opcionais{
+        column-count: 2;
+        padding-inline-start: 60px ;
+    }
+    .descricao-view{
+        padding: 25px;
+    }
 }
 
 
@@ -279,6 +441,79 @@
     }
     .paddingFooterL{
         padding-left: 0px !important;
+    }
+    .paddingResponsivo{
+        padding: 60px !important;
+    }
+    .margin-section{
+        margin-bottom: 500px;
+    }
+    .texto-black{
+        font-size: 13px;
+    }
+    .texto-white{
+        font-size: 13px;
+    }
+    .d1{
+        order: 1;
+        
+    }
+    .d2{
+        order: 2;
+        background-color: #2a2a2a !important;
+    }
+    .pastor img{
+        height: 565px !important;
+    }
+    .btn-padrao{
+        min-width: 0 !important;
+        font-size: 0.69rem;
+    }
+    .box-veiculo-capa{
+        height: 625px !important;
+        margin-bottom: 20px;
+    }
+    .preco-titulo{
+        font-size: 1.59rem;
+    }
+    .box-veiculo-capa h3{
+        font-size: 16px !important;
+    }
+    .d3{
+        order: 1;
+        
+    }
+    .d4{
+        order: 2;
+    }
+    .margin-busca{
+        margin-bottom: 45px;
+    }
+    .box-veiculo .btn-padrao{
+        min-width: 0 !important;
+        font-size: 0.64rem;
+    }
+    .box-veiculo{
+        height: 400px !important;
+    }
+    .box-veiculo .preco-titulo{
+        font-size: 1.45rem;
+    }
+    .box-veiculo h3{
+        font-size: 17px !important;
+    }
+    .preco-view-veiculo{
+        font-size: 2.0rem;
+    }
+    .titulo-view-veiculo{
+        font-size: 0.8rem;
+    }
+    .label, .value{
+        font-size: 11px;
+    }
+    .list-opcionais{
+        column-count: 3;
+        padding-inline-start: 55px ;
     }
 }
 
@@ -378,7 +613,41 @@
     .box-veiculo-capa h3{
         font-size: 14px !important;
     }
-    
+    .box-veiculo-capa:nth-child(1){
+        margin-bottom: 20px !important;
+    }
+    .box-veiculo-capa:nth-child(2){
+        margin-bottom: 20px !important;
+    }
+    .d3{
+        order: 1;
+        
+    }
+    .d4{
+        order: 2;
+    }
+    .margin-busca{
+        margin-bottom: 45px;
+    }
+    .box-veiculo .btn-padrao{
+        min-width: 0 !important;
+        font-size: 0.64rem;
+    }
+    .box-veiculo{
+        height: 390px !important;
+    }
+    .box-veiculo .preco-titulo{
+        font-size: 1.45rem;
+    }
+    .box-veiculo h3{
+        font-size: 17px !important;
+    }
+    .preco-view-veiculo{
+        font-size: 2.2rem;
+    }
+    .titulo-view-veiculo{
+        font-size: 0.9rem;
+    }
 }
 
 
@@ -397,8 +666,15 @@
     .foto-view-pagina{
         height: auto !important;
     }
-    .responsive-reverse{
-    	display: none;
+    .d3{
+        order: 1;
+        
+    }
+    .d4{
+        order: 2;
+    }
+    .margin-busca{
+        margin-bottom: 45px;
     }
     .rodape-resp{
         font-size: 14px;
@@ -437,6 +713,22 @@
     }
     .box-veiculo-capa h3{
         font-size: 16px !important;
+    }
+    .box-veiculo .btn-padrao{
+        min-width: 0 !important;
+        font-size: 0.64rem;
+    }
+    .box-veiculo{
+        height: 410px !important;
+    }
+    .box-veiculo .preco-titulo{
+        font-size: 1.45rem;
+    }
+    .box-veiculo h3{
+        font-size: 17px !important;
+    }
+    .preco-view-veiculo{
+        font-size: 2.6rem;
     }
 }
 
@@ -495,6 +787,19 @@
     .box-veiculo-capa h3{
         font-size: 18px !important;
     }
+    .box-veiculo .btn-padrao{
+        min-width: 0 !important;
+        font-size: 0.64rem;
+    }
+    .box-veiculo{
+        height: 360px !important;
+    }
+    .box-veiculo .preco-titulo{
+        font-size: 1.45rem;
+    }
+    .box-veiculo h3{
+        font-size: 16px !important;
+    }
 }
 
 
@@ -524,6 +829,19 @@
     }
     .foto-view-pagina{
         height: auto !important;
+    }
+    .box-veiculo .btn-padrao{
+        min-width: 0 !important;
+        font-size: 0.64rem;
+    }
+    .box-veiculo{
+        height: 355px !important;
+    }
+    .box-veiculo .preco-titulo{
+        font-size: 1.45rem;
+    }
+    .box-veiculo h3{
+        font-size: 17px !important;
     }
 }
 

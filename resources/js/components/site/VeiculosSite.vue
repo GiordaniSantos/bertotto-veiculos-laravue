@@ -2,13 +2,13 @@
     <section class="margin40T">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-12 col-xl-8 col-xxl-9">
+                <div class="col-12 col-xl-8 col-xxl-9 d4">
                     <div class="titulo">
                         Veículos em Estoque
                         <span></span>
                     </div>
                     <div class="row" v-if="veiculos.data">
-                        <div v-for="veiculo, key in veiculos.data" :key="key" class="col-12 col-md-3 marginB-resp">
+                        <div v-for="veiculo, key in veiculos.data" :key="key" class="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4 col-xxl-3 marginB-resp">
                             <div class="padding10">
                                 <div class="box-veiculo">
                                     <div class="text-center">
@@ -42,8 +42,8 @@
                     <br /><br />
                 </div>
                 <!--FILTRO LATERAL-->
-                <div class="col-12 col-xl-4 col-xxl-3">
-                    <div class="box padding-busca responsive-reverse">
+                <div class="col-12 col-xl-4 col-xxl-3 d3">
+                    <div class="box padding-busca margin-busca">
                         <strong>Filtros</strong>
                         <hr />
                         <div class="mb-3"> 

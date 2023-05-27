@@ -7,8 +7,8 @@
                     <h3 class="preco-view-veiculo">R$ {{ veiculo.preco }}</h3><hr>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-3" v-if="veiculo.ano_modelo">
+            <div class="row align-responsive-view">
+                <div class="col-6 col-sm-3" v-if="veiculo.ano_modelo">
                     <div class="info-item">
                         <div class="info-item-icon">
                             <i class="fa-solid fa-calendar-days"></i>
@@ -23,7 +23,7 @@
                         </div>
                     </div>
                 </div>  
-                <div class="col-3" v-if="veiculo.km">
+                <div class="col-6 col-sm-3" v-if="veiculo.km">
                     <div class="info-item">
                         <div class="info-item-icon">
                             <img :src="urlBaseImg+'/images/velocimetro-do-carro.png'" width="100%" alt="Indisponível" title="Indisponível" style="width: 100%;">
@@ -38,7 +38,7 @@
                         </div>
                     </div>
                 </div>  
-                <div class="col-3" v-if="veiculo.cambio">
+                <div class="col-6 col-sm-3" v-if="veiculo.cambio">
                     <div class="info-item">
                         <div class="info-item-icon">
                             <img :src="urlBaseImg+'/images/cambio-de-marchas.png'" width="100%" alt="Indisponível" title="Indisponível" style="width: 100%;">
@@ -53,7 +53,7 @@
                         </div>
                     </div>
                 </div>  
-                <div class="col-3" v-if="veiculo.portas">
+                <div class="col-6 col-sm-3" v-if="veiculo.portas">
                     <div class="info-item">
                         <div class="info-item-icon">
                             <img :src="urlBaseImg+'/images/porta-do-carro.png'" width="100%" alt="Indisponível" title="Indisponível" style="width: 100%;">
@@ -70,8 +70,8 @@
                 </div>  
             </div>
             <br>
-            <div class="row">
-                <div class="col-3" v-if="veiculo.cor">
+            <div class="row align-responsive-view">
+                <div class="col-6 col-sm-3" v-if="veiculo.cor">
                     <div class="info-item">
                         <div class="info-item-icon">
                             <i class="fa-solid fa-fill-drip"></i>
@@ -86,7 +86,7 @@
                         </div>
                     </div>
                 </div>  
-                <div class="col-3" v-if="veiculo.tipo_combustivel">
+                <div class="col-6 col-sm-3" v-if="veiculo.tipo_combustivel">
                     <div class="info-item">
                         <div class="info-item-icon">
                             <i class="fa-solid fa-gas-pump"></i>
@@ -101,7 +101,7 @@
                         </div>
                     </div>
                 </div>  
-                <div class="col-3" v-if="veiculo.data_publicacao">
+                <div class="col-6 col-sm-3" v-if="veiculo.data_publicacao">
                     <div class="info-item">
                         <div class="info-item-icon">
                             <i class="fa-solid fa-calendar"></i>
@@ -116,7 +116,7 @@
                         </div>
                     </div>
                 </div>  
-                <div class="col-3" v-if="veiculo.aceita_troca">
+                <div class="col-6 col-sm-3" v-if="veiculo.aceita_troca">
                     <div class="info-item">
                         <div class="info-item-icon">
                             <i class="fa-solid fa-handshake"></i>
