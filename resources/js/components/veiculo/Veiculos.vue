@@ -132,6 +132,10 @@
                                     <td>{{ getTipoCombustivelFormatado(veiculoBuscado.tipo_combustivel) }}</td>
                                 </tr>
                                 <tr>
+                                    <td>Ordem:</td>
+                                    <td>{{ veiculoBuscado.ordem }}</td>
+                                </tr>
+                                <tr>
                                     <td>Descrição:</td>
                                     <td>{{veiculoBuscado.descricao}}</td>
                                 </tr>
@@ -447,17 +451,22 @@
                                     </div>
                                 </div>
                                 <div class="row" style="margin-top: 15px;">
-                                    <div class="col-4">
+                                    <div class="col-3">
                                         <input type="checkbox" id="ativo" v-model="ativo">
                                         <label for="ativo">Ativo</label>
                                     </div>
-                                    <div class="col-4">
+                                    <div class="col-3">
                                         <input type="checkbox" id="destaque" v-model="destaque">
                                         <label for="destaque">Destaque</label>
                                     </div>
-                                    <div class="col-4">
+                                    <div class="col-3">
                                         <input type="checkbox" id="recomendado" v-model="recomendado">
                                         <label for="recomendado">Recomendado</label>
+                                    </div>
+                                    <div class="col-3">
+                                        <input-container-component titulo="Ordem" id="ordem" idHelp="ordemHelp" >
+                                            <input type="number" id="ordem" name="ordem" aria-describedby="ordemHelp" v-model="veiculoBuscado.ordem">
+                                        </input-container-component>
                                     </div>
                                 </div>
                                 <br>
@@ -879,6 +888,7 @@ export default{
                 formData.append('marca_id', this.veiculoBuscado.marca_id ? this.veiculoBuscado.marca_id : '');
                 formData.append('data_publicacao', this.veiculoBuscado.data_publicacao ? this.veiculoBuscado.data_publicacao : '');
                 formData.append('tipo_combustivel', this.veiculoBuscado.tipo_combustivel ? this.veiculoBuscado.tipo_combustivel : '');
+                formData.append('ordem', this.veiculoBuscado.ordem ? this.veiculoBuscado.ordem : '');
                 formData.append('descricao', this.veiculoBuscado.descricao ? this.veiculoBuscado.descricao : '');
                 for(let i = 0; i < this.arquivoImagem.length; i++){
                     formData.append('images[]', this.arquivoImagem[i]);

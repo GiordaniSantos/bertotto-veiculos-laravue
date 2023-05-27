@@ -131,6 +131,11 @@
                                     <input type="checkbox" id="recomendado" name="recomendado" aria-describedby="recomendadoHelp" v-model="recomendado">
                                 </input-container-component>
                             </div>
+                            <div class="col-2">
+                                <input-container-component titulo="Ordem" id="ordem" idHelp="ordemHelp" >
+                                    <input type="number" id="ordem" name="ordem" aria-describedby="ordemHelp" v-model="ordem">
+                                </input-container-component>
+                            </div>
                         </div>
                         <br><br>
                         <legend>Opcionais</legend>
@@ -317,6 +322,7 @@
                 urlBase: '',
                 urlMarcas: '',
                 nome: '',
+                ordem: '',
                 ano_modelo: '',
                 preco: '',
                 portas: '',
@@ -406,6 +412,7 @@
                 formData.append('marca_id', this.marca);
                 formData.append('data_publicacao', this.data_publicacao);
                 formData.append('tipo_combustivel', this.tipo_combustivel ? this.tipo_combustivel : '');
+                formData.append('ordem', this.ordem ? this.ordem : '');
                 formData.append('descricao', this.descricao);
                 for(let i = 0; i < this.arquivoImagem.length; i++){
                     formData.append('images[]', this.arquivoImagem[i])

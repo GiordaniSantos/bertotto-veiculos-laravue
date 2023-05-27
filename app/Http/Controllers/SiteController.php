@@ -16,7 +16,7 @@ class SiteController extends Controller
     }
 
     public function destaque(){
-        $veiculosDestaques = Veiculo::select('id', 'nome', 'descricao')->orderBy('id','desc')->with('arquivos')->where('ativo', 1)->where('destaque', 1)->take(3)->get()->all();
+        $veiculosDestaques = Veiculo::select('id', 'nome', 'descricao')->orderBy('ordem','asc')->with('arquivos')->where('ativo', 1)->where('destaque', 1)->take(3)->get()->all();
 
         return response()->json($veiculosDestaques, 200);
     }
@@ -34,7 +34,7 @@ class SiteController extends Controller
     }
 
     public function recomendado(){
-        $veiculosDestaques = Veiculo::select('id', 'nome', 'ano_modelo', 'km', 'preco')->orderBy('id','desc')->with('arquivos')->where('ativo', 1)->where('recomendado', 1)->take(4)->get()->all();
+        $veiculosDestaques = Veiculo::select('id', 'nome', 'ano_modelo', 'km', 'preco')->orderBy('ordem','desc')->with('arquivos')->where('ativo', 1)->where('recomendado', 1)->take(4)->get()->all();
 
         return response()->json($veiculosDestaques, 200);
     }
@@ -45,6 +45,8 @@ class SiteController extends Controller
         $veiculoRepository->selectAtributosListaSiteVeiculos();
 
         $veiculoRepository->selectAtributosRelacionados('arquivos');
+
+        $veiculoRepository->selectOrderBy('data_publicacao', 'desc');
 
         $veiculoRepository->selectAtivos();
 

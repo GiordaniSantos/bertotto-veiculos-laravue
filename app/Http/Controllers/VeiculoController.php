@@ -93,6 +93,7 @@ class VeiculoController extends Controller
             $veiculo->recomendado = $request->input('recomendado');
             $veiculo->km = $request->input('km');
             $veiculo->data_publicacao = $request->input('data_publicacao');
+            $veiculo->ordem = $request->input('ordem');
         
             $veiculo->save();
 

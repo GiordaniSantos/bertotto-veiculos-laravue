@@ -86,7 +86,6 @@
                     .then(response => response.json())
                     .then(data => {
                         if(data.erro){
-                            console.log(data.erro)
                             this.$swal("Oops...", "Algum erro aconteceu! " +data.erro, "error");
                         }else{
 

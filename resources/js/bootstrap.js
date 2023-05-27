@@ -68,7 +68,7 @@ axios.interceptors.response.use(
         console.log('Erro na requisição :' + error);
 
         if(error.response.status == 401 && error.response.data.message == 'Token has expired'){
-            axios.post('http://localhost:8000/api/refresh')
+            axios.post('https://bertottoveiculos.com.br/api/refresh')
                 .then(response => {
                     document.cookie = 'token='+response.data.token;
                     window.location.reload();

@@ -18,6 +18,10 @@ abstract class AbstractRepository{
         $this->model = $this->model->with($atributos);
     }
 
+    public function selectOrderBy($atributo, $ordem){
+        $this->model = $this->model->orderBy($atributo, $ordem);
+    }
+
     public function selectAtivos(){
         $this->model = $this->model->where('ativo', 1);
     }

@@ -41,7 +41,7 @@ class Veiculo extends Model
 
     protected $dates = ['created_at', 'updated_at', 'data_publicacao'];
 
-    protected $fillable = ['nome','descricao', 'marca_id' ,'ano_modelo', 'data_publicacao', 'preco', 'portas', 'cor', 'cambio', 'tipo_combustivel', 'aceita_troca', 'ipva_pago', 'licenciado', 'air_bag',
+    protected $fillable = ['nome', 'ordem', 'descricao', 'marca_id' ,'ano_modelo', 'data_publicacao', 'preco', 'portas', 'cor', 'cambio', 'tipo_combustivel', 'aceita_troca', 'ipva_pago', 'licenciado', 'air_bag',
      'air_bag_duplo', 'alarme', 'ar_condicionado_digital', 'banco_couro', 'banco_regulavel_altura', 'chave_reserva', 'computador_bordo', 'desembacador_traseiro',
         'direcao_eletrica', 'direcao_escamoteavel', 'direcao_multifuncional', 'farois_auxiliares', 'farois_led', 'freios_abs', 'interface', 'limpador_traseiro', 'manual_proprietario', 'porta_malas_eletrico'
         , 'retrovisor_eletrico', 'liga_leve', 'sensor_chuva', 'sensor_estacionamento', 'som_volante', 'som_original', 'teto_panoramico', 'teto_solar', 'travas_eletricas', 'vidros_eletricos', 'ativo', 'destaque', 'recomendado', 'km'

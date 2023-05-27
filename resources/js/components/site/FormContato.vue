@@ -41,6 +41,7 @@
 </template>
 
 <script>
+    $("#telefone").mask("(00) 00000-0000");
     export default{
         data(){
             return {
