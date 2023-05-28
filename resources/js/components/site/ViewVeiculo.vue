@@ -135,7 +135,17 @@
         </div>
     </section>
     <br>
-    <Carousel :items-to-show="2.5" :wrap-around="true" v-if="veiculo.arquivos && veiculo.arquivos.length > 1">
+    <Carousel v-if="resolucaoAtual < 719 && veiculo.arquivos && veiculo.arquivos.length > 1">
+        <Slide v-for="arquivo, key in veiculo.arquivos" :key="key">
+            <div class="carousel__item"><img :src="urlBaseImg+'/storage/uploads/veiculo/'+arquivo.id+'/'+arquivo.arquivo" class="imagem-view" width="100%" :alt="veiculo.nome" :title="veiculo.nome" ></div>
+        </Slide>
+
+        <template #addons>
+        <Navigation />
+        <Pagination />
+        </template>
+    </Carousel>
+    <Carousel :items-to-show="2.5" :wrap-around="true" v-else-if="veiculo.arquivos && veiculo.arquivos.length > 1">
         <Slide v-for="arquivo, key in veiculo.arquivos" :key="key">
         <div class="carousel__item"><img :src="urlBaseImg+'/storage/uploads/veiculo/'+arquivo.id+'/'+arquivo.arquivo" class="imagem-view" width="100%" :alt="veiculo.nome" :title="veiculo.nome" ></div>
         </Slide>
@@ -226,9 +236,15 @@ export default{
                 urlBaseImg: '',
                 veiculo: {},
                 currentSlide: 0,
+                width: ''
             }
         },
-        
+        computed:{
+            resolucaoAtual: function () {
+                this.width = screen.width;
+                return this.width;
+            }
+        },
         methods: {
             slideTo(val) {
                 this.currentSlide = val
@@ -306,7 +322,6 @@ export default{
             this.urlBase = import.meta.env.VITE_API_URL_SITE;
             this.urlBaseImg = import.meta.env.VITE_URL_BASE_IMG;
             this.carregarListaVeiculos();
-            console.log(this.veiculo)
 
         },
         created() {

@@ -114,7 +114,6 @@
                 }else{
                     this.urlFiltro = '';
                 }
-                console.log(this.urlFiltro);
                 this.carregarListaVeiculos();
             },
             paginacao(links){
@@ -128,7 +127,6 @@
                 let url = this.urlBase + '/veiculos/lista' + '?' +this.urlPaginacao + this.urlFiltro;
 
                 this.$swal.showLoading();
-                console.log(url)
                 axios.get(url)
                     .then(response => {
                         this.veiculos  = response.data;
@@ -148,7 +146,6 @@
                     .then(response => {
                         this.marcas  = response.data;
                         this.$swal.close();
-                        console.log(this.marcas)
                     })
                     .catch(errors => {
                         this.$swal("Oops...", "Algum erro aconteceu! " +errors.response, "error");
