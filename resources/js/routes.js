@@ -4,6 +4,7 @@ const Principal = () => import('./components/site/Principal.vue' /* webpackChunk
 const VeiculosSite = () => import('./components/site/VeiculosSite.vue' /* webpackChunkName: "resource/js/components/banner/add" */)
 const ViewVeiculos = () => import('./components/site/ViewVeiculo.vue' /* webpackChunkName: "resource/js/components/banner/add" */)
 const ContatoSite = () => import('./components/site/ContatoSite.vue' /* webpackChunkName: "resource/js/components/banner/add" */)
+const NotFound = () => import('./components/NotFound.vue' /* webpackChunkName: "resource/js/components/banner/add" */)
 
 export const routes = [
     {
@@ -25,6 +26,10 @@ export const routes = [
         name: 'Contato',
         path: '/contato',
         component: ContatoSite
+    },
+    {
+        path: '/:pathMatch(.*)*',
+        component: NotFound
     }
 ]
 

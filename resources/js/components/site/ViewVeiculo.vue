@@ -258,7 +258,7 @@ export default{
                 axios.get(url)
                     .then(response => {
                         this.veiculo  = response.data;
-                        document.title = this.veiculo.nome + "- Bertotto Veículos";
+                        document.title = this.veiculo.nome + " - Bertotto Veículos";
                         this.$swal.close();
                     })
                     .catch(errors => {
