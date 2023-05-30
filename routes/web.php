@@ -37,10 +37,6 @@ Route::any('/contato', function () {
     return view('site.main');
 })->where(['all' => '.*']);
 
-Route::any('/{any}', function () {
-    return view('site.main');
-})->where(['all' => '.*']);
-
 Route::get('/admin', function(){
     return redirect()->route('home');
 });
@@ -91,3 +87,7 @@ Route::prefix('/admin')->middleware('auth')->group(function(){
         return view('admin.veiculo.create');
     })->name('admin.veiculo.create');
 });
+
+Route::any('/{any}', function () {
+    return view('site.main');
+})->where(['all' => '.*']);
