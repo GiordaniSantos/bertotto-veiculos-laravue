@@ -146,6 +146,10 @@ a.desc:after {
   padding-left: 80px !important;
 }
 
+.position-body{
+  position: relative;
+  min-height: 100vh;
+}
 
 /* style breadcrumb widget as in previous bootstrap versions */
 .breadcrumb {
@@ -774,6 +778,9 @@ a.desc:after {
 footer {
   color:#FFF;
   background-color:#2a2a2a;
+  position: absolute;
+  bottom: -334px;
+  width: 100%;
 }
 
 .justify-content-beetween{

@@ -27,7 +27,7 @@
         <!-- Scripts -->
         @vite(['resources/sass/app.scss', 'resources/js/app.js'])
     </head>
-    <body class="d-flex flex-column h-100">
+    <body class="d-flex position-body flex-column h-100">
         <div id="app-site">
             
             <header-site-component></header-site-component>
