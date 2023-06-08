@@ -170,6 +170,9 @@
     .descricao-view{
         padding: 25px;
     }
+    footer {
+        bottom: -443px;
+    }
 }
 
 
@@ -345,6 +348,9 @@
     }
     .descricao-view{
         padding: 25px;
+    }
+    footer {
+        bottom: -497px;
     }
 }
 
