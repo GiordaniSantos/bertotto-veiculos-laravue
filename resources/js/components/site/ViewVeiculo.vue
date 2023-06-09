@@ -253,13 +253,13 @@ export default{
 
                 let url = this.urlBase + '/veiculo/' + this.$route.params.id;
 
-                this.$swal.showLoading();
+                //this.$swal.showLoading();
 
                 axios.get(url)
                     .then(response => {
                         this.veiculo  = response.data;
                         document.title = this.veiculo.nome + " - Bertotto Veículos";
-                        this.$swal.close();
+                        //this.$swal.close();
                     })
                     .catch(errors => {
                         this.$swal("Oops...", "Algum erro aconteceu! " +errors.response.data.message, "error");
@@ -318,14 +318,10 @@ export default{
                 return combustivelFormatado;
             },
         },
-        mounted() {
+        created() {
             this.urlBase = import.meta.env.VITE_API_URL_SITE;
             this.urlBaseImg = import.meta.env.VITE_URL_BASE_IMG;
             this.carregarListaVeiculos();
-
-        },
-        created() {
-
-        },
+        }
     }
 </script>

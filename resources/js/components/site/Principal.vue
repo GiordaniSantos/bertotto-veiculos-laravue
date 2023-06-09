@@ -214,17 +214,17 @@ export default{
 
                 let url = this.urlBase + '/veiculos/destaque';
 
-                this.$swal({title: 'Carregando',
+                /*this.$swal({title: 'Carregando',
                     allowEscapeKey: false,
                     allowOutsideClick: false,
                     onOpen: () => {
                     swal.showLoading();
-                }});
+                }}); */
 
                 axios.get(url)
                     .then(response => {
                         this.veiculosDestaque  = response.data;
-                        this.$swal.close();
+                       // this.$swal.close();
                     })
                     .catch(errors => {
                         this.$swal("Oops...", "Algum erro aconteceu! " +errors.response, "error");
@@ -234,12 +234,9 @@ export default{
 
                 let url = this.urlBase + '/veiculos/recomendado';
 
-                this.$swal.showLoading();
-
                 axios.get(url)
                     .then(response => {
                         this.veiculosRecomendado  = response.data;
-                        this.$swal.close();
                     })
                     .catch(errors => {
                         this.$swal("Oops...", "Algum erro aconteceu! " +errors.response, "error");
@@ -249,26 +246,23 @@ export default{
 
                 let url = this.urlBase + '/banner';
 
-                this.$swal.showLoading();
-
                 axios.get(url)
                     .then(response => {
                         this.banners  = response.data;
-                        this.$swal.close();
                     })
                     .catch(errors => {
                         this.$swal("Oops...", "Algum erro aconteceu! " +errors.response, "error");
                     });
                 },
         },
-        mounted() {
+        created() {
             this.urlBase = import.meta.env.VITE_API_URL_SITE;
             this.urlBaseImg = import.meta.env.VITE_URL_BASE_IMG;
             document.title = "Bertotto Veículos";
             this.carregarBanners();
             this.carregarListaDestaque();
             this.carregarListaRecomendado();
-        },
+        }
     }
 </script>
 

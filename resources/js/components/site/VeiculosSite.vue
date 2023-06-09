@@ -126,11 +126,11 @@
 
                 let url = this.urlBase + '/veiculos/lista' + '?' +this.urlPaginacao + this.urlFiltro;
 
-                this.$swal.showLoading();
+                //this.$swal.showLoading();
                 axios.get(url)
                     .then(response => {
                         this.veiculos  = response.data;
-                        this.$swal.close();
+                        //this.$swal.close();
                     })
                     .catch(errors => {
                         this.$swal("Oops...", "Algum erro aconteceu! " +errors.response.data.message, "error");
@@ -140,24 +140,22 @@
 
                 let url = this.urlBase + '/marcas/lista';
 
-                this.$swal.showLoading();
 
                 axios.get(url)
                     .then(response => {
                         this.marcas  = response.data;
-                        this.$swal.close();
                     })
                     .catch(errors => {
                         this.$swal("Oops...", "Algum erro aconteceu! " +errors.response, "error");
                     });
             },
         },
-        mounted() {
+        created() {
             this.urlBase = import.meta.env.VITE_API_URL_SITE;
             this.urlBaseImg = import.meta.env.VITE_URL_BASE_IMG;
             document.title = "Estoque de Veículos";
             this.carregarListaVeiculos();
             this.carregarMarcas();
-        },
+        }
     }
 </script>
