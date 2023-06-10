@@ -16,9 +16,9 @@
         <div class="row margin-menu">
             <div id="logo-menu" class="col-10 col-md-10 col-lg-8 col-xl-4 nopadding">
                 <div class="col-4">
-                    <a href="/" title="IPSS">
+                    <router-link to="/" title="IPSS">
                         <h1 class="nopadding nomargin"><img :src="urlBaseImg+'/images/logo.png'" alt="Bertotto Veículos"></h1>
-                    </a>  
+                    </router-link>  
                 </div>
             </div>
             <div id="posicao-menu" class="col-2 col-md-2 col-lg-4 col-xl-8">
