@@ -3,7 +3,7 @@
         <div class="col-12">
             <div class="text-right margin-midiasT">
                 <br><br>
-                <a href="https://www.facebook.com/bertotto.veic/" target="_blank" class="midia-footer">
+                <a href="https://www.facebook.com/bertotto.veic/" target="_blank" class="midia-footer" style="margin-right: 4px;">
                     <img :src="urlBaseImg+'/images/facebook.png'" class="midia-topo" alt="Facebook" style="width: 24px;">
                 </a>
                 <a href="https://www.instagram.com/bertottoveiculos/" target="blank" class="midia-footer">

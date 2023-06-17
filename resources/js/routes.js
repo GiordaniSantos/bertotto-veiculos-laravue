@@ -1,8 +1,8 @@
 import { createWebHistory, createRouter } from "vue-router";
 
 const Principal = () => import('./components/site/Principal.vue' /* webpackChunkName: "resource/js/components/banner/add" */)
-const VeiculosSite = () => import('./components/site/VeiculosSite.vue' /* webpackChunkName: "resource/js/components/banner/add" */)
-const ViewVeiculos = () => import('./components/site/ViewVeiculo.vue' /* webpackChunkName: "resource/js/components/banner/add" */)
+const VeiculosSite = () => import('./components/site/veiculos/VeiculosSite.vue' /* webpackChunkName: "resource/js/components/banner/add" */)
+const ViewVeiculos = () => import('./components/site/veiculos/ViewVeiculo.vue' /* webpackChunkName: "resource/js/components/banner/add" */)
 const ContatoSite = () => import('./components/site/ContatoSite.vue' /* webpackChunkName: "resource/js/components/banner/add" */)
 const NotFound = () => import('./components/NotFound.vue' /* webpackChunkName: "resource/js/components/banner/add" */)
 

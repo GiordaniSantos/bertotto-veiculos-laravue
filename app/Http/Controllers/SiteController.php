@@ -55,7 +55,7 @@ class SiteController extends Controller
             
         }
 
-        return response()->json($veiculoRepository->getResultadoPaginado(16), 200);
+        return response()->json($veiculoRepository->getResultadoPaginado(20), 200);
     }
 
     public function view($id)
