@@ -1,6 +1,6 @@
 <template>
    <footer>
-        <div class="row container-fluid borda-top">
+        <div class="row container-fluid-resp borda-top">
             <div class="col-12 col-sm-4 col-lg-4 col-xl-4 endereco-footer-responsivo paddingFooterL">
                 <h5 style="margin-bottom: 35px;">Endereço</h5>
                 <ul class="list-inline">
@@ -30,7 +30,7 @@
         </div>
         <div>
             <div class="footer-2 rodape-resp">
-                <div class="container-fluid">
+                <div class="container-fluid-resp">
                     <div class="row">
                         <div class="col-6">
                         <p class="float-start">&copy; {{ appName }} {{ dataAtual }} </p>

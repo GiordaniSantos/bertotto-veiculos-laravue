@@ -154,7 +154,7 @@
         <Navigation />
         </template>
     </Carousel>
-    <div v-else-if="veiculo.arquivos.lenght == 1">
+    <div v-else-if="veiculo.arquivos && veiculo.arquivos.length == 1">
         <div class="container">
             <img :src="urlBaseImg+'/storage/uploads/veiculo/'+veiculo.arquivos[0].id+'/'+veiculo.arquivos[0].arquivo" class="imagem-view" width="100%" :alt="veiculo.nome" :title="veiculo.nome" >
         </div>

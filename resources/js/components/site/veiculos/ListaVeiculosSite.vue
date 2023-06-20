@@ -4,7 +4,7 @@
             <div class="padding10">
                 <div class="box-veiculo">
                     <div class="text-center">
-                        <div v-if="veiculo.arquivos.length !=0">
+                        <div v-if="veiculo.arquivos && veiculo.arquivos.length !=0">
                             <img :src="urlBaseImg+'/storage/uploads/veiculo/'+veiculo.arquivos[0].id+'/'+veiculo.arquivos[0].arquivo" class="imagem-recomendacao" width="100%" :alt="veiculo.nome" :title="veiculo.nome" style="width: 100%;">
                         </div>
                         <div v-else>
@@ -27,7 +27,7 @@
             </paginate-component>
         </div>
     </div>
-    <div v-if="veiculos.data.length == 0">
+    <div v-if="veiculos.data && veiculos.data.length == 0">
         <br><br><br>
         <h3 class="text-center">Nenhum resultado foi encontrado.</h3>
     </div>

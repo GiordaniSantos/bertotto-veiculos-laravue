@@ -75,6 +75,7 @@ import ViewVeiculo from './components/site/veiculos/ViewVeiculo.vue';
 import ContatoSite from './components/site/ContatoSite.vue';
 import Header from './components/site/partials/Header.vue';
 import Footer from './components/site/partials/Footer.vue';
+import DestaqueSkeleton from './components/site/loading/DestaqueSkeleton.vue';
 import NotFound from './components/NotFound.vue';
 app.component('example-component', ExampleComponent);
 app.component('login-component', Login);
@@ -104,6 +105,7 @@ appSite.component('contato-site-component', ContatoSite);
 appSite.component('header-site-component', Header);
 appSite.component('footer-site-component', Footer);
 appSite.component('not-found-component', NotFound);
+appSite.component('destaque-skeleton-component', DestaqueSkeleton);
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue

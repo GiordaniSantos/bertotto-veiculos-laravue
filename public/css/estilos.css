@@ -18,7 +18,7 @@
 }
 
 .midias-topo{
-  height: 30px ;
+  height: 27px ;
 }
 
 #whatsapp {
@@ -39,7 +39,7 @@
 }
 
 .margin-midiasT{
-  margin-top: -44px;
+  margin-top: 0px;
   margin-right: 150px;
 }
 
@@ -1714,3 +1714,37 @@ h3 {
 
    background: none !important; 
 }*/
+
+.skeleton {
+  position: relative;
+  overflow: hidden;
+}
+.skeleton::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.5),
+    transparent
+  );
+  animation: wave 1.3s linear 0.5s infinite;
+}
+@keyframes wave {
+  0% {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  65% {
+    opacity: 1;
+    transform: translateX(100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(100%);
+  }
+}
