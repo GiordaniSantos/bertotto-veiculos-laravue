@@ -829,13 +829,13 @@
         font-size: 0.64rem;
     }
     .box-veiculo{
-        height: 355px !important;
+        height: 430px !important;
     }
     .box-veiculo .preco-titulo{
-        font-size: 1.45rem;
+        font-size: 1.55rem;
     }
     .box-veiculo h3{
-        font-size: 17px !important;
+        font-size: 18px !important;
     }
 }
 

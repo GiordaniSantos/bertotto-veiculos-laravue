@@ -30,7 +30,7 @@
         </div>
         <div>
             <div class="footer-2 rodape-resp">
-                <div class="container-fluid-resp">
+                <div class="container">
                     <div class="row">
                         <div class="col-6">
                         <p class="float-start">&copy; {{ appName }} {{ dataAtual }} </p>

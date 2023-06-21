@@ -1,6 +1,6 @@
 <template>
     <section class="margin40T">
-        <div class="container-fluid-resp">
+        <div class="container">
             <div class="row">
                 <div class="col-12 col-xl-8 col-xxl-9 d4">
                     <div class="titulo">

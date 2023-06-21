@@ -1,6 +1,6 @@
 <template>
     <div class="row" v-if="veiculos.data">
-        <div v-for="veiculo, key in veiculos.data" :key="key" class="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4 col-xxl-3 marginB-resp">
+        <div v-for="veiculo, key in veiculos.data" :key="key" class="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4 col-xxl-4 marginB-resp">
             <div class="padding10">
                 <div class="box-veiculo">
                     <div class="text-center">

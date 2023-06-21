@@ -98,7 +98,7 @@
                 </div>  
             </section>
             <section class="padding5 bg-fundo-dark " :class="border">
-                <div class="container-fluid-resp">
+                <div class="container">
                     <div class="row">
                         <div class="col-12 col-md-12">
                             <div class="d-flex ">
